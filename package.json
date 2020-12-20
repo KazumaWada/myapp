@@ -9,11 +9,10 @@
     "turbolinks": "^5.2.0",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",
-    "vue-template-compiler": "^2.6.12",
-    "vuetify": "^2.3.21"
+    "vue-template-compiler": "^2.6.12"
   },
   "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "2.11.1"
+    "webpack-dev-server": "^3.11.0"
   }
 }
