@@ -27,18 +27,26 @@
 // Then add this markup to your html template:
 //
 
+// import Vue from 'vue'
 import Vue from 'vue/dist/vue.esm'
+import Vuetify from "vuetify"; // 追加
+import "vuetify/dist/vuetify.min.css"; // 追加
 import App from '../app.vue'
 import Home from './pages/Home.vue'
+import Playground from './pages/Playground.vue'
+
+Vue.use(Vuetify); // 追加
+const vuetify = new Vuetify(); // 追加
 
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    vuetify,
     el: '#hello',
     data: {
-      message: "Can you say hello?"
+      message: "Can you say hello from hello_vue.js?"
     },
-    components: { App,Home }
+    components: { App,Home,Playground }
   })
 })
 //
