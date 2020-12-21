@@ -29,6 +29,8 @@
 
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
+import Home from './pages/Home.vue'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     data: {
       message: "Can you say hello?"
     },
-    components: { App }
+    components: { App,Home }
   })
 })
 //
