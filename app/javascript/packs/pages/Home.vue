@@ -1,22 +1,5 @@
 <template>
-  <div id="home">
-    <p>{{ message }}</p>
-  </div>
+    <div id="home">
+        <h1>home.vue</h1>
+    </div>
 </template>
-
-<script>
-export default {
-  data: function () {
-    return {
-      message: "Hello Home!"
-    }
-  }
-}
-</script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>

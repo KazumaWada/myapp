@@ -5,17 +5,33 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
-// import Vue from 'vue'
-// import App from '../app.vue'
+// import Vue from 'vue/dist/vue.esm';
+//↑このqiita見た。environment.jsに移動させた。
+//https://qiita.com/onoblog/items/e1a94fde9ed50f451d13
+import Vue from 'vue';
+import Vuetify from "vuetify"; 
+import "vuetify/dist/vuetify.min.css"; 
+import App from '../app.vue'
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     render: h => h(App)
-//   }).$mount()
-//   document.body.appendChild(app.$el)
 
-//   console.log(app)
-// })
+Vue.use(Vuetify); 
+// const vuetify = new Vuetify(); 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    // vuetify,
+    vuetify: new Vuetify(),
+    el: '#hello',
+    render: h => h(App)
+  }).$mount()
+  document.body.appendChild(app.$el)
+
+  console.log(app)
+})
+
+
+//Disable “development mode” warning in VueJS
+Vue.config.productionTip = false
 
 
 // The above code uses Vue without the compiler, which means you cannot
@@ -27,28 +43,22 @@
 // Then add this markup to your html template:
 //
 
-// import Vue from 'vue'
-import Vue from 'vue/dist/vue.esm'
-import Vuetify from "vuetify"; // 追加
-import "vuetify/dist/vuetify.min.css"; // 追加
-import App from '../app.vue'
-import Home from './pages/Home.vue'
-import Playground from './pages/Playground.vue'
-
-Vue.use(Vuetify); // 追加
-const vuetify = new Vuetify(); // 追加
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    vuetify,
-    el: '#hello',
-    data: {
-      message: "Can you say hello from hello_vue.js?"
-    },
-    components: { App,Home,Playground }
-  })
-})
+
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     vuetify,
+//     el: '#hello',
+//     components: { 
+//       'navbar': Header,
+//       App
+//      }
+//   })
+// })
 //
 //
 //
