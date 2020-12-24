@@ -1,23 +1,15 @@
 <template>
-  <div id="app">
-    <p>{{ message }}</p>
-    <v-btn>Vuetifyのボタン</v-btn> <!-- 追加 -->
-  </div>
+    <div id ="app"> 
+      <Header />
+      <!-- <router-view/> -->
+     </div>
 </template>
-
 <script>
+// 先にtemplate内にcomponentを書けば自動でimport,componentを記入してくれる
+import Header from './packs/components/Header.vue'
 export default {
-  data: function () {
-    return {
-      message: "Hello app!"
-    }
-  }
+  components: {
+     Header
+  },
 }
 </script>
-
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
