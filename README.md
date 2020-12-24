@@ -1,103 +1,164 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-hello_vue.js
-/* eslint no-console: 0 */
-// Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
-// <%= stylesheet_pack_tag 'hello_vue' %> if you have styles in your component)
-// to the head of your layout file,
-// like app/views/layouts/application.html.erb.
-// All it does is render <div>Hello Vue</div> at the bottom of the page.
-
-// import Vue from 'vue'
-// import App from '../app.vue'
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     render: h => h(App)
-//   }).$mount()
-//   document.body.appendChild(app.$el)
-
-//   console.log(app)
-// })
 
 
-// The above code uses Vue without the compiler, which means you cannot
-// use Vue to target elements in your existing html templates. You would
-// need to always use single file components.
-// To be able to target elements in your existing html/erb templates,
-// comment out the above code and uncomment the below
-// Add <%= javascript_pack_tag 'hello_vue' %> to your layout
-// Then add this markup to your html template:
-//
+
+-------------------------------------------------------------------
+
+ 元々のhome
 
 
-import Vue from 'vue/dist/vue.esm';
-import Vuetify from "vuetify"; 
-import "vuetify/dist/vuetify.min.css"; 
-import Header from './components/Header.vue'
-import App from '../app'
+// https://vuetifyjs.com/ja/components/cards/#grids
+// https://vuetifyjs.com/ja/components/hover/#section-30db30d030fc30ea30b930c8
+// https://vuetifyjs.com/ja/components/images/#section-30b030ea30c330c9
+// https://vuetifyjs.com/ja/components/overlays/#section-4e0a7d1a
+// https://vuetifyjs.com/ja/components/subheaders/#social-media
 
 
-Vue.use(Vuetify); 
-const vuetify = new Vuetify(); 
+<template>
+  <v-container class="grey lighten-5">
+    <v-row no-gutters>
+      <v-col
+        cols="16"
+        md="8"
+      >
+        <v-card
+          class="pa-2"
+          outlined
+          tile
+        >
+        <!-------------------- ここから入力.col-6 .col-md-4 -------------->
+           <v-card
+    flat
+    tile
+    fluid
+  >
+     <v-container
+      v-for="type in types"
+      :key="type"
+      class="grey lighten-4"
+      fluid
+    >
+      <v-subheader>{{ type }}</v-subheader>
 
+      <v-row>
+        <v-spacer></v-spacer>
+        <v-col
+          v-for="card in cards"
+          :key="card"
+          cols="12"
+          sm="6"
+          md="4"
+        >
+          <v-card>
+            <v-img
+              :src="`https://picsum.photos/200/300?image=${getImage()}`"
+              height="300px"
+            >
+              <span
+                class="headline white--text pl-4 pt-4 d-inline-block"
+                v-text="card"
+              ></span>
+            </v-img>
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    vuetify,
-    el: '#hello',
-    components: { 
-      'navbar': Header,
-      App
-     }
-  })
-})
-//
-//
-//
-// If the project is using turbolinks, install 'vue-turbolinks':
-//
-// yarn add vue-turbolinks
-//
-// Then uncomment the code block below:
-//
-// import TurbolinksAdapter from 'vue-turbolinks'
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// Vue.use(TurbolinksAdapter)
-//
-// document.addEventListener('turbolinks:load', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: () => {
-//       return {
-//         message: "Can you say hello?"
-//       }
-//     },
-//     components: { App }
-//   })
-// })
+            <v-card-actions class="white justify-center">
+              <v-btn
+                v-for="(social, i) in socials"
+                :key="i"
+                :color="social.color"
+                class="white--text"
+                fab
+                icon
+                small
+              >
+                <v-icon>{{ social.icon }}</v-icon>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+      </v-card>
+　　　　　<!-------------------------- ここまで入力--------------------- -->
+        </v-card>
+
+     <!-- right -->
+      </v-col>
+      <v-col
+        cols="2"
+        sm="2"
+        md="0"
+      >
+        <v-card
+          class="pa-2"
+          outlined
+          tile
+        >
+        <!------------ ここから入力 .col-12 .col-sm-6 .col-md-8 --------------->
+       <!-- <v-col cols="2"> -->
+            <v-sheet rounded="lg">
+              <v-list color="transparent">
+                <v-list-item
+                  v-for="n in 5"
+                  :key="n"
+                  link
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      List Item {{ n }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-divider class="my-2"></v-divider>
+
+                <v-list-item
+                  link
+                  color="grey lighten-4"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      タグ一覧
+                      <i class="fas fa-tag"></i>
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-sheet>
+          <!-- </v-col> -->
+          <!-- <v-col> -->
+        <!---------------------- ここまで入力 -------------------------->
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+<script>
+  export default {
+    data: () => ({
+      types: ['Places to Be', 'Places to See'],
+      cards: ['Good', 'Best', 'Finest'],
+      socials: [
+        {
+          icon: 'mdi-facebook',
+          color: 'indigo',
+        },
+        {
+          icon: 'mdi-linkedin',
+          color: 'cyan darken-1',
+        },
+        {
+          icon: 'mdi-instagram',
+          color: 'red lighten-3',
+        },
+      ],
+    }),
+
+    methods: {
+      getImage () {
+        const min = 550
+        const max = 560
+
+        return Math.floor(Math.random() * (max - min + 1)) + min
+      },
+    },
+  }
+</script>
