@@ -12,6 +12,8 @@ import Vue from 'vue';
 import Vuetify from "vuetify"; 
 import "vuetify/dist/vuetify.min.css"; 
 import App from '../app.vue'
+//全体のCSSはここから。
+import '../assets/css/application.css';
 
 
 Vue.use(Vuetify); 

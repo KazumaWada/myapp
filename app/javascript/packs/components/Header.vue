@@ -1,54 +1,63 @@
+//https://yacchi-engineer.com/?p=1010
 <template>
-  <v-card
-    class="mx-auto overflow-hidden"
-    height="400"
-  >
-    <v-app-bar
-      color="deep-purple"
-      dark
-    >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>ベルリンなう</v-toolbar-title>
-      
-    </v-app-bar>
-
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-    >
-      <v-list
-        nav
-        dense
+  <header>
+      <v-app-bar
+        app
+        dark
       >
-        <v-list-item-group
-          v-model="group"
-          active-class="deep-purple--text text--accent-4"
+      <!-- ハンバーガーを表示-->
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+        <v-toolbar-title>ベルリンなう</v-toolbar-title>
+        <!-- ここからnavbar -->
+        <v-tabs>
+          <v-tab
+            v-for="(menuItem, index) in menuItems"
+            :key="index"
+          >
+            {{ menuItem.name }}
+          </v-tab>
+        </v-tabs>
+      </v-app-bar>
+      <!-- drawerの中身ここから -->
+       <v-navigation-drawer
+        v-model="drawer"
+        fixed
+        temporary
+      >
+      <!-- メニュー項目,リスト -->
+        <v-list
+          nav
+          dense
         >
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-navigation-drawer>
-  </v-card>
+          <v-list-item-group>
+        　 <v-list-item
+    　 v-for="(menuItem, index) in menuItems"
+      :key="index"
+    >
+    <!-- contants.jsにいき、name要素を取ってくる -->
+      <v-list-item-title>{{ menuItem.name }}</v-list-item-title>
+    </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+      <!-- drawerの中身ここまで -->
+    </header>
 </template>
 <script>
-  export default {
-    data: () => ({
+// 下のmenuItemsに格納している
+import constants from '../common/constants'
+export default {
+  data () {
+    return {
       drawer: false,
-      group: null,
-    }),
+      menuItems: constants.menuItems 
+    }
   }
+}
 </script>
+<style lang="scss" scoped>
+.v-toolbar__title {
+  overflow: visible !important;
+  margin-right: 50px !important;
+}
+</style>
