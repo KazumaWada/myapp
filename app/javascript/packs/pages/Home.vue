@@ -43,6 +43,7 @@
   </v-card>
     </v-col>
     <!-- サイドバー -->
+    <!-- <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %> -->
     <v-col>
       
     </v-col>

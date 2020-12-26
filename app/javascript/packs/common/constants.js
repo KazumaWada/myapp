@@ -23,8 +23,8 @@ export default {
         url: '#'
       },
       {
-        name: 'ACC',
-        url: '#'
+        name: 'signup',
+        url: '/signup'
       }
     ]
   }
