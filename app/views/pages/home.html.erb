@@ -1,5 +1,9 @@
 <div id='hello'>
 <app></app>
 </div>
- <%= stylesheet_pack_tag 'hello_vue' %>
- <%= javascript_pack_tag 'hello_vue' %>
+
+<%# ここにこの二つを置かないと、関係ないページにもhomeの全パーツが表示されてしまう。 %>
+<%= stylesheet_pack_tag 'hello_vue' %>
+    <%= javascript_pack_tag 'hello_vue' %>  
+
+
