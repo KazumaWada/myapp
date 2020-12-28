@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
     #sessions_helper
     log_in user
-    redirect_to user
+    #session_helper
+    redirect_back_or user
     else 
     flash.now[:danger] = '正しく認証されませんでした。'
      # render 'pages/home'これにするとhomeページへ行く。
