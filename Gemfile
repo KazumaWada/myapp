@@ -8,6 +8,9 @@ gem 'rails', '~> 6.1.0'
 # ハッシュ関数のgem。パスワードを適切にハッシュ化することで、たとえ攻撃者によってデータベースからパスワードが漏れてしまった場合でも、Webサイトにログインされないようにでる。
 gem 'bcrypt',         '3.1.13'
 gem 'bootstrap-sass', '3.4.1'
+gem 'faker',                   '2.1.2'
+gem 'will_paginate',           '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
 # Use Puma as the app server

@@ -10,13 +10,24 @@ end
 #User.find_by(id: session[:user_id])これだとnillが返ってこれる。そして、 if session[:user_id]
 #と書くと、セッションにユーザーIDが存在しない場合、このコードは単に終了して自動的にnilを返します。
 #=falseの場合、例外を出さずにnillを返すためにはどうすればいいかということ。
- 
- def current_user
-    if session[:user_id]#があれば、
-    #@current_userが定義されていれば左で止まる。そうでなければ、右の式に移動する。
-    @current_user ||=find_by(id: session[:user_id])
+
+def current_user
+   if (user_id = session[:user_id])#があれば,
+     #@current_userが定義されていれば左で止まる。そうでなければ、右の式に移動する。
+     @current_user ||= User.find_by(id: user_id)
+   elsif (user_id = cookies.signed[:user_id])
+     user = User.find_by(id: user_id)
+     if user && user.authenticated?(cookies[:remember_token])
+       log_in user
+       @current_user = user
+     end
+   end
  end
-end
+
+ #if its current_user → true.
+ def current_user?(user)
+   user && user==current_user
+ end
 
  #current_userがnillじゃなければ(!)trueを返す。=current_userがいればtrueを返す。
  def logged_in?
@@ -30,8 +41,15 @@ end
     @current_user = nil
  end
 
+ # 記憶したURL（もしくはデフォルト値）にリダイレクト
+ def redirect_back_or(default)
+   redirect_to(session[:forwarding_url] || default)
+   session.delete(:forwarding_url)
+ end
 
-
-
+ # アクセスしようとしたURLを覚えておく
+ def store_location
+   session[:forwarding_url] = request.original_url if request.get?
+ end
 
 end
