@@ -9,7 +9,9 @@ User.create!(name:  "main-user",
     email: "main@gmail.com",
     password:              "password",
     password_confirmation: "password",
-    admin: true)
+    admin: true,
+    activated: true,
+    activated_at: Time.zone.now)
 
 # 追加のユーザーをまとめて生成する
 99.times do |n|
@@ -19,5 +21,7 @@ password = "password"
 User.create!(name:  name,
       email: email,
       password:              password,
-      password_confirmation: password)
+      password_confirmation: password,
+      activated: true,
+      activated_at: Time.zone.now)
 end

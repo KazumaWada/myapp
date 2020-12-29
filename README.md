@@ -1,17 +1,19 @@
+mailerの大まかな流れは、
+（1）有効化トークンやダイジェストを関連付けておいた状態で、
+（2）有効化トークンを含めたリンクをユーザーにメールで送信し、
+（3）ユーザーがそのリンクをクリックすると有効化できるようにする、というものです
+
+アカウントを有効化する段取り
+ユーザーの初期状態は「有効化されていない」（unactivated）にしておく。
+
+ユーザー登録が行われたときに、有効化トークンと、それに対応する有効化ダイジェストを生成する。
+
+有効化ダイジェストはデータベースに保存しておき、有効化トークンはメールアドレスと一緒に、ユーザーに送信する有効化用メールのリンクに仕込んでおく。
+
+ユーザーがメールのリンクをクリックしたら、アプリケーションはメールアドレスをキーにしてユーザーを探し、データベース内に保存しておいた有効化ダイジェストと比較することでトークンを認証する。
+
+ユーザーを認証できたら、ユーザーのステータスを「有効化されていない」から「有効化済み」（activated）に変更する。
 
 
-
--------------------------------------------------------------------
-
- 元々のhome
-
-
-// https://vuetifyjs.com/ja/components/cards/#grids
-// https://vuetifyjs.com/ja/components/hover/#section-30db30d030fc30ea30b930c8
-// https://vuetifyjs.com/ja/components/images/#section-30b030ea30c330c9
-// https://vuetifyjs.com/ja/components/overlays/#section-4e0a7d1a
-// https://vuetifyjs.com/ja/components/subheaders/#social-media
-
-
-<a href="/static_pages/about">About</a>
-<%= link_to "About", about_path %>
+まとめ
+有効化用メールのリンクにトークン。DBにダイジェスト。クリックした時に、二つが照合されて、有効になる。
