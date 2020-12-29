@@ -23,18 +23,23 @@ class UsersController < ApplicationController
 
   # resources :usersをroutes.rbファイルに追加すると、自動的にRailsアプリケーションが
   # RESTful URI に応答する。/usersへのPOSTリクエストはcreateアクションに送られます。
+ 
+
+
   def create
-    @user = User.new(user_params) 
+    @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to ベルリンなう!"
-      # 新規登録成功
-      redirect_to @user
+      @user.send_activation_email#user.rb
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
-      # 新規登録失敗
       render 'new'
     end
   end
+
+
+
+
 
   #ユーザーを見つけるだけ。
   def edit

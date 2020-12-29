@@ -1,0 +1,11 @@
+<h1>ベルリンなう</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+ベルリンなうへようこそ! アカウントを有効化するには、下記のリンクをクリックして下さい。:
+</p>
+
+<%= link_to "クリックして有効化する", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>
+
