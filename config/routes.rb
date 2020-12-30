@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'#ログアウト
   resources :users
   resources :account_activations, only: [:edit]
+  #micropostではないので、後からblogPostを編集できるeditが必要。
+  resources :posts,          only: [:new, :create, :destroy]
+
+  # 新規ポストlocalhost:3000/posts/new
 end

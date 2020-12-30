@@ -15,7 +15,14 @@ class UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
     #正常に処理が行われると、@user=User.find(1)となる。
+    @posts = @user.posts.paginate(page: params[:page])
+   #これは別にログインしてなくてもよくね？
+    # if logged_in?
+      # @post  = current_user.posts.build
+      @contents_feed = current_user.feed.paginate(page: params[:page])
+    # end
   end
+
   def new
     @user = User.new
   end
@@ -71,16 +78,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
-  end
-
-  #before edit,update make sure 
-  def logged_in_user
-    #session_helper
-    unless logged_in?
-      store_location
-      flash[:danger]="ログインしてください。"
-      redirect_to login_url
-    end
   end
 
   #before edit,update make sure 

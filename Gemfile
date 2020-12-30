@@ -5,11 +5,17 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+#AWSを使う時に画像をアップロードするgem。
+# gem 'aws-sdk-s3',              '1.46.0', require: false
+#active_recordのvalidationがネイティブでサポートされていないため。
+gem 'active_storage_validations', '0.8.2'
+#画像の大きさなどを処理する
+gem 'image_processing',           '1.9.3'
+gem 'mini_magick',                '4.9.5'
 # ハッシュ関数のgem。パスワードを適切にハッシュ化することで、たとえ攻撃者によってデータベースからパスワードが漏れてしまった場合でも、Webサイトにログインされないようにでる。
 gem 'bcrypt',         '3.1.13'
 gem 'bcrypt-ruby', '3.1.2' 
 gem 'bootstrap-sass', '3.4.1'
-gem 'active_storage_validations', '0.8.9'
 gem 'faker',                   '2.1.2'
 gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'

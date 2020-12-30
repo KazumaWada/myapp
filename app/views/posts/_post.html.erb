@@ -1,0 +1,18 @@
+<%# これはCSSのid %>
+<li id="post-<%= post.id %>">
+  <span class="user"><%= link_to post.user.name, post.user %></span>
+  <span class="content">
+  <%= post.content %>
+  <%# active_storageのAPI=attached %>
+  <%# 一つの投稿に画像が複数存在する場合、どのimageを表示すればいいかrailsは迷うから、[0]を記入してあげる。 %>
+   <%# <%= image_tag post.display_image[0] if post.image.attached? %> %>
+   <%= image_tag post.image[0] if post.image.attached? %> 
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <% if current_user?(post.user) %>
+    <%= link_to "delete", post, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

@@ -24,4 +24,12 @@ User.create!(name:  name,
       password_confirmation: password,
       activated: true,
       activated_at: Time.zone.now)
+
+
+#6人のサンプル投稿
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(word_count: 100)
+  users.each { |user| user.posts.create!(content: content) }
+end
 end
