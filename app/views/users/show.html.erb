@@ -1,13 +1,19 @@
-#個人の情報を表示するページ。
+<%# #個人の情報を表示するページ。 %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <%= @user.name %>
       </h1>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
     </section>
+    <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
+    <%= render 'follow_form' if logged_in? %>
   </aside>
   <div class="col-md-8">
+  
     <% if @user.posts.any? %>
       <h3>posts (<%= @user.posts.count %>)</h3>
       <ol class="posts">
