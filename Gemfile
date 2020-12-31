@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+#CSSフレームワーク
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 #AWSを使う時に画像をアップロードするgem。
 # gem 'aws-sdk-s3',              '1.46.0', require: false
 #active_recordのvalidationがネイティブでサポートされていないため。

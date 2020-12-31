@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/doabit/semantic-ui-sass.git
+  revision: af590657254cc0051f5ef44b99eb60e63b2c21d8
+  specs:
+    semantic-ui-sass (2.4.2.0)
+      sassc
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -217,6 +224,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.0)
   sass-rails (>= 6)
+  semantic-ui-sass!
   spring
   turbolinks (~> 5)
   tzinfo-data
