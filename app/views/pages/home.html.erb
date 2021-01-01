@@ -5,7 +5,7 @@
 <%# <%= stylesheet_pack_tag 'hello_vue' %>
     <%# <%= javascript_pack_tag 'hello_vue' %>  
 
-
+<%# 
 <div class="ui container">
 
 <h1>グリッドcentered(中央寄せ)right floated(右寄せ)fluidでwidth:100%</h1>
@@ -29,7 +29,7 @@
 </div>
 
 
-<
+
 <h1>グリッド</h1>
 <div class="ui three column grid">
     <div class="column"><p>Lorem Ipsum(略)</p></div>
@@ -115,38 +115,145 @@
             </div>
         </h4>
     </div>
+</a> %>
+<%# </div> %>
+<%# container %>
+
+
+<%# こっから行きます。テンプレ %>
+<%# https://semantic-ui.com/collections/menu.html %>
+
+<div class="ui secondary  menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <a class="item">
+    Friends
+  </a>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+    <a class="ui item">
+      Logout
+    </a>
+  </div>
+</div>
+
+<h1>header2</h1>
+<div class="ui menu">
+  <div class="header item">
+    Our Company
+  </div>
+  <a class="item">
+    About Us
+  </a>
+  <a class="item">
+    Jobs
+  </a>
+  <a class="item">
+    Locations
+  </a>
+</div>
+
+
+<h1>header3</h1>
+<div class="ui menu">
+  <div class="item">
+    <div class="ui primary button">Sign up</div>
+  </div>
+  <div class="item">
+    <div class="ui button">Log-in</div>
+  </div>
+</div>
+
+
+<h1>header4これ観やすくていいね</h1>
+<div class="ui huge menu">
+  <a class="active item">
+    Home
+  </a>
+  <a class="item">
+    Messages
+  </a>
+  <div class="right menu">
+    <div class="ui dropdown item">
+      Language <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">English</a>
+        <a class="item">Russian</a>
+        <a class="item">Spanish</a>
+      </div>
+    </div>
+    <div class="item">
+        <div class="ui primary button">Sign Up</div>
+    </div>
+  </div>
+</div>
+
+
+<%# サイドバー的な %>
+<h1>サイドバーっぽい</h1>
+<div class="ui vertical menu">
+  <a class="active teal item">
+    Inbox
+    <div class="ui teal left pointing label">1</div>
+  </a>
+  <a class="item">
+    Spam
+    <div class="ui label">51</div>
+  </a>
+  <a class="item">
+    Updates
+    <div class="ui label">1</div>
+  </a>
+  <div class="item">
+    <div class="ui transparent icon input">
+      <input type="text" placeholder="Search mail...">
+      <i class="search icon"></i>
+    </div>
+  </div>
+</div>
+
+
+<h1>投稿カード</h1>
+<div class="ui card">
+  <div class="content">
+    <div class="right floated meta">14h</div>
+    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
+  </div>
+  <div class="image">
+    <img src="/assets/card.jpg">
+  </div>
+  <div class="content">
+    <span class="right floated">
+      <i class="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i class="comment icon"></i>
+    3 comments
+  </div>
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <i class="heart outline icon"></i>
+      <input type="text" placeholder="Add Comment...">
+    </div>
+  </div>
+</div>
+
+<h1>イメージリンクっていうのもある</h1>
+<a href="https://google.com" class="ui medium image">
+  <%= image_tag 'card.jpg' %>
 </a>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div><%# container %>
+<h1>あとはtag(タグ)とtab(新着とか)</h1>
+<a class="ui tag label">New</a>
+<a class="ui red tag label">Upcoming</a>
+<a class="ui teal tag label">Featured</a>
