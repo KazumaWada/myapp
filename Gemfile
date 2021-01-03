@@ -57,6 +57,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  #統合テスト用
+  # gem 'capybara', '~> 2.13'
+  # gem 'faker'
+  #毎回DBをクリアにする用
+  # gem 'database_cleaner'
+  #テスト時に現在のページを示す。 
+  # gem 'launchy'
+  #複数のテストを一回で。
+  # gem 'selenium-webdriver'
 end
 
 group :development do

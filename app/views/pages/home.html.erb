@@ -1,3 +1,68 @@
+<div class="main-header">
+
+<%# メニュー2 homeボタン %>
+<%# <div class="ui huge menu top-menu-second"> %>
+<div class="top-menu-second">
+<a href="http://localhost:3000/">
+<button class="main-botton ui inverted black button">home</button>
+</a>
+  <%# <a class="item">
+    Home
+  </a> %>
+  <%# <div class="right menu">
+      <a class="active item">
+    Home
+     </a>
+  </div> %>
+</div>
+
+<%# メニュー %>
+<%# <div class="ui huge menu top-menu"> %>
+<div class="top-menu">
+<a href="http://localhost:3000/about">
+<button class="main-button ui inverted black button">About</button>
+</a>
+<%# <button class="ui secondary basic button">Secondary</button> %>
+<a href="http://localhost:3000/posts/new">
+<button class="main-button ui inverted red button">Post</button>
+</a>
+  <%# <a class="item">
+    Home
+  </a> %>
+  <a href="http://localhost:3000/signup">
+    <button class="main-button ui inverted yellow button">Signup</button>
+    </a>
+   <%# <a class="item">
+    Home
+  </a> %>
+  <%# <div class="right menu">
+      <a class="item">
+    Home
+     </a>
+  </div> %>
+</div>
+
+
+
+<%# 画像 %>
+<div class="ui image"> 
+  <%= image_tag 'banner05.jpeg' %>
+</div>
+
+
+
+
+
+<h1 class="title">ベルリンなうへようこそ！</h1> 
+
+
+<%# <div class="ui fluid image">  %>
+
+ </div> <%#main-header>
+
+
+
+
 <%# <div id='hello'>
 <app></app>
 </div> %>
@@ -120,50 +185,26 @@
 <%# container %>
 
 
+<%# https://semantic-ui.com/collections/menu.html#vertical %>
+<%# <div class="ui text menu">
+  <div class="header item">Sort By</div>
+  <a class="item active">
+    Closest
+  </a>
+  <a class="item">
+    Most Comments
+  </a>
+  <a class="item">
+    Most Popular
+  </a>
+</div> %>
 <%# こっから行きます。テンプレ %>
 <%# https://semantic-ui.com/collections/menu.html %>
 
-<div class="ui secondary  menu">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
-  <div class="right menu">
-    <div class="item">
-      <div class="ui icon input">
-        <input type="text" placeholder="Search...">
-        <i class="search link icon"></i>
-      </div>
-    </div>
-    <a class="ui item">
-      Logout
-    </a>
-  </div>
-</div>
-
-<h1>header2</h1>
-<div class="ui menu">
-  <div class="header item">
-    Our Company
-  </div>
-  <a class="item">
-    About Us
-  </a>
-  <a class="item">
-    Jobs
-  </a>
-  <a class="item">
-    Locations
-  </a>
-</div>
 
 
-<h1>header3</h1>
+
+<%# 
 <div class="ui menu">
   <div class="item">
     <div class="ui primary button">Sign up</div>
@@ -171,59 +212,67 @@
   <div class="item">
     <div class="ui button">Log-in</div>
   </div>
-</div>
+</div> %>
 
 
-<h1>header4これ観やすくていいね</h1>
-<div class="ui huge menu">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
+<%# <div class="ui menu">
+  <a class="item">Browse</a>
+  <a class="item">Submit</a>
   <div class="right menu">
-    <div class="ui dropdown item">
-      Language <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item">English</a>
-        <a class="item">Russian</a>
-        <a class="item">Spanish</a>
-      </div>
-    </div>
-    <div class="item">
-        <div class="ui primary button">Sign Up</div>
-    </div>
+    <a class="item">Sign Up</a>
+    <a class="item">Help</a>
   </div>
+</div> %>
+
+<%# 上にstickさせたい。画像の上にnavを %>
+<%# <div class="ui fluid image"> 
+  <%= image_tag 'banner03.jpeg' %>
+ 
+
+<%# <h1>イメージリンクっていうのもある</h1>
+<a href="https://google.com" class="ui large image">
+ 
+</a> %>
+
+<%# <h1>バナー</h1>
+<div class="ui grid">
+<div class="sixteenk wide column">
+<div class="fluid">
+<div class="ui billboard test ad" data-text="Billboard">
+ <img src="/assets/card.jpg">
 </div>
+</div>
+</div>
+</div> %>
 
 
-<%# サイドバー的な %>
-<h1>サイドバーっぽい</h1>
-<div class="ui vertical menu">
-  <a class="active teal item">
-    Inbox
-    <div class="ui teal left pointing label">1</div>
+
+
+<div class="ui grid">
+    <div class="twelve wide column">
+
+
+<%# 　 <div class="centered">
+  <div class="ui text menu">
+  <div class="header item">Sort By</div>
+  <a class="item active">
+    Closest
   </a>
   <a class="item">
-    Spam
-    <div class="ui label">51</div>
+    Most Comments
   </a>
   <a class="item">
-    Updates
-    <div class="ui label">1</div>
+    Most Popular
   </a>
-  <div class="item">
-    <div class="ui transparent icon input">
-      <input type="text" placeholder="Search mail...">
-      <i class="search icon"></i>
-    </div>
   </div>
-</div>
+  </div>  
+  %>
+  <div class="ui grid">
+  <div class="eight wide column"></div>
+  </div> 
 
-
-<h1>投稿カード</h1>
-<div class="ui card">
+ <div class="centered"> <%# これにpaddingしてあるから、左右が空くことができている%>
+  <div class="ui card fluid">
   <div class="content">
     <div class="right floated meta">14h</div>
     <img class="ui avatar image" src="/assets/card.jpg"> Elliot
@@ -246,14 +295,153 @@
     </div>
   </div>
 </div>
+</div> 
 
-<h1>イメージリンクっていうのもある</h1>
+ <div class="centered"> <%# これにpaddingしてあるから、左右が空くことができている%>
+  <div class="ui card fluid">
+  <div class="content">
+    <div class="right floated meta">14h</div>
+    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
+  </div>
+  <div class="image">
+    <img src="/assets/card.jpg">
+  </div>
+  <div class="content">
+    <span class="right floated">
+      <i class="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i class="comment icon"></i>
+    3 comments
+  </div>
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <i class="heart outline icon"></i>
+      <input type="text" placeholder="Add Comment...">
+    </div>
+  </div>
+</div>
+</div> 
+
+ <div class="centered"> <%# これにpaddingしてあるから、左右が空くことができている%>
+  <div class="ui card fluid">
+  <div class="content">
+    <div class="right floated meta">14h</div>
+    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
+  </div>
+  <div class="image">
+    <img src="/assets/card.jpg">
+  </div>
+  <div class="content">
+    <span class="right floated">
+      <i class="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i class="comment icon"></i>
+    3 comments
+  </div>
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <i class="heart outline icon"></i>
+      <input type="text" placeholder="Add Comment...">
+    </div>
+  </div>
+</div>
+</div> 
+
+ <div class="centered"> <%# これにpaddingしてあるから、左右が空くことができている%>
+  <div class="ui card fluid">
+  <div class="content">
+    <div class="right floated meta">14h</div>
+    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
+  </div>
+  <div class="image">
+    <img src="/assets/card.jpg">
+  </div>
+  <div class="content">
+    <span class="right floated">
+      <i class="heart outline like icon"></i>
+      17 likes
+    </span>
+    <i class="comment icon"></i>
+    3 comments
+  </div>
+  <div class="extra content">
+    <div class="ui large transparent left icon input">
+      <i class="heart outline icon"></i>
+      <input type="text" placeholder="Add Comment...">
+    </div>
+  </div>
+</div>
+</div> 
+    </div><%# twelve wide column %>
+
+    <div class="four wide column">
+<div class="ui vertical menu">
+  <a class="item">
+    <h4 class="ui header">タグ一覧</h4>
+    <a class="ui tag label">New</a>
+    <a class="ui red tag label">Upcoming</a>
+    <a class="ui teal tag label">Featured</a>
+    <p>Check out our new promotions</p>
+  </a>
+  <a class="item">
+    <h4 class="ui header">人気記事</h4>
+    <p>Check out our collection of coupons</p>
+  </a>
+  <a class="item">
+    <h4 class="ui header">アーカイブ</h4>
+    <p>Visit our rebate forum for information on claiming rebates</p>
+  </a>
+</div>
+    </div><%# four wide column %>
+</div><%# ui grid %>
+
+
+
+
+
+<%# <h1>イメージリンクっていうのもある</h1>
 <a href="https://google.com" class="ui medium image">
   <%= image_tag 'card.jpg' %>
-</a>
 
 
-<h1>あとはtag(タグ)とtab(新着とか)</h1>
-<a class="ui tag label">New</a>
-<a class="ui red tag label">Upcoming</a>
-<a class="ui teal tag label">Featured</a>
+
+
+<%##################### form ################################%>
+<%# 
+<form class="ui large form container">
+        <div class="ui stacked segment">
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="user icon"></i>
+                    <input type="text" name="email" placeholder="E-mail address">
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui left icon input">
+                    <i class="lock icon"></i>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="ui fluid large teal submit button">Login</div>
+        </div>
+        <div class="ui error message"></div>
+    </form>
+    <div class="striped"></div> %>
+<%##################### form ################################%>
+
+
+
+
+<h2 class="ui header">
+    タイトル
+    <div class="sub header">
+        description
+    </div>
+</h2>
+
+
+<div class="ui segment footer">
+<p>2021 ベルリンなう　all right reserved</p>
+</div>
