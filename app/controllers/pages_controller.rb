@@ -7,4 +7,7 @@ class PagesController < ApplicationController
       @contents_feed = current_user.feed.paginate(page: params[:page])
   end
 end
+
+def about
+end
 end
