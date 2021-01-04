@@ -17,3 +17,4 @@ require("trix")
 require("@rails/actiontext")
 require("jquery")
 import "bootstrap"
+import '../src/bootstrap.scss'
