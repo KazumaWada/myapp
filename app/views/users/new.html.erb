@@ -1,13 +1,15 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
 
+<%# <%= link_to 'トップページ', root_path, class: "top-large", id: "top" %> 
 <h1>Sign up</h1>
-
+<%# 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <%# https://railstutorial.jp/chapters/sign_up?version=6.0#sec-signup_error_messages %>
+  <div class="col-md-6 col-md-offset-3"> %>
+ <%# https://railstutorial.jp/chapters/sign_up?version=6.0#sec-signup_error_messages %>
+
+
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
+
       <%= f.label :name %>
       <%= f.text_field :name %>
 
@@ -19,6 +21,67 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
+<%# rails erbをhtmlにしたもの %>
+
+    <form　class="ui form" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="YrfeLwo7Wj86RcCWVHW2ELBxhwk8oFEkD3JM6zUnXFBz17R8uXBEZhrGdYH0Urb5cMWjQfl0wvM8_4OUhdNrRQ" />
+      
+      <div class="field">
+      <label for="user_name">Name</label>
+      <input type="text" name="user[name]" id="user_name" />
+      </div>
+
+　　　　<div class="field">
+      <label for="user_email">Email</label>
+      <input type="email" name="user[email]" id="user_email" />
+      </div>
+
+　　　　<div class="field">
+      <label for="user_password">Password</label>
+      <input type="password" name="user[password]" id="user_password" />
+      </div>
+　　　　　
+　　　　<div class="field">
+      <label for="user_password_confirmation">Confirmation</label>
+      <input type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+      </div>
+
+      <input type="submit" name="commit" value="Create my account" class="btn btn-primary" data-disable-with="Create my account" />
+</form>  
+</div>
+</div>
+
+
+
+
+
+
+
+
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
