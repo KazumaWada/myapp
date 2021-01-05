@@ -1,89 +1,100 @@
 
 <%# <%= link_to 'トップページ', root_path, class: "top-large", id: "top" %> 
-<h1>Sign up</h1>
 <%# 
 <div class="row">
   <div class="col-md-6 col-md-offset-3"> %>
  <%# https://railstutorial.jp/chapters/sign_up?version=6.0#sec-signup_error_messages %>
 
-
-    <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
-
-
-<%# rails erbをhtmlにしたもの %>
-
-    <form　class="ui form" action="/users" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="YrfeLwo7Wj86RcCWVHW2ELBxhwk8oFEkD3JM6zUnXFBz17R8uXBEZhrGdYH0Urb5cMWjQfl0wvM8_4OUhdNrRQ" />
-      
-      <div class="field">
-      <label for="user_name">Name</label>
-      <input type="text" name="user[name]" id="user_name" />
-      </div>
-
-　　　　<div class="field">
-      <label for="user_email">Email</label>
-      <input type="email" name="user[email]" id="user_email" />
-      </div>
-
-　　　　<div class="field">
-      <label for="user_password">Password</label>
-      <input type="password" name="user[password]" id="user_password" />
-      </div>
-　　　　　
-　　　　<div class="field">
-      <label for="user_password_confirmation">Confirmation</label>
-      <input type="password" name="user[password_confirmation]" id="user_password_confirmation" />
-      </div>
-
-      <input type="submit" name="commit" value="Create my account" class="btn btn-primary" data-disable-with="Create my account" />
-</form>  
-</div>
-</div>
-
-
-
-
-
-
-
-
-<h1>Sign up</h1>
-
+<div class="container">
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user, local: true) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+  <%# <div class="col-md-10 col-md-offset-6"> %>
+  <%# <div class="col-md-8 col-md-offset-4"> %>
+  <%# 中央寄せ %>
+  <div class="mx-auto" style="width: 500px;">
 
-      <%= f.label :name %>
+<div class="card mt-4">
+  <div class="card-body">
+    
+ <h1>ユーザー登録</h1>
+
+
+
+
+<%###################これ参考にするhttps://pikawaka.com/rails/form_for #################################%>
+
+
+
+  <%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+
+       
+　　　　<%#名前 %>
+      <%= f.label :name, class: 'mt-4' %>
       <%= f.text_field :name, class: 'form-control' %>
+  
 
-      <%= f.label :email %>
+      
+　　　　<%#email %>
+      <%= f.label :email, class: 'mt-4' %>
       <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
+     
+    
+      <%#password %>
+      <%= f.label :password, class: 'mt-4' %>
       <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
+      
+      
+      <%#password確認 %>
+      <%# <%= f.label :password_confirmation, "Confirmation" %> 
+      <%= f.label :password_confirmation, "Password確認", class: 'mt-4' %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+      <%# ベルリン滞在、渡航歴 https://pikawaka.com/rails/form_for#f.number_field　%>
+      <div class="form-group">
+    <label for="exampleFormControlSelect1">ベルリン滞在、渡航歴</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1年</option>
+      <option>2年</option>
+      <option>3年以上</option>
+    </select>
+ 　 </div>
+
+　　　<%# ひとこと https://pikawaka.com/rails/form_for#f.text_area%>
+  　　<div class="form-group">
+    　<label for="exampleFormControlTextarea1">あなたを説明するプロフィール。</label>
+    　<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  　　</div>
+
+　　　<%# 送信 %>
+
+      <div class="text-center">
+  　　 <%= f.submit "アカウント作成", class: "btn btn-primary mr-4" %>
+     </div>
+    　<% end %>
+
+  　　</div>
+　　　</div>
+　　　</div>
+
+
+
+
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+   
+
+
