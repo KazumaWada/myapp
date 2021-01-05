@@ -1,7 +1,188 @@
-<%# #個人の情報を表示するページ。 %>
+
+
+
+ 　　　<h1>
+投稿のタイトルを作る
+      </h1>
+<%# <img src="/assets/images/a.jpg" class="img-thumbnail rounded-circle" loading="lazy"> %>
+ <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
+
+<div class="container">
 <div class="row">
+
+<%# <div class="col-md-9 col-md-offset-5"> %>
+<%# 中央寄せ %>
+<div class="mx-auto" style="width: 900px;">
+
+<%# ここから下プロフィール %>
+<div class="profile-wrapper">
+
+<section class="user_info">
+　　　
+     <%#user-name %> <%#プロフィール編集 %>
+    
+      <h1>
+      <%# アバター %>
+        <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
+        <%# 名前 %>
+        <%= @user.name %>
+         <%# プロフィール編集 %>
+        <button type="button" class="btn btn-warning">
+        <a href="http://localhost:3000/users/1/edit" class="text-light">プロフィール編集</a>
+        </button>
+      <%# 投稿ページへ %>
+      <button type="button" class="btn btn-dark">
+       <%= link_to "投稿する", new_post_path, class: 'text-light' %>
+      </button>
+
+      </h1>
+
+     <%#在住歴 %>
+       <p>
+        ベルリン在住歴"@user.spent_year"年
+      </p>
+
+      
+
+   <%# フォローフォロワー   %>
+   <section class="stats">
+    <%= render 'shared/stats' %>
+   </section><%#stats %>
+
+    </section><%#user_info %>
+    <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
+    <%= render 'follow_form' if logged_in? %>
+
+ </div><%#profile-wrapper %>
+
+
+
+<%# ここから下tab %>
+<main class="p-3">
+  <!-- 3個分のタブ -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
+    </li>
+    <li class="nav-item">
+      <a href="#helped" class="nav-link" data-toggle="tab">役に立った記事</a>
+    </li>
+  </ul>
+<!-- 投稿部分 -->
+  <div class="tab-content">
+
+    <div id="post" class="tab-pane active">
+   <%# ここから投稿 %>
+ <div class="card mt-4">
+      <%= image_tag 'the-main.jpg', class: "img-fluid img-thumbnail" %>
+      <h1>@posts.thumbnail</h1>
+      <div class="card-body">
+        <h5 class="card-title">@posts.title</h5>
+        <p class="card-text">
+        <%# 投稿内容 %>
+         <% if @user.posts.any? %>
+    　  <ol class="posts">
+        <%= render @posts %>
+   　   </ol>
+   　   <%= will_paginate @posts %>
+   　　 <% end %>
+      <%# 投稿内容 %>
+        </p>
+      </div>
+    </div>
+   <%# ここまで投稿 %>
+    </div>
+
+    <div id="helped" class="tab-pane">
+    <%# ここから役に立った %>
+    <div class="card mt-4">
+      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title">この人が役に立った記事</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    <%# ここまで役に立った %>
+    </div> <%# id=helped %>
+    
+  </div><%# tab-content %>
+
+</main>
+
+
+
+
+</div><%#中央寄せ %>
+</div><%#row %>
+</div><%#container %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="card mt-4">
+      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+      <h1>@posts.thumbnail</h1>
+      <div class="card-body">
+        <h5 class="card-title">@posts.title</h5>
+        <p class="card-text">
+        <%# 投稿内容 %>
+         <% if @user.posts.any? %>
+    　  <ol class="posts">
+        <%= render @posts %>
+   　   </ol>
+   　   <%= will_paginate @posts %>
+   　　 <% end %>
+      <%# 投稿内容 %>
+        </p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%# #個人の情報を表示するページ。 %>
+<div class="container">
+<div class="row">
+
+
   <aside class="col-md-4">
+
     <section class="user_info">
+    <h1>users/show</h1>
       <h1>
         <%= @user.name %>
       </h1>
@@ -11,7 +192,9 @@
     </section>
     <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
     <%= render 'follow_form' if logged_in? %>
+
   </aside>
+
   <div class="col-md-8">
   
     <% if @user.posts.any? %>
@@ -22,7 +205,7 @@
       <%= will_paginate @posts %>
     <% end %>
   </div>
-</div>
 
 
-
+ </div><%#row %>
+ </div><%#container %>
