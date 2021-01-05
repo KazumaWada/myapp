@@ -17,13 +17,16 @@
 <%# #######################nav-right###################### %>
  <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a href="http://localhost:3000/posts/new" class="nav-link active text-dark" aria-current="page" href="#">Post</a>
+    <a href="http://localhost:3000/posts/new" class="nav-link active text-dark" aria-current="page" href="#">投稿する</a>
   </li>
   <li class="nav-item">
-    <a href="http://localhost:3000/login" class="nav-link text-danger" href="#">Login</a>
+    <a href="http://localhost:3000/login" class="nav-link text-danger" href="#">ログイン</a>
   </li>
   <li class="nav-item">
-    <a href="http://localhost:3000/signup" class="nav-link text-warning" href="#">Signup</a>
+    <a href="http://localhost:3000/signup" class="nav-link text-warning" href="#">ユーザー登録</a>
+  </li>
+  <li class="nav-item">
+  <%= link_to "プロフィール", current_user, class: "nav-link text-warning" %>
   </li>
   <%# <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -46,7 +49,7 @@
 <div class="d-flex align-items-center justify-content-center p-4">
 <div class="btn-group" role="group" aria-label="Basic outlined example">
   <button type="button" class="btn btn-outline-primary">簡単ログイン</button>
-　 <button type="button" class="btn btn-outline-primary">このサイトを作った経緯</button> 
+　 <button type="button" class="btn btn-outline-primary"><%= link_to 'このサイトを作った経緯', about_path %></button> 
    <%# <button type="button" class="btn btn-outline-primary">Right</button>  %>
 </div>
 </div>
