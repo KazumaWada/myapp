@@ -1,37 +1,3 @@
-<%# <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
-
-<ul class="nav nav-pills nav-fill">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Much longer nav link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul> %>
-<!-- Image and text -->
-
-<%# 33333333333333333333333333333333333header3333333333333333333333333333333333333333 %>
-
-
 <div class="card bg-dark text-white header-wrapper bg-transparent">
     <%= image_tag 'the-main.jpg', class: "img-fluid" %>
   <div class="card-img-overlay">
@@ -105,66 +71,103 @@
 
 <%############################左############################# %>
   <div class="col-md-8">
-  <div class="col mt-4">
+ 
   <%############################tab############################# %>
   <%# クリックするたびにtop(上)に戻るから、idで#するなり、bootstrapでspaするなり。 %>
-  <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li>
-</ul>
+  <%# ↓
+  https://getbootstrap.com/docs/5.0/components/navs-tabs/#javascript-behavior %>
+
+ <main class="p-3">
+  <!-- 3個分のタブ -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a href="#new" class="nav-link active" data-toggle="tab">新着</a>
+    </li>
+    <li class="nav-item">
+      <a href="#popular" class="nav-link" data-toggle="tab">人気</a>
+    </li>
+    <li class="nav-item">
+      <a href="#news" class="nav-link" data-toggle="tab">News</a>
+    </li>
+  </ul>
+
+
   <%############################tab############################# %>
   <%######################投稿カード#################### %>
-    <div class="card">
+   
+ <%# <div class="col mt-4"> %>
+
+<!-- 投稿部分 -->
+  <div class="tab-content">
+    <div id="new" class="tab-pane active">
+   <%# ここから1 %>
+   <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">新着投稿</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
-  </div>
 
-  <div class="col mt-4">
-    <div class="card">
+    <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">新着投稿2</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
-  </div>
-
-   <div class="col mt-4">
-    <div class="card">
+   <%# ここまで1 %>
+    </div>
+    <div id="popular" class="tab-pane">
+    <%# ここから2 %>
+    <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">人気投稿</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
-  </div>
 
-   <div class="col mt-4">
-    <div class="card">
+    <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">人気投稿2</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
-  </div>
+    <%# ここまで2 %>
+    </div>
+    <div id="news" class="tab-pane">
+    <%# ここから3 %>
+    <div class="card mt-4">
+      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title">ニュース</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
 
+    <div class="card mt-4">
+      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title">ニュース2</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    <%# ここまで3 %>
+    </div>
+  </div>
+</main>
+
+
+
+ 
+   
+
+  <%# </div>col mt-4 %>
+
+<%######################投稿カード#################### %>
   </div><%# col-md-8 %>
-    <%######################投稿カード#################### %>
     <%############################右############################# %>
      <%######################サイドバー#################### %>
   <div class="col-md-4">
@@ -187,31 +190,6 @@
 <%# これはずっと下画面に存在する。stickしてる。<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark"> %>
 <nav class="navbar navbar-expand-sm navbar-dark bg-transparent">
   <div class="container-fluid">
-    <%# <a class="navbar-brand" href="#">Bottom navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item dropup">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Dropup</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown10">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div> %>
     <p class="text-right">2021 ベルリンなう　all right reserved</p>
   </div>
 </nav>
@@ -232,366 +210,26 @@
 
 
 
-<%# <div class="main-header"> %>
-<%# メニュー %>
-<%# <div class="top-menu-second">
-<a href="http://localhost:3000/">
-<button class="main-botton ui inverted black button">home</button>
-</a>
-</div>
-<div class="top-menu">
-<a href="http://localhost:3000/about">
-<button class="main-button ui inverted black button">About</button>
-</a>
-<a href="http://localhost:3000/posts/new">
-<button class="main-button ui inverted red button">Post</button>
-</a>
-  <a href="http://localhost:3000/signup">
-    <button class="main-button ui inverted yellow button">Signup</button>
-    </a>
-</div> %>
-<%##################### bootstrapMenu################################%>
 
-<%##################### bootstrapMenu ################################%>
 
-<%# 画像 %>
-<%# <div class="ui image"> 
-  <%= image_tag 'banner05.jpeg' %>
-<%# </div>
 
-<h1 class="title">ベルリンなうへようこそ！</h1>  %> 
 
- <%# </div> <%#main-header> %>
 
 
 
 
-<%# <div id='hello'>
-<app></app>
-</div> %>
-<%# ここにこの二つを置かないと、関係ないページにもhomeの全パーツが表示されてしまう。 %>
-<%# <%= stylesheet_pack_tag 'hello_vue' %>
-    <%# <%= javascript_pack_tag 'hello_vue' %>  
 
-<%# 
-<div class="ui container">
 
-<h1>グリッドcentered(中央寄せ)right floated(右寄せ)fluidでwidth:100%</h1>
 
 
 
-<h2 class="ui icon header">
-  <i class="settings icon"></i>
-  <div class="content">
-    Account Settings
-    <div class="sub header">Manage your account settings and set e-mail preferences.</div>
-  </div>
-</h2>
 
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et neque viverra, condimentum nunc quis, convallis ex. Nam ut mauris tempor tortor facilisis congue. Curabitur vel molestie eros. Proin vel mauris turpis. Sed pharetra commodo mi, sit amet aliquam est scelerisque consectetur. Nullam ut elementum dui. Vivamus ut nibh nec odio consectetur euismod. Nulla vel semper nibh. Praesent eu quam consequat, tempor neque id, pellentesque metus. Aliquam semper consectetur nibh, non porttitor nisl dapibus non. Sed porttitor bibendum metus non hendrerit. Sed vitae viverra nisl. Donec sit amet risus mollis, dapibus elit vitae, tempus purus. Vestibulum sed neque at massa posuere vulputate.</p>
 
 
-<div class="ui text container">
-    <p>Lorem IpsumLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et neque viverra, condimentum nunc quis, convallis ex. Nam ut mauris tempor tortor facilisis congue. Curabitur vel molestie eros. Proin vel mauris turpis. Sed pharetra commodo mi, sit amet aliquam est scelerisque consectetur. Nullam ut elementum dui. Vivamus ut nibh nec odio consectetur euismod. Nulla vel semper nibh. Praesent eu quam consequat, tempor neque id, pellentesque metus. Aliquam semper consectetur nibh, non porttitor nisl dapibus non. Sed porttitor bibendum metus non hendrerit. Sed vitae viverra nisl. Donec sit amet risus mollis, dapibus elit vitae, tempus purus. Vestibulum sed neque at massa posuere vulputate.</p>
-</div>
+   
 
 
 
-<h1>グリッド</h1>
-<div class="ui three column grid">
-    <div class="column"><p>Lorem Ipsum(略)</p></div>
-    <div class="column"><p>Lorem Ipsum(略)</p></div>
-    <div class="column"><p>Lorem Ipsum(略)</p></div>
-</div>
 
 
-
-
-
-<h1>幅は16グリッド</h1>
-<div class="ui grid">
-    <div class="twelve wide column"><p>
-    Curabitur et ipsum euismod, placerat nunc ac, eleifend dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur bibendum mauris purus, vitae ornare est gravida vel. Nunc vitae diam et velit venenatis tincidunt. Duis sit amet lacus vel velit porta mollis. Praesent et ligula tempus, condimentum sem sed, auctor turpis. Curabitur quis metus eget quam malesuada pellentesque.
-    </p></div>
-    <div class="four wide column"><p>
-    Curabitur et ipsum euismod, placerat nunc ac, eleifend dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur bibendum mauris purus, vitae ornare est gravida vel. Nunc vitae diam et velit venenatis tincidunt. Duis sit amet lacus vel velit porta mollis. Praesent et ligula tempus, condimentum sem sed, auctor turpis. Curabitur quis metus eget quam malesuada pellentesque.</p></div>
-</div>
-</div>
-
-
-
-
-<div class="ui segment">
-<p>とりあえず囲っとく。</p>
-</div>
-
-
-
-<div class="ui message">
-<p>flashとかに使えそう</p>
-</div>
-
-<div class="ui error message">
-<p>flashとかに使えそう</p>
-</div>
-
-<i class="user icon"></i>
-
-<i class="user outline icon"></i>
-
-<p>とりあえず線</p>
-<div class="ui divider"></div>
-
-<div class="ui horizontal divider">
-    割り込む
-</div>
-
-
-<h2 class="ui header">
-    タイトル
-    <div class="sub header">
-        description
-    </div>
-</h2>
-
-
-<h1>form。これ使えるわ。</h1>
-<form class="ui form">
-  <div class="field">
-    <label>Name</label>
-    <div class="two fields">
-      <div class="field">
-        <input type="text" name="first-name" placeholder="First Name">
-      </div>
-      <div class="field">
-        <input type="text" name="last-name" placeholder="Last Name">
-      </div>
-    </div>
-  </div>
- </form>
-
-
-
-<a class="ui fluid card" href="#">
-    <div class="content">
-        <h4 class="ui header">
-            <i class="inverted red announcement icon"></i>
-            <div class="content">
-                <div class="header">おしらせ</div>
-                <div class="sub header">運営からの重要なおしらせ</div>
-            </div>
-        </h4>
-    </div>
-</a> %>
-<%# </div> %>
-<%# container %>
-
-
-<%# https://semantic-ui.com/collections/menu.html#vertical %>
-<%# <div class="ui text menu">
-  <div class="header item">Sort By</div>
-  <a class="item active">
-    Closest
-  </a>
-  <a class="item">
-    Most Comments
-  </a>
-  <a class="item">
-    Most Popular
-  </a>
-</div> %>
-<%# こっから行きます。テンプレ %>
-<%# https://semantic-ui.com/collections/menu.html %>
-
-
-
-
-<%# 
-<div class="ui menu">
-  <div class="item">
-    <div class="ui primary button">Sign up</div>
-  </div>
-  <div class="item">
-    <div class="ui button">Log-in</div>
-  </div>
-</div> %>
-
-
-<%# <div class="ui menu">
-  <a class="item">Browse</a>
-  <a class="item">Submit</a>
-  <div class="right menu">
-    <a class="item">Sign Up</a>
-    <a class="item">Help</a>
-  </div>
-</div> %>
-
-<%# 上にstickさせたい。画像の上にnavを %>
-<%# <div class="ui fluid image"> 
-  <%= image_tag 'banner03.jpeg' %>
- 
-
-<%# <h1>イメージリンクっていうのもある</h1>
-<a href="https://google.com" class="ui large image">
- 
-</a> %>
-
-<%# <h1>バナー</h1>
-<div class="ui grid">
-<div class="sixteenk wide column">
-<div class="fluid">
-<div class="ui billboard test ad" data-text="Billboard">
- <img src="/assets/card.jpg">
-</div>
-</div>
-</div>
-</div> %>
-
-
-
-
-<%# <div class="ui grid">
-    <div class="twelve wide column"> %>
-
-
-<%# 　 <div class="centered">
-  <div class="ui text menu">
-  <div class="header item">Sort By</div>
-  <a class="item active">
-    Closest
-  </a>
-  <a class="item">
-    Most Comments
-  </a>
-  <a class="item">
-    Most Popular
-  </a>
-  </div>
-  </div>  
-  %>
-  <%# <div class="ui grid">
-  <div class="eight wide column"></div>
-  </div> 
-
- <div class="centered"> 
-  <div class="ui card fluid">
-  <div class="content">
-    <div class="right floated meta">14h</div>
-    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
-  </div>
-  <div class="image">
-    <img src="/assets/card.jpg">
-  </div>
-  <div class="content">
-    <span class="right floated">
-      <i class="heart outline like icon"></i>
-      17 likes
-    </span>
-    <i class="comment icon"></i>
-    3 comments
-  </div>
-  <div class="extra content">
-    <div class="ui large transparent left icon input">
-      <i class="heart outline icon"></i>
-      <input type="text" placeholder="Add Comment...">
-    </div>
-  </div>
-</div>
-</div>  %>
-
- <%# <div class="centered"> 
-  <div class="ui card fluid">
-  <div class="content">
-    <div class="right floated meta">14h</div>
-    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
-  </div>
-  <div class="image">
-    <img src="/assets/card.jpg">
-  </div>
-  <div class="content">
-    <span class="right floated">
-      <i class="heart outline like icon"></i>
-      17 likes
-    </span>
-    <i class="comment icon"></i>
-    3 comments
-  </div>
-  <div class="extra content">
-    <div class="ui large transparent left icon input">
-      <i class="heart outline icon"></i>
-      <input type="text" placeholder="Add Comment...">
-    </div>
-  </div>
-</div>
-</div> 
-
- <div class="centered"> 
-  <div class="ui card fluid">
-  <div class="content">
-    <div class="right floated meta">14h</div>
-    <img class="ui avatar image" src="/assets/card.jpg"> Elliot
-  </div>
-  <div class="image">
-    <img src="/assets/card.jpg">
-  </div>
-  <div class="content">
-    <span class="right floated">
-      <i class="heart outline like icon"></i>
-      17 likes
-    </span>
-    <i class="comment icon"></i>
-    3 comments
-  </div>
-  <div class="extra content">
-    <div class="ui large transparent left icon input">
-      <i class="heart outline icon"></i>
-      <input type="text" placeholder="Add Comment...">
-    </div>
-  </div>
-</div>
-</div>  %>
-
-
-
-
-
-
-
-<%# <h1>イメージリンクっていうのもある</h1>
-<a href="https://google.com" class="ui medium image">
-  <%= image_tag 'card.jpg' %>
-
-
-
-
-<%##################### form ################################%>
-<%# 
-<form class="ui large form container">
-        <div class="ui stacked segment">
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input type="text" name="email" placeholder="E-mail address">
-                </div>
-            </div>
-            <div class="field">
-                <div class="ui left icon input">
-                    <i class="lock icon"></i>
-                    <input type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-            <div class="ui fluid large teal submit button">Login</div>
-        </div>
-        <div class="ui error message"></div>
-    </form>
-    <div class="striped"></div> %>
-<%##################### form ################################%>
-
-
-
-
-
-<%# <div class="ui segment footer">
-<p>2021 ベルリンなう　all right reserved</p>
-</div> %>
