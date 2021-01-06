@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create!(name:  "main-user",
     email: "main@gmail.com",
+    year: "1年",
+    bio: "hello!",
     password:              "password",
     password_confirmation: "password",
     admin: true,
@@ -20,6 +22,8 @@ email = "fake-#{n+1}@gggggggsdgmail.com"
 password = "password"
 User.create!(name:  name,
       email: email,
+      year: "1年",
+      bio: "hello!",
       password:              password,
       password_confirmation: password,
       activated: true,
@@ -28,8 +32,8 @@ User.create!(name:  name,
 
 #6人のサンプル投稿
 users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(word_count: 100)
+10.times do
+  content = Faker::Lorem.sentence(word_count: 200)
   users.each { |user| user.posts.create!(content: content) }
 end
 end

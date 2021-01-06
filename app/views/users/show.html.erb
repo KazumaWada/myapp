@@ -3,9 +3,11 @@
 
  　　　<h1>
 投稿のタイトルを作る
+<%= @user.email %><%= @user.password %><%# passwordはちゃんと出ない。 %>
+
       </h1>
 <%# <img src="/assets/images/a.jpg" class="img-thumbnail rounded-circle" loading="lazy"> %>
- <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
+ <%# <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %> 
 
 <div class="container">
 <div class="row">
@@ -38,8 +40,12 @@
       </h1>
 
      <%#在住歴 %>
+       <h5>
+        ベルリン歴<%= @user.year %>
+      </h5>
+      <%#在住歴 %>
        <p>
-        ベルリン在住歴"@user.spent_year"年
+        <%= @user.bio %>
       </p>
 
       

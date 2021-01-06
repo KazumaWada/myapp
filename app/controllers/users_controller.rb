@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     # end
   end
 
+  #signup
   def new
     @user = User.new
   end
@@ -32,12 +33,15 @@ class UsersController < ApplicationController
   # RESTful URI に応答する。/usersへのPOSTリクエストはcreateアクションに送られます。
  
 
-
+ #作成したら、プロフィールがすぐに見えるようにしたい。
+ #rootでユーザー登録をユーザーアイコンに変えるとか、users/:idに移動させるとか。
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.send_activation_email#user.rb
-      flash[:info] = "Please check your email to activate your account."
+      #mailerいらないかな。
+      #@user.send_activation_email#user.rb
+      #flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "ベルリンなうへようこそ！さっそく右上の「投稿する」から記事を書いてみよう！."
       redirect_to root_url
     else
       render 'new'
@@ -54,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   #ユーザーを更新は、updateを使って送信されたparamsハッシュに基いて行う。createと似ている。
+  #updateは、createと違い、すでに情報を持っているから、それを探す処理。
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -91,7 +96,7 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:name, :email, :year, :bio, :password,
                                  :password_confirmation)
   end
 
