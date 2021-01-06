@@ -11,7 +11,7 @@
   </span>
 <% end %>
 
-
+<%# これをCarrierWaveに変えるかも %>
 <script type="text/javascript">
   $("#post_image").bind("change", function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
@@ -21,3 +21,43 @@
     }
   });
 </script>
+
+
+
+
+
+<div class="container">
+<div class="row">
+  <aside class="col-md-10">
+
+<%# タイトル %>
+<div class="mb-3">
+<input class="form-control form-control-lg" type="text" placeholder="タイトル" aria-label=".form-control-lg example">
+</div> 
+
+<%# タグ erbのformでselectがあった気がする。%>
+<label for="exampleDataList" class="form-label">投稿内容に関連するタグ</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  <option value="San Francisco">
+  <option value="New York">
+  <option value="Seattle">
+  <option value="Los Angeles">
+  <option value="Chicago">
+</datalist>
+
+<%# 投稿 %>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">あなたのベルリンでの経験をシェアしよう。</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="30"></textarea>
+</div>
+
+<%# サムネ %>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">サムネイル/ヘッダー画像</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+
+</div>
+</div>
+</div>
