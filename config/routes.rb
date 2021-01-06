@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # 新規ポストlocalhost:3000/posts/new
 
 
-  #memberで、users/1/followingが実現できる。
+  #memberで、users/1/followingが実現できる。https://pikawaka.com/rails/resources#ネストの定義の仕方
   resources :users do
     member do 
       get :following, :followers

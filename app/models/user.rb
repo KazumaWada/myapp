@@ -15,10 +15,13 @@ class User < ApplicationRecord
     before_save   :downcase_email
     before_create :create_activation_digest
     validates :name,  presence: true, length: { maximum: 100 }
+    
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 200 },
               format: { with: VALID_EMAIL_REGEX },
               uniqueness: true
+    validates :year,  presence: true, length: { maximum: 4 }#5年以上で4文字列分だから。
+    validates :bio,  presence: true, length: { maximum: 300 }
      #User作成で、passwordとpassword_confirmation,authenticateが使える。DBテーブルにはないが。
      has_secure_password
      #password min 6, パスワードが空でも、updateできるようにする。

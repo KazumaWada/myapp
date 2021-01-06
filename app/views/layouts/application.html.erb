@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%# ここをコメントアウトすると、スタイルが崩れる。cssは時間かかるけど、bootstrap.scssでcompileする。 %>
-    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  %>   
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'bootstrap' %>
   </head>
@@ -15,11 +12,13 @@
   <%# <div class="container"> %>
   <%# <%= render 'layouts/header' %>  
   <%# デバック %>
-   <%# 　<%= debug(params) if Rails.env.development? %> 
+   　<%= debug(params) if Rails.env.development? %>
     <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
     <%= yield %>
     <%# </div> %>
   </body>
-</html>
+</html><%# ここをコメントアウトすると、スタイルが崩れる。cssは時間かかるけど、bootstrap.scssでcompileする。 %>
+    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  %> 
