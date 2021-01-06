@@ -61,3 +61,25 @@
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+<%= form_with(model: @post, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+   <%= f.label :content %>
+  <%= f.rich_text_area :content %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%# #画像ファイル挿入 %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+    <%# <%= f.file_field :image %> 
+  </span>
+<% end %>

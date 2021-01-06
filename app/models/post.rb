@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  #rails6リッチテキスト
+  has_rich_text :content
   #rails active_storage:installによって可能に。
   has_many_attached :image
   validates :user_id, presence: true
