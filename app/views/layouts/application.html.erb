@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'bootstrap' %>
+  
   </head>
   <body>
   <%# <div class="container"> %>
@@ -19,6 +20,8 @@
     <%= yield %>
     <%# </div> %>
   </body>
-</html><%# ここをコメントアウトすると、スタイルが崩れる。cssは時間かかるけど、bootstrap.scssでcompileする。 %>
-    <%# <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  %> 
+</html>
+<%# ここをコメントアウトすると、スタイルが崩れる。cssは時間かかるけど、bootstrap.scssでcompileする。 %>
+    <%# 
+    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'  %>    
+    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
