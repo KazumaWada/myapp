@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  #画像アップロードCarrierWave(imageはカラム。)
+  mount_uploader :image, ImageUploader
   #rails6リッチテキスト
   has_rich_text :content
   #rails active_storage:installによって可能に。

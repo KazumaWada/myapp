@@ -109,9 +109,17 @@ mailerの大まかな流れは、
 </datalist> %>
 
 
+imageのoutput
 
-
-
+####################
+<% if @user.image? %>
+  <%= image_tag @user.image.url %>
+<% else %>
+  <%= image_tag "noimage.gif %>
+# <% end %>
+サムネイルを表示する時は、.image.thumb.urlとする
+.imageはカラム名
+#################
 
 
 

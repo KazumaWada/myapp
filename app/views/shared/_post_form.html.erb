@@ -18,9 +18,17 @@
     <%= f.text_area :content, placeholder: "あなたのベルリンでの経験をシェアしよう。", class: "form-control mt-4", id: "exampleFormControlTextarea1" %>
   </div>
 
+  <%= f.label :image, class: "mt-4" %>
+  <%= f.file_field :image, class: "form-control" %>
+
   <%= f.submit "あなたの経験を読者に届ける", class: "btn btn-primary mt-4" %>
 
 <% end %>
+
+
+<%###################outputはapp/view/posts/_post.html.erb ############################%>
+
+
 
 <%# <script type="text/javascript">
   $("#mpost_image").bind("change", function() {
