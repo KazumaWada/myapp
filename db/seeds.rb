@@ -31,11 +31,21 @@ User.create!(name:  name,
 
 
 #6人のサンプル投稿
-users = User.order(:created_at).take(6)
-10.times do
-  content = Faker::Lorem.sentence(word_count: 200)
+# users = User.order(:created_at).take(6)
+# 10.times do
+#   content = Faker::Lorem.sentence(word_count: 2)
+#   users.each { |user| user.posts.create!(content: content) }
+# end
+# end
+
+
+users = User.order(:created_at).take(1)
+1.times do
+  content = Faker::Lorem.sentence(word_count: 2)
   users.each { |user| user.posts.create!(content: content) }
 end
+# title = "これはタイトルです"
+# tag = "食べ物"
 end
 
 

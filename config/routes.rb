@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   #micropostではないので、後からblogPostを編集できるeditが必要。
-  resources :posts,          only: [:new, :create, :destroy]
+  # resources :posts,          only: [:new, :create, :destroy]
+  resources :posts
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 

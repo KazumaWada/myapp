@@ -81,14 +81,14 @@
    <%# ここから投稿 %>
  <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid img-thumbnail" %>
-      <h1>@posts.thumbnail</h1>
+      <h1>@</h1>
       <div class="card-body">
-        <h5 class="card-title">@posts.title</h5>
+        <h5 class="card-title">title</h5>
         <p class="card-text">
         <%# 投稿内容 %>
          <% if @user.posts.any? %>
     　  <ol class="posts">
-        <%= render @posts %>
+        <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
    　   </ol>
    　   <%= will_paginate @posts %>
    　　 <% end %>

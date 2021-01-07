@@ -19,8 +19,11 @@ class UsersController < ApplicationController
    #これは別にログインしてなくてもよくね？
     # if logged_in?
       # @post  = current_user.posts.build
-      @contents_feed = current_user.feed.paginate(page: params[:page])
+      # @contents_feed = current_user.feed.paginate(page: params[:page])
     # end
+
+# 　　これなんじゃないかと思ってきたこれは個人のpost。
+    # @post = current_user.posts.find_by(id: params[:id])
   end
 
   #signup

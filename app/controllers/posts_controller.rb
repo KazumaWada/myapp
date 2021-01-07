@@ -7,8 +7,18 @@ class PostsController < ApplicationController
     #/postで投稿画面が必要だから、/showか/indexが必要。/newかも。新規作成するページ。
     #ユーザーの場合。 
 
+    def show
+      
+    end
+
+
+
+
+
     def new
         @post=current_user.posts.build if logged_in?
+        # これじゃダメなの??
+        # @post = Post.new
     end
 
 
@@ -44,7 +54,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-      params.require(:post).permit(:content, :image)
+      params.require(:post).permit(:content, :image, :title, :tag)
     end
 
 
