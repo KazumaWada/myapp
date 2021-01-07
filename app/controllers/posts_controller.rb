@@ -26,7 +26,8 @@ class PostsController < ApplicationController
                 #session_helper
         @post = current_user.posts.build(post_params)
         #attachは、画像のactive_strageAPIのメソッドs
-        @post.image.attach(params[:post][:image])
+        # @post.image.attach(params[:post][:image])carryWave使うからコメントアウトした。
+        
         if @post.save
           flash[:success] = "post created!(あなたの投稿が新たにhome画面に作られました！)"#ここに、「投稿を見に行く」とかがあったらいいかも。
           #ここをuser/:idに。
