@@ -27,8 +27,10 @@
   <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+  　　<%# Avatar %>
+  　　<%= f.label :avatar, class: "mt-4" %>
+  　　<%= f.file_field :avatar, class: "form-control" %>
 
-       
 　　　　<%#名前 %>
       <%= f.label :name, class: 'mt-4' %>
       <%= f.text_field :name, class: 'form-control' %>

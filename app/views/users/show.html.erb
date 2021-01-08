@@ -1,11 +1,3 @@
-
-
-
- 　　　<h1>
-投稿のタイトルを作る
-<%= @user.email %><%= @user.password %><%# passwordはちゃんと出ない。 %>
-
-      </h1>
 <%# <img src="/assets/images/a.jpg" class="img-thumbnail rounded-circle" loading="lazy"> %>
  <%# <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %> 
 
@@ -24,33 +16,38 @@
      <%#user-name %> <%#プロフィール編集 %>
     
       <h1>
-      <%# アバター %>
-        <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
-        <%# 名前 %>
+      <%###################アバター########################### %>
+     <% if @user.avatar? %>
+     <%= image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
+     <% end %>
+        <%#image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
+      <%###################名前########################### %>
         <%= @user.name %>
-         <%# プロフィール編集 %>
+      <%###################プロフィール編集########################### %>
         <button type="button" class="btn btn-warning">
         <a href="http://localhost:3000/users/1/edit" class="text-light">プロフィール編集</a>
         </button>
-      <%# 投稿ページへ %>
+      <%###################投稿ページへ########################### %>
       <button type="button" class="btn btn-dark">
        <%= link_to "投稿する", new_post_path, class: 'text-light' %>
       </button>
 
       </h1>
 
-     <%#在住歴 %>
+      <%###################在住歴########################### %><%# %>
        <h5>
         ベルリン歴<%= @user.year %>
       </h5>
-      <%#在住歴 %>
+      <%###################ひとこと########################### %> 
        <p>
         <%= @user.bio %>
       </p>
 
       
 
-   <%# フォローフォロワー   %>
+  <%###################フォローフォロワー########################### %>
    <section class="stats">
     <%= render 'shared/stats' %>
    </section><%#stats %>

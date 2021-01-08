@@ -6,6 +6,7 @@
   <%= post.tag %>
   <%= post.content %>
 <% if post.image? %>
+   <%# こんな感じで、投稿画像のサイズを制限してみる。#image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px"  %>
   <%= image_tag post.image.url %>
 <% else %>
   <%= image_tag "the-main.jpg" %>

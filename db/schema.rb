@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_07_100509) do
+ActiveRecord::Schema.define(version: 2021_01_08_021519) do
 
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_100509) do
     t.datetime "activated_at"
     t.string "year"
     t.text "bio"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
