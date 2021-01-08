@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+#ログイン認証用のgem
+gem 'devise'
 #画像アップロード
 gem 'carrierwave'
 #画像アップロードのサイズ調節

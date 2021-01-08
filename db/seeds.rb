@@ -15,6 +15,18 @@ User.create!(name:  "main-user",
     activated: true,
     activated_at: Time.zone.now)
 
+#簡単ログインのユーザー
+User.create!(name: "smooth_login_user",
+  email: "smooth_login@example.com",
+  year: "3年",
+  bio: "hello!私はゲストユーザーです。",
+  password:              "password",
+  password_confirmation: "password",
+  admin: false,
+  activated: true,
+  activated_at: Time.zone.now)
+
+
 # 追加のユーザーをまとめて生成する
 99.times do |n|
 name  = Faker::Name.name

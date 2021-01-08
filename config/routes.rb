@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # devise_for :users
   get 'sessions/new'
   root 'pages#home'
   get 'pages/home'
@@ -14,9 +15,9 @@ Rails.application.routes.draw do
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 
-  # 新規ポストlocalhost:3000/posts/new
-
-
+# ゲストログイン
+#resources :smooth_login_session, only: :create
+resources :testsessions, only: :create
   #memberで、users/1/followingが実現できる。https://pikawaka.com/rails/resources#ネストの定義の仕方
   resources :users do
     member do 
