@@ -61,9 +61,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-
-　#progressbarの設定。テスト実行時の詳細が確認できる。
-　config.fuubar_progress_bar_options = {format: 'Hogehoge: [%b%i] %a'}
   #factory botの設定のため。
   config.include FactoryBot::Syntax::Methods
 end
