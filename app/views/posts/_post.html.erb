@@ -1,21 +1,59 @@
+
+
+
+<%# koko %>
+<div class="card" style="width: 50rem;">
+
+  <%= link_to post_path(post), class: 'text-body' do %> 
+
+  <% if post.image? %>
+  <%= image_tag post.image.url, class: 'card-img-top' %>
+  <% else %>
+  <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+  <% end %>
+
+  <% end %><%# link_to %>
+
+  <div class="card-body">
+    <p class="card-text"><%= post.title %></p>
+  </div>
+
+  <div class="card-body">
+    <p class="card-text"><%= post.tag %></p>
+  </div>
+
+</div>
+<%# ここまで %>
+
+
+
+
+
+
+
+<%# 一つの投稿のブロックコード %>
+
+
 <%# これはCSSのid %>
 <li id="post-<%= post.id %>">
   <span class="user"><%= link_to post.user.name, post.user %></span>
   <span class="content">
+  記事数(<%= @user.posts.count %>)
+
+<%# Body（<body> の文字色と同じ配色）：.text-body %>
+<%= link_to post_path(post), class: 'text-body' do %> 
+<div class="content">
   <%= post.title %>
   <%= post.tag %>
   <%= post.content %>
-<% if post.image? %>
-   <%# こんな感じで、投稿画像のサイズを制限してみる。#image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px"  %>
+   <%# cardのデザイン挿入したら、勝手になってるかも。or↓↓↓↓image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px" %> %>
+  <% if post.image? %>
   <%= image_tag post.image.url %>
-<% else %>
+  <% else %>
   <%= image_tag "the-main.jpg" %>
-<% end %>
-
-
-
-
-
+  <% end %>
+ </div><%# content %>
+ <% end %><%# link_to %>
 
 
   <%# active_storageのAPI=attached %>
