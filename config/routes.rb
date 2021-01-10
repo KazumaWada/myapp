@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
   get 'sessions/new'
   root 'pages#home'
-  get 'pages/home'
+  # resources :pages, only: [:index]
   get  '/about',  to: 'pages#about'
   get  '/signup',  to: 'users#new' #signup=新規
   get    '/login',   to: 'sessions#new'#ログインのフォーム

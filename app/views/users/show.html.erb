@@ -4,8 +4,6 @@
 
 <div class="container">
 <div class="row">
-
-<%# <div class="col-md-9 col-md-offset-5"> %>
 <%# 中央寄せ %>
 <div class="mx-auto" style="width: 900px;">
 
@@ -23,6 +21,8 @@
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
      <% end %>
+     <%# <% end %> <%#もう一個これ必要じゃ無い？？ %>
+    
         <%#image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
       <%###################名前########################### %>
         <%= @user.name %>
