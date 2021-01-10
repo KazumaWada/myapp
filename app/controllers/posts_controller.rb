@@ -7,8 +7,16 @@ class PostsController < ApplicationController
     #/postで投稿画面が必要だから、/showか/indexが必要。/newかも。新規作成するページ。
     #ユーザーの場合。 
 
+
+    # これは、page#homeアクションに書くのかな？
+    # def index
+    #   ＠posts = Post.all
+    # end
+
+
+   #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
     def show
-      
+      @post = Post.find(params[:id])
     end
 
 

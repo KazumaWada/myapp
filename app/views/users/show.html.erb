@@ -1,5 +1,6 @@
-<%# <img src="/assets/images/a.jpg" class="img-thumbnail rounded-circle" loading="lazy"> %>
- <%# <%= image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %> 
+<%# ここは、users#show定義されているのは、
+@user=User.find(params[:id])と
+@posts = @user.posts.paginate(page: params[:page])。 %>
 
 <div class="container">
 <div class="row">
@@ -76,29 +77,27 @@
 
     <div id="post" class="tab-pane active">
    <%# ここから投稿 %>
- <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid img-thumbnail" %>
-      <h1>@</h1>
-      <div class="card-body">
-        <h5 class="card-title">title</h5>
-        <p class="card-text">
-        <%# 投稿内容 %>
+
+        <%# ↓　投稿内容リファクタリングここをコメントアウトすれば、元に戻る %>
+
+
          <% if @user.posts.any? %>
     　  <ol class="posts">
-        <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
-   　   </ol>
-   　   <%= will_paginate @posts %>
+         <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
+       </ol> 
+   　 <%= will_paginate @posts %>
    　　 <% end %>
-      <%# 投稿内容 %>
-        </p>
-      </div>
-    </div>
+
+
+
+      <%# ↑　投稿内容リファクタリングここをコメントアウトすれば、元に戻る %>
+
    <%# ここまで投稿 %>
-    </div>
+     </div><%##post %>
 
     <div id="helped" class="tab-pane">
     <%# ここから役に立った %>
-    <div class="card mt-4">
+<div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
       <div class="card-body">
         <h5 class="card-title">この人が役に立った記事</h5>
@@ -133,23 +132,6 @@
 
 
 
- <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
-      <h1>@posts.thumbnail</h1>
-      <div class="card-body">
-        <h5 class="card-title">@posts.title</h5>
-        <p class="card-text">
-        <%# 投稿内容 %>
-         <% if @user.posts.any? %>
-    　  <ol class="posts">
-        <%= render @posts %>
-   　   </ol>
-   　   <%= will_paginate @posts %>
-   　　 <% end %>
-      <%# 投稿内容 %>
-        </p>
-      </div>
-    </div>
 
 
 
@@ -176,39 +158,3 @@
 
 
 
-
-<%# #個人の情報を表示するページ。 %>
-<div class="container">
-<div class="row">
-
-
-  <aside class="col-md-4">
-
-    <section class="user_info">
-    <h1>users/show</h1>
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-    </section>
-    <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
-    <%= render 'follow_form' if logged_in? %>
-
-  </aside>
-
-  <div class="col-md-8">
-  
-    <% if @user.posts.any? %>
-      <h3>posts (<%= @user.posts.count %>)</h3>
-      <ol class="posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
-  </div>
-
-
- </div><%#row %>
- </div><%#container %>
