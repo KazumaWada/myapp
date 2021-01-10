@@ -1,4 +1,3 @@
-<% provide(:title, "Home") %>
 <div class="card bg-dark text-white header-wrapper bg-transparent">
     <%= image_tag 'the-main.jpg', class: "img-fluid" %>
   <div class="card-img-overlay">
@@ -110,21 +109,23 @@
   <div class="tab-content">
     <div id="new" class="tab-pane active">
    <%# ここから1 %>
+   <% @posts.each do |p| %>
    <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+      <%= image_tag p.image.url, class: 'img-fluid' %>
       <div class="card-body">
-        <h5 class="card-title">新着投稿</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title"><%= p.title %></h5>
+        <p class="card-text"><%= p.tag %></p>
       </div>
     </div>
+    <% end %> 
 
-    <div class="card mt-4">
+    <%# <div class="card mt-4">
       <%= image_tag 'the-main.jpg', class: "img-fluid" %>
-      <div class="card-body">
+      <%# <div class="card-body">
         <h5 class="card-title">新着投稿2</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
-    </div>
+    </div> %> 
    <%# ここまで1 %>
     </div>
     <div id="popular" class="tab-pane">
@@ -182,7 +183,7 @@
   <div class="col-md-4">
  
   <ul class="list-group">
-  <li class="list-group-item text-center"> <%= @post %><%= @contents_feed %>hahaha</li>
+  <li class="list-group-item text-center"></li>
   <li class="list-group-item">タグ一覧</li>
   <li class="list-group-item">よく読まれている記事</li>
   <li class="list-group-item">アーカイブ</li>

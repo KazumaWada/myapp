@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     # これは、page#homeアクションに書くのかな？
     # def index
-    #   ＠posts = Post.all
+    #    ＠posts = Post.all.order(created_at: :desc)
     # end
 
 

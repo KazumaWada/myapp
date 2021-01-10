@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
+
    def home
+    @posts = Post.all.order(created_at: :desc)
+
      #home画面に投稿を表示するため。
       if logged_in?
      @post = current_user.posts.build
@@ -10,5 +13,6 @@ class PagesController < ApplicationController
 
 def about
 end
+
 end
 

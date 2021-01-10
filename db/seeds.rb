@@ -16,7 +16,7 @@ User.create!(name:  "main-user",
     activated_at: Time.zone.now)
 
 #簡単ログインのユーザー
-User.create!(name: "smooth_login_user",
+User.create!(name: "簡単ログインしたユーザー",
   email: "smooth_login@example.com",
   year: "3年",
   bio: "hello!私はゲストユーザーです。",
@@ -34,8 +34,8 @@ email = "fake-#{n+1}@gggggggsdgmail.com"
 password = "password"
 User.create!(name:  name,
       email: email,
-      year: "1年",
-      bio: "hello!",
+      year: "5年",
+      bio: "hello!hello!hello!hello!",
       password:              password,
       password_confirmation: password,
       activated: true,
@@ -51,14 +51,14 @@ User.create!(name:  name,
 # end
 
 
-users = User.order(:created_at).take(1)
-1.times do
-  content = Faker::Lorem.sentence(word_count: 2)
-  users.each { |user| user.posts.create!(content: content) }
-end
-# title = "これはタイトルです"
-# tag = "食べ物"
-end
+#######content, tag, imageなどのvalidationがあるから、contentだけでは作れずにエラーになってるのかも。########
+
+# users = User.order(:created_at).take(1)
+# 1.times do
+#   content = Faker::Lorem.sentence(word_count: 2)
+#   users.each { |user| user.posts.create!(content: content) }
+# end
+# end
 
 
 #適当にrelationshipを作る。
@@ -69,3 +69,5 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
+
+end
