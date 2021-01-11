@@ -1,7 +1,7 @@
 #controllerはリクエストが来たら、特定の指示を返す。この特定の指示が書かれている。
 class PostsController < ApplicationController
-    before_action :logged_in_user, only: [:new, :create, :destroy]
-    before_action :correct_user,   only: :destroy
+    before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
+    before_action :correct_user,   only: [:destroy, :edit, :update]
 
 
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
