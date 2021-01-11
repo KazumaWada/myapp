@@ -1,7 +1,6 @@
 <h1>ここは、記事の詳細ページです。</h1>
 
-
-<%= @post.image %>
+<%= image_tag @post.image.url, class: 'img-fluid' %>
 <br>
 <%= @post.title %>
 <br>

@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'#ログアウト
   resources :users
   resources :account_activations, only: [:edit]
-  #コントローラが無いと、エラーになるから、一つづつ足していく。
-  resources :posts,          only: [:new, :create, :destroy, :show]
+  #indexを残すのみ。
+  resources :posts,          only: [:new, :create, :destroy, :show, :edit, :update]
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 
