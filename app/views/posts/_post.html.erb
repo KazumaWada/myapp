@@ -1,7 +1,3 @@
-
-
-
-<%# koko %>
 <div class="card" style="width: 50rem;">
 
   <%= link_to post_path(post), class: 'text-body' do %> 
@@ -22,50 +18,28 @@
     <p class="card-text"><%= post.tag %></p>
   </div>
 
-</div>
-<%# ここまで %>
+  <div class="card-body">
+    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>
+  </div>
 
-
-
-
-
-
-
-<%# 一つの投稿のブロックコード %>
-
-
-<%# これはCSSのid %>
-<li id="post-<%= post.id %>">
-  <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content">
-  記事数(<%= @user.posts.count %>)
-
-<%# Body（<body> の文字色と同じ配色）：.text-body %>
-<%= link_to post_path(post), class: 'text-body' do %> 
-<div class="content">
-  <%= post.title %>
-  <%= post.tag %>
-  <%= post.content %>
-   <%# cardのデザイン挿入したら、勝手になってるかも。or↓↓↓↓image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px" %> %>
-  <% if post.image? %>
-  <%= image_tag post.image.url %>
-  <% else %>
-  <%= image_tag "the-main.jpg" %>
-  <% end %>
- </div><%# content %>
- <% end %><%# link_to %>
-
-
-  <%# active_storageのAPI=attached %>
-  <%# 一つの投稿に画像が複数存在する場合、どのimageを表示すればいいかrailsは迷うから、[0]を記入してあげる。 %>
-   <%# <%= image_tag post.display_image[0] if post.image.attached? %> 
-   <%# <%= image_tag post.image[0] if post.image.attached? %> 
-  <%# </span> %> 
-  <span class="timestamp">
+　<div class="card-body">
+    <p class="card-text">
+    <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
     <% if current_user?(post.user) %>
-    <%= link_to "delete", post, method: :delete,
+    <%= link_to "削除する", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
     <% end %>
-  </span>
-</li>
+  　</span>
+　　　 </p>
+  </div>
+  
+　</div>
+
+
+
+
+
+
+
+

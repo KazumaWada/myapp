@@ -4,31 +4,16 @@ class PostsController < ApplicationController
     before_action :correct_user,   only: :destroy
 
 
-    #/postで投稿画面が必要だから、/showか/indexが必要。/newかも。新規作成するページ。
-    #ユーザーの場合。 
-
-
-    # これは、page#homeアクションに書くのかな？
-    # def index
-    #    ＠posts = Post.all.order(created_at: :desc)
-    # end
-
-
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
     def show
       @post = Post.find(params[:id])
     end
-
-
-
-
 
     def new
         @post=current_user.posts.build if logged_in?
         # これじゃダメなの??
         # @post = Post.new
     end
-
 
     def create
                 #session_helper
@@ -46,6 +31,52 @@ class PostsController < ApplicationController
           render 'posts/new'
         end
       end
+
+
+
+
+  # ユーザーを見つけるだけ。
+  # def edit
+  #   @user = User.find(params[:id])
+  # end
+
+  # ユーザーを更新は、updateを使って送信されたparamsハッシュに基いて行う。createと似ている。
+  # updateは、createと違い、すでに情報を持っているから、それを探す処理。
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.update(user_params)
+      
+  #     flash[:success]="Updateしました。"
+  #     redirect_to @user
+  #   else
+  #     render 'edit'
+  #   end
+  # end
+
+  
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+     if @post.update(post_params)
+      flash[:success]="記事を更新しました。"
+      redirect_to @post
+     else
+      render 'edit'
+     end
+  end
+
+
+
+
+
+
+
+
+
+
   
     def destroy
       @post.destroy
