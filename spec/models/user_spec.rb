@@ -2,8 +2,8 @@ require 'rails_helper'
 #本当に正しいテストを書いているのか確認するために、toをto_notに変えてみるというやり方がある。
 RSpec.describe User, type: :model do
 
-  it "passwordの長さvalidates :password, presence: true, length: { minimum: 6 }, allow_nil: true"
-  it "yearの長さvalidates :year,  presence: true, length: { maximum: 4 }#5年以上で4文字列分だから。"
+  it "passwordの長さ{ minimum: 6 }, allow_nil: true"
+  it "yearの長さvalidates{ maximum: 4 }#5年以上で4文字列分だから。"
   it "bioの長さlength: { maximum: 300 }"
 
   it "is valid with a name, email, password, year and bio" do

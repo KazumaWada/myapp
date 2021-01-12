@@ -54,13 +54,24 @@ gem 'bootsnap', '>= 1.4.4', require: false
 #rspecのprogressbarを表示してくれる。実行のコマンド% bin/rspec spec/ --format Fuubar
 gem 'fuubar'
 
+group :test do
+ #rspecには、以下の3つのgemが必要。
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  #rspecのfeatureで必要。
+  gem 'capybara', '~> 2.13'
+  #Capybaraでテスト中に、現在どのページを開いているのか確認するため
+  gem 'launchy'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   #rspecには、以下の3つのgemが必要。
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'rails-controller-testing'
+  # gem 'rspec-rails'
+  # gem 'factory_bot_rails'
+  # gem 'rails-controller-testing'
   #統合テスト用
   # gem 'capybara', '~> 2.13'
   # gem 'faker'
@@ -70,6 +81,8 @@ group :development, :test do
   # gem 'launchy'
   #複数のテストを一回で。
   # gem 'selenium-webdriver'
+  #RSpecのテストランナーを速くする。
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -81,8 +94,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  #RSpecのテストランナーを速くする。
-  gem 'spring-commands-rspec'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
