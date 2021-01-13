@@ -7,10 +7,14 @@ class PostsController < ApplicationController
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
     def show
       @post = Post.find(params[:id])
+      # ＠comments = @post.comment.find(:post_id params[:post_id])
+      # これと理屈は同じ
+      # @posts = @user.posts.paginate(page: params[:page])
     end
 
     def new
         @post=current_user.posts.build if logged_in?
+        @comment = Comment.new(post_id: params[:post_id])
         # これじゃダメなの??
         # @post = Post.new
     end

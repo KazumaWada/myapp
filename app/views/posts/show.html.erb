@@ -7,6 +7,11 @@
 <%= @post.tag %>
 <br>
 <%= @post.content %>
+<br>
+<%# <p>Comments: <%= render @post.comments %>
+<p>Comments: <%= @comments %></p>
+<br>
+<%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
 
 <h3>次の記事へ</h3>
 <h3>pagenate</h3>

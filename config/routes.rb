@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 
+  resources :comments
+
 # ゲストログイン
 #resources :smooth_login_session, only: :create
 resources :testsessions, only: :create
