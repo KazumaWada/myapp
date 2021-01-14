@@ -1,0 +1,52 @@
+<header>
+<div class="nav-wrapper">
+    <nav class="navbar navbar-light bg-transparent">
+  <div class="container-fluid bg-transparent panel-transparent transparent">
+    <a class="navbar-brand" href="/">
+      <%# # image_tag 'logo.jpg', class: "d-inline-block align-top", width: "30", height: "24"  %>
+      ベルリンなう
+    </a>
+ <ul class="nav justify-content-end">
+
+　<li class="nav-item">
+  <%= link_to 'ログイン', login_path, class: "nav-link active text-white" %>
+  </li>
+
+<li class="nav-item">
+ <%= link_to '新規登録', signup_path, class: "nav-link active text-white" %>
+</li>
+
+  <li class="nav-item"> 
+  <%= link_to '投稿する', new_post_path, class: "nav-link active text-white" %>
+  </li>
+
+<li class="nav-item">
+ <%= link_to logout_path, class: "nav-link active text-white", method: :delete do %>
+ <i class="fas fa-sign-out-alt"></i>
+ <% end %>
+ </li>
+
+
+
+ <li class="nav-item">
+ <%= link_to current_user, class: "nav-link active text-white" do %>
+ <i class="fas fa-user"></i>
+ <% end %>
+ </li>
+
+  <li class="nav-item">
+ <a href="https://github.com/kazumawada/myapp" target="_blank" class="nav-link active text-white">
+  ソースコード 
+</a>
+ </li>
+
+   <li class="nav-item">
+ <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
+  作った人について
+</a>
+ </li>
+
+  </div><%#container-fluid %>
+</nav>
+</div><%# nav-wrapper %>
+</header>

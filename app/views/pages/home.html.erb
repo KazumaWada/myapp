@@ -1,42 +1,9 @@
 <div class="card bg-dark text-white header-wrapper bg-transparent">
     <%= image_tag 'the-main.jpg', class: "img-fluid" %>
   <div class="card-img-overlay">
-    <%# <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text">Last updated 3 mins ago</p> %>
-    <div class="nav-wrapper">
-
-<%# #######################logo###################### %>
-    <nav class="navbar navbar-light bg-transparent">
-  <div class="container-fluid bg-transparent panel-transparent transparent">
-    <a class="navbar-brand" href="/">
-      <%# <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-top"> %>
-      ベルリンなう
-    </a>
-<%# #######################logo###################### %>
-<%# #######################nav-right###################### %>
- <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a href="http://localhost:3000/posts/new" class="nav-link active text-dark" aria-current="page" href="#">投稿する</a>
-  </li>
-  <li class="nav-item">
-    <a href="http://localhost:3000/login" class="nav-link text-danger" href="#">ログイン</a>
-  </li>
-  <li class="nav-item">
-    <a href="http://localhost:3000/signup" class="nav-link text-warning" href="#">ユーザー登録</a>
-  </li>
-  <li class="nav-item">
-  <%= link_to "プロフィール", current_user, class: "nav-link text-warning" %>
-  </li>
-  <%# <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-  </li> %>
-</ul>
-<%# #######################nav-right###################### %>
-  </div>
-</nav>
-</div><%# nav-wrapper %>
-
+ 
+<%# ここにheaderを入れたい。 %>
+<%= render 'layouts/header' %>
 
 <%# ###################### title&description######################  %>
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
@@ -50,7 +17,7 @@
 <div class="btn-group" role="group" aria-label="Basic outlined example">
 
 
-<%= link_to 'かんたんログイン', testsessions_path, method: :post, class:"btn btn-lg btn-primary center-block m-2" %>
+<%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-lg btn-primary center-block m-2" %>
   <%# <button type="button" class="btn btn-outline-primary">簡単ログイン</button> %>
 <%# 　 <button type="button" class="btn btn-outline-primary"><%= link_to 'このサイトを作った経緯', about_path, class: "text-light" %>
 
@@ -197,15 +164,7 @@
 <%# 33333333333333333333333333333333333投稿カード&サイドバー3333333333333333333333333333333333333333 %>
 
 
-<%# 33333333333333333333333333333333333footerr3333333333333333333333333333333333333333 %>
-<%# これはずっと下画面に存在する。stickしてる。<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark"> %>
-<nav class="navbar navbar-expand-sm navbar-dark bg-transparent">
-  <div class="container-fluid">
-    <p class="text-right">2021 ベルリンなう　all right reserved</p>
-  </div>
-</nav>
 
-<%# 33333333333333333333333333333333333footerr3333333333333333333333333333333333333333 %>
 
 
 
