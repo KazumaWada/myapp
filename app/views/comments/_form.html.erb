@@ -1,0 +1,10 @@
+<%= form_with(model: [post, comment] ) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%#ネストされているルーティングの場合は、親子それぞれのモデルを記述する。 %>
+  <div>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "コメントをする", class: 'btn btn-primary mt-4' %>
+  </div>
+<% end %>
