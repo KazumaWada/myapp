@@ -8,10 +8,24 @@
 <br>
 <%= @post.content %>
 <br>
-<%# <p>Comments: <%= render @post.comments %>
-<p>Comments: <%= @comments %></p>
-<br>
-<%= link_to "Add Comment", new_comment_path(post_id: @post.id) %>
+
+<div>
+  <h4>comments</h4>
+  <%# ajax用のid設定 %>
+   <div id="comments_area">
+   <%# comments/_indexのviewを呼び出している。その部品内で@commentsが使われている(@comments: ログインしていない場合、コメントsを見れるだけだから。) %>
+　　<%= render partial: 'comments/index', locals: { comments: @comments } %>
+   </div> 
+   <% if logged_in? %>
+   <%# comments/_formのviewを呼び出している。その部品内で@comment,@postが使われている(@comment, @post: ログインしていれば、自分が@commentコメントできるから。@postを探して来た後で。) %>
+   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>#
+   <% end %>
+</div>
+
+
+
+
+
 
 <h3>次の記事へ</h3>
 <h3>pagenate</h3>

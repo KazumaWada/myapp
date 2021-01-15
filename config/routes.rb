@@ -10,12 +10,15 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'#ログアウト
   resources :users
   resources :account_activations, only: [:edit]
-  #indexを残すのみ。
-  resources :posts,          only: [:new, :create, :destroy, :show, :edit, :update]
+  
+  #/posts/1/comment/とかになる。
+  resources :posts do
+    resources :comments
+  end
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 
-  resources :comments
+
 
 # ゲストログイン
 #resources :smooth_login_session, only: :create

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
-  has_many :comments
+  # 投稿が消されたら、コメントも一緒に消す。
+  has_many :comments, dependent: :destroy
   belongs_to :user
   #画像アップロードCarrierWave(imageはカラム。)
   mount_uploader :image, ImageUploader
