@@ -10,11 +10,13 @@ FactoryBot.define do
   #   bio "hello!"
   # end
   factory :user do
-    name {"Example"}
-    sequence(:email) { |n| "tester#{n}@example.com" }
+    name {"main-user"}
+    # sequence(:email) { |n| "tester#{n}@example.com" }
+    email {"main@gmail.com"}
     password {"password"}
     password_confirmation {"password"}
     year {"1年"}
     bio {"hello!"}
+    activated {true}
   end
 end
