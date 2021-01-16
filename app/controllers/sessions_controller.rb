@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-    #ユーザーが有効である場合にのみログインできるようにログイン方法を変更する必要がある。
-    if user.activated?#user.rb
+   
+    if user.activated?
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
     end
     else 
     flash.now[:danger] = '正しく認証されませんでした。'
-     # render 'pages/home'これにするとhomeページへ行く。
      render 'new'
   end
 end
