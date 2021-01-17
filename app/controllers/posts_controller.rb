@@ -5,6 +5,17 @@ class PostsController < ApplicationController
 
 
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
+   def index
+    # @posts = @user.posts.paginate(page: params[:page])
+    @posts = Post.all.order(created_at: :desc)
+     #home画面に投稿を表示するため。
+     if logged_in?
+      @post = current_user.posts.build
+        #個人の投稿の塊。ランダムな人の投稿の塊ではない。
+          @contents_feed = current_user.feed.paginate(page: params[:page])
+     end
+   end
+
     def show
       @post = Post.find(params[:id])
       @comment = Comment.new
@@ -25,7 +36,8 @@ class PostsController < ApplicationController
         # @post.image.attach(params[:post][:image])carryWave使うからコメントアウトした。
         
         if @post.save
-          flash[:success] = "post created!(あなたの投稿が新たにhome画面に作られました！)"#ここに、「投稿を見に行く」とかがあったらいいかも。
+          # flash[:success] = render_to_string(:partial => "shared/check_my_post")
+          flash[:success] = "投稿しました！"#ここに、「投稿を見に行く」とかがあったらいいかも。
           #ここをuser/:idに。
           redirect_to root_url
         else
