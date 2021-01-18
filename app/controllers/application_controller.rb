@@ -11,4 +11,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+  # ログインしていなかったら、rootに戻すメソッド。
+   def logged_in_user
+     unless logged_in?# ログインしていなければ↓
+       redirect_to login_url
+     end
+   end
+
+
 end

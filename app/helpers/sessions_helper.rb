@@ -12,22 +12,26 @@ end
 #=falseの場合、例外を出さずにnillを返すためにはどうすればいいかということ。
 
 def current_user
-   if (user_id = session[:user_id])#があれば,
-     #@current_userが定義されていれば左で止まる。そうでなければ、右の式に移動する。
-     @current_user ||= User.find_by(id: user_id)
-   elsif (user_id = cookies.signed[:user_id])
-     user = User.find_by(id: user_id)
-                     #user.rb
-     if user && user.authenticated?(cookies[:remember_token])
-       log_in user
-       @current_user = user
-     end
-   end
+  if session[:user_id]
+    #find_byでnillが返ってくれるから、例外がない。
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
+  #  if (user_id = session[:user_id])
+  #    @current_user ||= User.find_by(id: user_id)
+  #  elsif (user_id = cookies.signed[:user_id])
+  #    user = User.find_by(id: user_id)
+  #                    #user.rb
+  #    if user && user.authenticated?(cookies[:remember_token])
+  #      log_in user
+  #      @current_user = user
+  #    end
+  #  end
  end
 
  #if its current_user → true.
  def current_user?(user)
-   user && user==current_user
+  #  user && user==current_user
+  user == current_user
  end
 
  #current_userがnillじゃなければ(!)trueを返す。=current_userがいればtrueを返す。

@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       #mailerいらないかな。
       #@user.send_activation_email#user.rb
       #flash[:info] = "Please check your email to activate your account."
-      flash[:info] = "ベルリンなうへようこそ！さっそく右上の「投稿する」から記事を書いてみよう！."
+      flash[:info] = "ベルリンなうへようこそ！さっそく右上のボタンからログインしよう！ →"
       redirect_to root_url
     else
       render 'new'
