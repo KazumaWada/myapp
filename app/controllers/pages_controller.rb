@@ -1,13 +1,15 @@
 class PagesController < ApplicationController
 
    def home
-    @posts = Post.all.order(created_at: :desc)
-
+     @posts = Post.all.order(created_at: :desc) 
+    #  @post = Post.find(params[:id])
+     
+    #  @comment = Post.comment(params[:id])
   
-      if logged_in?
-     @post = current_user.posts.build
-      # @contents_feed = current_user.feed.paginate(page: params[:page])
-    end
+  
+    #   if logged_in?
+    #  @post = current_user.posts.build
+    # end
    end
 
 def about

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   #画像アップロードCarrierWave(imageはカラム。)
   mount_uploader :image, ImageUploader
   #rails6リッチテキスト
-  has_rich_text :content
+  # has_rich_text :content
   #rails active_storage:installによって可能に。
   # has_many_attached :image
    validates :user_id, presence: true

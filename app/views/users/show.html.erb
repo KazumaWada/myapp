@@ -13,7 +13,6 @@
 <section class="user_info">
 　　　
      <%#user-name %> <%#プロフィール編集 %>
-    <p>編集、投稿は自分しか見えないようにする</p>
       <h1>
       <%###################アバター########################### %>
      <% if @user.avatar? %>
@@ -28,21 +27,18 @@
         <%= @user.name %>
       <%###################プロフィール編集########################### %>
         <button type="button" class="btn btn-warning">
-        <a href="http://localhost:3000/users/1/edit" class="text-light">プロフィール編集</a>
+        <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light' %>
         </button>
       <%###################投稿ページへ########################### %>
-      <button type="button" class="btn btn-dark">
-       <%= link_to "投稿する", new_post_path, class: 'text-light' %>
-      </button>
 
       </h1>
 
       <%###################在住歴########################### %><%# %>
-       <h5>
+       <h5 class="mt-4">
         ベルリン歴<%= @user.year %>
       </h5>
       <%###################ひとこと########################### %> 
-       <p>
+       <p class="mt-4">
         <%= @user.bio %>
       </p>
 

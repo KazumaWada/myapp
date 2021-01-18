@@ -1,9 +1,17 @@
+<% if @posts.any? %>
+
  <% @posts.each do |p| %>
+ <%= link_to post_path(p), class: 'text-body' do %> 
    <div class="card mt-4">
+    
       <%= image_tag p.image.url, class: 'img-fluid' %>
       <div class="card-body">
         <h5 class="card-title"><%= p.title %></h5>
-        <p class="card-text"><%= p.tag %></p>
+        <p class="card-text"><span class="badge badge-warning"><%= p.tag %></span></p>
+       
       </div>
     </div>
+     <% end %>
     <% end %> 
+
+  <% end %>
