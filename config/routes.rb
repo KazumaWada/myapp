@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
   get 'sessions/new'
   root 'pages#home'
+  # resources :pages
   # resources :pages, only: [:index]
   get  '/about',  to: 'pages#about'
   get  '/signup',  to: 'users#new' #signup=新規
@@ -13,8 +14,10 @@ Rails.application.routes.draw do
   
   #/posts/1/comment/とかになる。
   resources :posts do
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
+
+
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 

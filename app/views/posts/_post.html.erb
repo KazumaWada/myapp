@@ -8,15 +8,17 @@
   <%= image_tag "the-main.jpg", class: 'card-img-top'%>
   <% end %>
 
-  <% end %><%# link_to %>
+ 
 
   <div class="card-body">
     <p class="card-text"><%= post.title %></p>
   </div>
 
   <div class="card-body">
-    <p class="card-text"><%= post.tag %></p>
+    <p class="card-text"><h4><span class="badge badge-warning"><%= post.tag %></span></h4></p>
   </div>
+
+   <% end %><%# link_to %>
 
   <div class="card-body">
     <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>

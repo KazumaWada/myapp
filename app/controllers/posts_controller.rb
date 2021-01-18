@@ -7,6 +7,7 @@ class PostsController < ApplicationController
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
    def index
     # @posts = @user.posts.paginate(page: params[:page])
+    @post = Post.find(params[:id])
     @posts = Post.all.order(created_at: :desc)
      #home画面に投稿を表示するため。
      if logged_in?
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
    end
 
     def show
+      @posts = Post.all.order(created_at: :desc) 
       @post = Post.find(params[:id])
       @comment = Comment.new
       @comments = @post.comments

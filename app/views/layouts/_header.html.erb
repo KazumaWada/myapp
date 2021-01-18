@@ -3,42 +3,59 @@
     <nav class="navbar navbar-light bg-transparent">
   <div class="container-fluid bg-transparent panel-transparent transparent">
     <a class="navbar-brand" href="/">
-      <%# # image_tag 'logo.jpg', class: "d-inline-block align-top", width: "30", height: "24"  %>
       ベルリンなう
     </a>
  <ul class="nav justify-content-end">
 
-　<li class="nav-item">
+
+  <%# <li class="nav-item">
+  <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
+  これを作った人
+ </a>
+ </li> %>
+
+　
+
+ 
+
+
+<% if logged_in? %>
+
+ <li class="nav-item ml-1">
+ <button type="button" class="btn btn-light p-0">
+ <%= link_to current_user, class: "nav-link active text-black" do %>
+ <i class="fas fa-user"></i>
+ <% end %>
+ </button>
+ </li>
+
+<li class="nav-item ml-1">
+ <button type="button" class="btn btn-light p-0">
+ <%= link_to logout_path, class: "nav-link active text-black", method: :delete do %>
+ <i class="fas fa-sign-out-alt"></i>
+ <% end %>
+  </button>
+ </li>
+
+
+<li class="nav-item ml-1"> 
+  <button type="button" class="btn btn-warning p-0"><%= link_to 'Post', new_post_path, class: "nav-link active text-white" %></button>
+  </li>
+
+ <% else %>
+
+ <li class="nav-item">
   <%= link_to 'ログイン', login_path, class: "nav-link active text-white" %>
   </li>
 
-<li class="nav-item">
- <%= link_to '新規登録', signup_path, class: "nav-link active text-white" %>
-</li>
 
-  <li class="nav-item"> 
-  <%= link_to '投稿する', new_post_path, class: "nav-link active text-white" %>
-  </li>
-
-<li class="nav-item">
- <%= link_to logout_path, class: "nav-link active text-white", method: :delete do %>
- <i class="fas fa-sign-out-alt"></i>
- <% end %>
+  <li class="nav-item">
+  <%= link_to 'Signup', signup_path, class: "nav-link active text-white" %>
  </li>
 
+  <% end %>
 
 
- <li class="nav-item">
- <%= link_to current_user, class: "nav-link active text-white" do %>
- <i class="fas fa-user"></i>
- <% end %>
- </li>
-
-   <li class="nav-item">
- <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
-  これを作った人
-</a>
- </li>
 
   </div><%#container-fluid %>
 </nav>
