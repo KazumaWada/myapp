@@ -3,6 +3,9 @@ class PostsController < ApplicationController
     before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
     before_action :correct_user,   only: [:destroy, :edit, :update]
 
+    # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
+    impressionist :actions=> [:show]
+
 
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
    def index
@@ -15,11 +18,14 @@ class PostsController < ApplicationController
         #個人の投稿の塊。ランダムな人の投稿の塊ではない。
           @contents_feed = current_user.feed.paginate(page: params[:page])
      end
+     
    end
 
     def show
-      @posts = Post.all.order(created_at: :desc) 
-      @post = Post.find(params[:id])
+      # @posts = Post.all.order(created_at: :desc) 
+     @post = Post.find(params[:id])
+     # view数(詳細ページを訪れると、カウントされる仕組み。)
+      impressionist(@post, nil, unique: [:session_hash])
       @comment = Comment.new
       @comments = @post.comments
     end
@@ -32,11 +38,8 @@ class PostsController < ApplicationController
     end
 
     def create
-                #session_helper
         @post = current_user.posts.build(post_params)
-        #attachは、画像のactive_strageAPIのメソッドs
-        # @post.image.attach(params[:post][:image])carryWave使うからコメントアウトした。
-        
+        # binding.pry
         if @post.save
           # flash[:success] = render_to_string(:partial => "shared/check_my_post")
           flash[:success] = "投稿しました！"#ここに、「投稿を見に行く」とかがあったらいいかも。
@@ -111,7 +114,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-      params.require(:post).permit(:content, :image, :title, :tag)
+      params.require(:post).permit(:content, :image, :title, :tag, :covid )
     end
 
 

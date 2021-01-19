@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     @users = User.paginate(page: params[:page])
+    # User.order(impressions_count: 'DESC')人気順に並び替えてくれる。
+    
   end
 
   # 特定のユーザーを表示する
@@ -16,6 +18,11 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     #正常に処理が行われると、@user=User.find(1)となる。
     @posts = @user.posts.paginate(page: params[:page])
+
+
+    # view数(詳細ページを訪れると、カウントされる仕組み。)
+    # impressionist(@user, nil, unique: [:session_hash])
+    
    #これは別にログインしてなくてもよくね？
     # if logged_in?
       # @post  = current_user.posts.build

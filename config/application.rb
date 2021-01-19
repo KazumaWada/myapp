@@ -1,4 +1,6 @@
 require_relative "boot"
+#impressionistのエラー解決
+
 
 require "rails"
 # Pick the frameworks you want:

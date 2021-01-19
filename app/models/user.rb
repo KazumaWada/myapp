@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :comments, dependent: :destroy
     #アバター
     mount_uploader :avatar, AvatarUploader
+   #view数
+    # is_impressionable counter_cache: true
     ############following関係######################################
     has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
