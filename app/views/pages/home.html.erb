@@ -1,5 +1,6 @@
 <div class="card bg-dark text-white header-wrapper bg-transparent">
-    <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+　<%# もっと色を濃く編集できる？ %>
+  <%= image_tag 'the-main.jpg', class: "img-fluid" %>
   <div class="card-img-overlay">
  
 <%# ここにheaderを入れたい。 %>
@@ -7,37 +8,111 @@
 
 <%# ###################### title&description######################  %>
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
-<h1>ベルリンなうへようこそ！</h1><br>
+<h1 class="font-weight-bold">ベルリンなうへようこそ！</h1><br>
 </div>
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
-<h3>ここは、ベルリン特化型の情報共有サービス。<br>あなたの経験をこれから行く人に共有しよう!</h3>
+<h3>あなたの経験をこれから行く人に共有しよう!</h3>
+<p><p>
+<%# ここは、ベルリン特化型の情報共有サービス。<br> %>
 </div>
 <%# ###################### title&description######################  %>
 <div class="d-flex align-items-center justify-content-center p-4">
 <div class="btn-group" role="group" aria-label="Basic outlined example">
 
 
-<%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-lg btn-primary center-block m-2" %>
-  <%# <button type="button" class="btn btn-outline-primary">簡単ログイン</button> %>
-<%# 　 <button type="button" class="btn btn-outline-primary"><%= link_to 'このサイトを作った経緯', about_path, class: "text-light" %>
+<%# ここからタグカード %>
 
-<%# link_to '作成した経緯', about_path, class: "btn btn-lg btn-primary center-block m-2" %>
+<div class="container">
+<div class="row">
+
+<div class="col-md-4 p-0">
+ <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">移住</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+<div class="col-md-4 p-0">
+ <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay p-0">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">ワーキングホリデー</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+<div class="col-md-4 p-0">
+  <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay p-0">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">ドイツ語</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+</div><%# row(タグカードの) %>
+
+<div class="row">
+
+<div class="col-md-4 p-0">
+  <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay p-0">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">転職</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+<div class="col-md-4 p-0">
+  <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay p-0">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">街歩き</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+<div class="col-md-4 p-0">
+  <%= link_to root_path do %>
+ <div class="card" style="width: 18rem;">
+  <%= image_tag 'a.jpg', class: "card-img-top" %> 
+  <div class="card-img-overlay p-0">
+  <h5 class="card-title text-white d-flex align-items-center justify-content-center">生活</h5> 
+  </div> 
+</div>
+ <% end %>
+</div><%# col %>
+
+</div><%# row(タグカードの) %>
+</div><%# container(タグカードのの) %>
 
 
-<%# link_to '運営者', about_path, class: "btn btn-lg btn-primary center-block m-2" %>
-   <%# <button type="button" class="btn btn-outline-primary">Right</button>  %>
+
+
+
+
+
+
+
+
+
+
+<%# ここまでタグカード %>
+  
+
 </div>
 </div>
-<%# <h2 >
-    タイトル
-    <div>
-        description
-    </div>
-</h2> %>
 <%# ###################### title&description######################  %>
 
   </div>
-</div>
+</div><div class="card bg-dark text-white header-wrapper bg-transparent">
 </div>
 <%# 33333333333333333333333333333333333header3333333333333333333333333333333333333333 %>
 
@@ -48,7 +123,7 @@
  <div class="row">
 
 <%############################左############################# %>
-  <div class="col-md-8">
+  <div class="col-md-10">
  
   <%############################tab############################# %>
   <%# クリックするたびにtop(上)に戻るから、idで#するなり、bootstrapでspaするなり。 %>
@@ -140,9 +215,10 @@
 
 <%######################投稿カード#################### %>
   </div><%# col-md-8 %>
+
     <%############################右############################# %>
      <%######################サイドバー#################### %>
-  <div class="col-md-4">
+  <%# <div class="col-md-4">
  
   <ul class="list-group">
   <li class="list-group-item text-center"></li>
@@ -150,7 +226,8 @@
   <li class="list-group-item">よく読まれている記事</li>
   <li class="list-group-item">アーカイブ</li>
   </ul>
-  </div><%# col-md-4 %>
+  </div> %>
+  <%# col-md-4 %>
   <%######################サイドバー#################### %>
 
  </div><%# row %>
