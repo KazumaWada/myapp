@@ -2,23 +2,24 @@
 <div class="nav-wrapper">
     <nav class="navbar navbar-light bg-transparent">
   <div class="container-fluid bg-transparent panel-transparent transparent">
-    <a class="navbar-brand" href="/">
-      ベルリンなう
-    </a>
+  
+<div class="dropdown">
+  <button class="btn btn-transparent" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-bars text-warning"></i>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <%= link_to 'トップページへ', root_path, class: "dropdown-item" %>
+    <a class="dropdown-item" href="#">ベルリンなうについて</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+
+</div>
  <ul class="nav justify-content-end">
-
-
   <%# <li class="nav-item">
   <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
   これを作った人
  </a>
  </li> %>
-
-　
-
- 
-
-
 <% if logged_in? %>
 
  <li class="nav-item ml-1">
@@ -44,6 +45,12 @@
 
  <% else %>
 
+
+ <li class="nav-item">
+ <%# link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-primary center-block" %>
+ <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white" %>
+ </li>
+
  <li class="nav-item">
   <%= link_to 'ログイン', login_path, class: "nav-link active text-white" %>
   </li>
@@ -54,8 +61,6 @@
  </li>
 
   <% end %>
-
-
 
   </div><%#container-fluid %>
 </nav>
