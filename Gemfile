@@ -5,6 +5,9 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
+#view数をカウントできる。
+gem 'impressionist'
+
 #ログイン認証用のgem
 gem 'devise'
 #画像アップロード
@@ -39,6 +42,9 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+
+
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -72,6 +78,11 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+ #でバッカーツール
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-byebug'
   #rspecには、以下の3つのgemが必要。
   # gem 'rspec-rails'
   # gem 'factory_bot_rails'

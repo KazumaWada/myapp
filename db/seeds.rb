@@ -28,11 +28,16 @@ User.create!(name: "簡単ログインしたユーザー",
 
 
 # 追加のユーザーをまとめて生成する
-99.times do |n|
-name  = Faker::Name.name
-email = "fake-#{n+1}@gggggggsdgmail.com"
+99.times do 
+# name  = Faker::Name.name
+# email = "fake-#{n+1}@example.com"
+name = Faker::Games::Pokemon.name
+email = Faker::Internet.email
+avatar = Faker::Avatar.image(slug: "my-own-slug", size: "50x50", format: "jpg") 
 password = "password"
-User.create!(name:  name,
+User.create!(
+      avatar: avatar,
+      name:  name,
       email: email,
       year: "5年",
       bio: "hello!hello!hello!hello!",
@@ -40,25 +45,6 @@ User.create!(name:  name,
       password_confirmation: password,
       activated: true,
       activated_at: Time.zone.now)
-
-
-#6人のサンプル投稿
-# users = User.order(:created_at).take(6)
-# 10.times do
-#   content = Faker::Lorem.sentence(word_count: 2)
-#   users.each { |user| user.posts.create!(content: content) }
-# end
-# end
-
-
-#######content, tag, imageなどのvalidationがあるから、contentだけでは作れずにエラーになってるのかも。########
-
-# users = User.order(:created_at).take(1)
-# 1.times do
-#   content = Faker::Lorem.sentence(word_count: 2)
-#   users.each { |user| user.posts.create!(content: content) }
-# end
-# end
 
 
 #適当にrelationshipを作る。
@@ -69,5 +55,11 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
-
 end
+
+# 10.times do
+#   content = Faker::Lorem.sentence(word_count: 1000)
+#   tag = "移住"
+#   users.each { |user| user.posts.create!(content: content) }
+#   users.each { |user| user.posts.create!(tag: tag) }
+# end
