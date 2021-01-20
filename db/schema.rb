@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 2021_01_19_065003) do
     t.string "year"
     t.text "bio"
     t.string "avatar"
-    t.integer "impressions_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

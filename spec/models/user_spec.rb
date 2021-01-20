@@ -2,7 +2,6 @@ require 'rails_helper'
 #本当に正しいテストを書いているのか確認するために、toをto_notに変えてみるというやり方がある。
 RSpec.describe User, type: :model do
 
-
   # ここからfactory
   let(:user) { FactoryBot.create(:user) }
 
@@ -58,20 +57,9 @@ describe "email validation with proper address form" do
 end# describe "email validation with proper address form" do
 
 
-#passwordが一致する事
-describe "password and password_confirmation are matched" do
-  #一致する場合
-  it "is valid password and password_confirmation are matched" do
-    user = FactoryBot.build(:user, password: "password", password_confirmation: "password")
-    expect(user).to be_valid
-  end
-  #一致しない場合
- it "is invalid password and password_confirmation are not matched" do
-  user = FactoryBot.build(:user, password: "password", password_confirmation: "differentpassword")
-  user.valid?
-  expect(user.errors[:password_confirmation]).to include("doesn't match Password")
-end
-end
+
+
+
 
 
 end

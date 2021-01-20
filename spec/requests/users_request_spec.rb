@@ -36,6 +36,31 @@ end
 
 
 
+ describe "GET #new" do
+  it "return http success" do
+    get signup_path
+    # expect(response).to be_success
+    expect(response).to have_http_status "200"
+  end#  return
+ end#  get new
+
+ describe "GET #show" do
+
+  context "as logged_in user" do
+    it "response successfully" do
+      sign_in_as(user)
+      get user_path(user)
+      expect(response).to have_http_status "200"
+    end
+  end
+  
+ end#  get show
+
+
+
+
+
+
 
 
 
