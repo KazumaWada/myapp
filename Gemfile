@@ -8,6 +8,9 @@ gem 'rails', '~> 6.1.0'
 #view数をカウントできる。
 gem 'impressionist'
 
+#weather-api取得時に使う。
+gem 'json', '~> 1.8', '>= 1.8.3'
+
 #ログイン認証用のgem
 gem 'devise'
 #画像アップロード

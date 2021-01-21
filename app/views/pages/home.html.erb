@@ -154,16 +154,20 @@
 
     <%############################右############################# %>
      <%######################サイドバー#################### %>
-  <%# <div class="col-md-4">
+  
+
+<div class="col-md-4">
  
   <ul class="list-group">
-  <li class="list-group-item text-center"></li>
-  <li class="list-group-item">タグ一覧</li>
-  <li class="list-group-item">よく読まれている記事</li>
+  <li class="list-group-item text-center"><%= @output %></li>
+  <li class="list-group-item">Group of weather parameters (Rain, Snow, Extreme etc.)<%= @output['weather'][0]['main'] %> 
+  | 
+  <%= @output['weather'][0]['description'] %> </li>
+  <li class="list-group-item">weathericon <%= @output['weather'][0]['icon'] %>https://openweathermap.org/weather-conditions とhttps://stackoverflow.com/questions/44177417/how-to-display-openweathermap-weather-icon/62369654#62369654</li>
   <li class="list-group-item">アーカイブ</li>
   </ul>
-  </div> %>
-  <%# col-md-4 %>
+  </div> %
+
   <%######################サイドバー#################### %>
 
  </div><%# row %>
