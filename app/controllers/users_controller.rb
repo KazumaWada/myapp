@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   #全てのユーザーを表示する。
   def index
+    #userがしたいいね一覧
+    @favorite_posts = current_user.favorite_posts
     # @users = User.all
     @users = User.paginate(page: params[:page])
     # User.order(impressions_count: 'DESC')人気順に並び替えてくれる。
@@ -15,6 +17,8 @@ class UsersController < ApplicationController
 
   # 特定のユーザーを表示する
   def show
+    @favorite_posts = current_user.favorite_posts
+
     @user=User.find(params[:id])
     #正常に処理が行われると、@user=User.find(1)となる。
     @posts = @user.posts.paginate(page: params[:page])

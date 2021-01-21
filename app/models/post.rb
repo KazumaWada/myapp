@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :favorites
+  has_many :favorite_users, through: :favorites, source: 'user'
   # view数 
   is_impressionable counter_cache: true
  
