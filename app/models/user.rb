@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_many :posts, dependent: :destroy
     has_many :comments, dependent: :destroy
+    has_many :favorites
+    has_many :favorite_posts, through: :favorites, source: 'post'
     #アバター
     mount_uploader :avatar, AvatarUploader
    #view数
