@@ -1,21 +1,19 @@
 <%# <h1 >ここは、記事の詳細ページです。</h1> %>
-
 <p class="mt-5">この記事は、<%= @post.covid %>の内容です。</p>
 <br>
 <%= @post.title %><br>
-<span class="badge badge-warning"><%= @post.tag %></span>
+<span class="badge badge-warning"><%# @post.tag %></span>
 <i class="fas fa-eye"><%= @post.impressionist_count %></i>
-
-
-
-
 <br>
 <%= image_tag @post.image.url, class: 'img-fluid' %>
 
-
-
 <br>
 <p><%= @post.content %></p>
+<br>
+
+<% @post.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
 <br>
 
 <div class="mt-5">

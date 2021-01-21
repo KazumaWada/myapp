@@ -1,7 +1,9 @@
 class Post < ApplicationRecord
   # 投稿が消されたら、コメントも一緒に消す。
   has_many :comments, dependent: :destroy
-  # belongs_to :user
+  belongs_to :user
+  has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
   # view数 
   is_impressionable counter_cache: true
  
@@ -14,7 +16,7 @@ class Post < ApplicationRecord
    validates :user_id, presence: true
    validates :content, presence: true, length: { maximum: 5000 }
    validates :title, presence: true, length: { maximum: 30 }
-   validates :tag, presence: true, length: { maximum: 10 }
+  #  validates :tag, presence: true, length: { maximum: 10 }
    validates :covid, presence: true
   #  validates :image, presence: true
    #/post/newで投稿を作ると、user.rbのこれ↓が機能しなかったから。

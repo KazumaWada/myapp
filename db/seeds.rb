@@ -26,6 +26,29 @@ User.create!(name: "簡単ログインしたユーザー",
   activated: true,
   activated_at: Time.zone.now)
 
+  Tag.create([
+    { name: '移住' },
+    { name: 'ワーキングホリデー' },
+    { name: '食べ物'},
+    { name: '転職'},
+    { name: '街歩き'},
+    { name: '生活'}
+    ])
+
+
+
+
+    # 9.times do 
+    #   Post.create([
+    #     { name: '移住' },
+    #     { name: 'ワーキングホリデー' },
+    #     { name: '食べ物'},
+    #     { name: '転職'},
+    #     { name: '街歩き'},
+    #     { name: '生活'}
+    #     ])
+    #   end      
+
 
 # 追加のユーザーをまとめて生成する
 99.times do 
