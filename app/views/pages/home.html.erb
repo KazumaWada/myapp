@@ -19,94 +19,6 @@
 <div class="d-flex align-items-center justify-content-center p-4">
 <div class="btn-group" role="group" aria-label="Basic outlined example">
 
-
-<%# ここからタグカード %>
-
-<div class="container">
-<div class="row">
-
-<div class="col-md-4 p-0">
- <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">移住</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-<div class="col-md-4 p-0">
- <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay p-0">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">ワーキングホリデー</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-<div class="col-md-4 p-0">
-  <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay p-0">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">ドイツ語</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-</div><%# row(タグカードの) %>
-
-<div class="row">
-
-<div class="col-md-4 p-0">
-  <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay p-0">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">転職</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-<div class="col-md-4 p-0">
-  <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay p-0">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">街歩き</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-<div class="col-md-4 p-0">
-  <%= link_to root_path do %>
- <div class="card" style="width: 18rem;">
-  <%= image_tag 'a.jpg', class: "card-img-top" %> 
-  <div class="card-img-overlay p-0">
-  <h5 class="card-title text-white d-flex align-items-center justify-content-center">生活</h5> 
-  </div> 
-</div>
- <% end %>
-</div><%# col %>
-
-</div><%# row(タグカードの) %>
-</div><%# container(タグカードのの) %>
-
-
-
-
-
-
-
-
-
-
-
-
-<%# ここまでタグカード %>
-  
-
 </div>
 </div>
 <%# ###################### title&description######################  %>
@@ -125,10 +37,6 @@
 <%############################左############################# %>
   <div class="col-md-10">
  
-  <%############################tab############################# %>
-  <%# クリックするたびにtop(上)に戻るから、idで#するなり、bootstrapでspaするなり。 %>
-  <%# ↓
-  https://getbootstrap.com/docs/5.0/components/navs-tabs/#javascript-behavior %>
 
  <main class="p-3">
   <!-- 3個分のタブ -->
@@ -145,10 +53,38 @@
   </ul>
 
 
-  <%############################tab############################# %>
-  <%######################投稿カード#################### %>
-   
- <%# <div class="col mt-4"> %>
+
+  <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+
+
+
+
+<%= form_tag posts_path, method: :get, class: 'nav justify-content-cente' do %>
+      <%= select_tag :tag_id,
+                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                     {
+                       prompt: 'タグ',
+                       onchange: 'submit(this.form);',
+                       class: 'form-control'
+                     }
+      %>
+    <% end %>
+
+
+
 
 <!-- 投稿部分 -->
   <div class="tab-content">
