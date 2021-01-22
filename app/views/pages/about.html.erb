@@ -2,7 +2,20 @@
 
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
 <h1>このサイトを作った経緯</h1><br>
+ <%# image_tag @news_output['articles']['urlToImage'], class: "img-fluid" %>
 </div>
+
+
+<div> 
+<%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
+ <% if @news_output['articles'][0]['urlToImage'].nil? %>
+  <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+  <% else %>
+  <%= image_tag @news_output['articles'][0]['urlToImage'], class: "img-fluid" %>
+  <% end %>
+ <% end %>
+</div>
+
 
 <h1>Ajax#index</h1>
 <p id="hoge">赤色になるよ</p>
@@ -10,3 +23,6 @@
 <script>
   $("#hoge").css("color","red")
 </script>
+
+
+
