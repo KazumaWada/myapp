@@ -5,23 +5,77 @@
  
 <%# ここにheaderを入れたい。 %>
 <%= render 'layouts/header' %>
-
-<%# ###################### title&description######################  %>
+<section id="main-title">
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
 <h1 class="font-weight-bold">ベルリンなうへようこそ！</h1><br>
 </div>
 <div class="d-flex align-items-center justify-content-center p-4 m-4">
 <h3>あなたの経験をこれから行く人に共有しよう!</h3>
-<p><p>
-<%# ここは、ベルリン特化型の情報共有サービス。<br> %>
 </div>
-<%# ###################### title&description######################  %>
+</section><%# main-title %>
+
+<section id="sub-title">
+
 <div class="d-flex align-items-center justify-content-center p-4">
 <div class="btn-group" role="group" aria-label="Basic outlined example">
+<%= link_to 'このサイトを作った経緯', about_path, class: "btn btn-lg btn-primary center-block m-2" %>
+</div>
+</div>
 
-</div>
-</div>
-<%# ###################### title&description######################  %>
+<%# <div class="d-flex align-items-center justify-content-center p-4">
+<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
+<div class="text-center">
+ <%#天気ここから %>
+ <%= @output['sys']['country'] %>, <%= @output['name'] %>
+
+  <% if @output['weather'][0]['icon'] == "01d" %>
+  <%= image_tag '01d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "01n" %>
+  <%= image_tag '01n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "02d" %>
+  <%= image_tag '02d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "02n" %>
+  <%= image_tag '02n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "03d" %>
+  <%= image_tag '03d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "03n" %>
+  <%= image_tag '03n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "04d" %>
+  <%= image_tag '04d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "04n" %>
+  <%= image_tag '04n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "09d" %>
+  <%= image_tag '09d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "09n" %>
+  <%= image_tag '09n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "10d" %>
+  <%= image_tag '10d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "10n" %>
+  <%= image_tag '10n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "11d" %>
+  <%= image_tag '11d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "11n" %>
+  <%= image_tag '11n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "13d" %>
+  <%= image_tag '13d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "13n" %>
+  <%= image_tag '13n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "50d" %>
+  <%= image_tag '50d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "50n" %>
+  <%= image_tag '50n.png' %>
+  <% end %>
+  
+  <%= @output['weather'][0]['main'] %> |<%= @output['weather'][0]['description'] %>
+   <%#天気ここまで %>
+
+</div><%# text-center %>
+
+<%# </div>
+</div> %>
+
+</section><%# sub-title %>
+
 
   </div>
 </div><div class="card bg-dark text-white header-wrapper bg-transparent">
@@ -135,6 +189,7 @@
       
 
       <div class="card-body">
+      <small>3 days ago</small>
         <h5 class="card-title"><%= @news_output['articles'][0]['title'] %></h5>
         <p class="card-text"><%= @news_output['articles'][0]['discription'] %></p>
       </div>
@@ -144,45 +199,44 @@
    
  <%# ############################################################################## %>
 
-  <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
+     <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
+
     <div class="card mt-4">
+
+      <% if @news_output['articles'][1]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
       <%= image_tag @news_output['articles'][1]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      
+
       <div class="card-body">
         <h5 class="card-title"><%= @news_output['articles'][1]['title'] %></h5>
         <p class="card-text"><%= @news_output['articles'][1]['discription'] %></p>
       </div>
-    </div>
- <% end %>
+
+     </div>
+<% end %>
 
    <%= link_to @news_output['articles'][2]['url'], target: "_blank" do %> 
+
     <div class="card mt-4">
+
+      <% if @news_output['articles'][2]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
       <%= image_tag @news_output['articles'][2]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      
+
       <div class="card-body">
         <h5 class="card-title"><%= @news_output['articles'][2]['title'] %></h5>
         <p class="card-text"><%= @news_output['articles'][2]['discription'] %></p>
       </div>
-    </div>
- <% end %>
 
-   <%= link_to @news_output['articles'][3]['url'], target: "_blank" do %> 
-    <div class="card mt-4">
-      <%= image_tag @news_output['articles'][3]['urlToImage'], class: "img-fluid" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= @news_output['articles'][3]['title'] %></h5>
-        <p class="card-text"><%= @news_output['articles'][3]['discription'] %></p>
-      </div>
-    </div>
- <% end %>
+     </div>
+<% end %>
 
-   <%= link_to @news_output['articles'][4]['url'], target: "_blank" do %> 
-    <div class="card mt-4">
-      <%= image_tag @news_output['articles'][4]['urlToImage'], class: "img-fluid" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= @news_output['articles'][4]['title'] %></h5>
-        <p class="card-text"><%= @news_output['articles'][4]['discription'] %></p>
-      </div>
-    </div>
- <% end %>
 
     <%# ここまで3 %>
     </div>
@@ -200,7 +254,7 @@
 <div class="col-md-4">
  
   <ul class="list-group">
-  <li class="list-group-item text-center"><%= @output %></li>
+  <li class="list-group-item text-center"> <%= @news_output['articles'][0]['urlToImage'] %></li>
   <li class="list-group-item">Group of weather parameters (Rain, Snow, Extreme etc.)<%= @output['weather'][0]['main'] %> 
   | 
   <%= @output['weather'][0]['description'] %> </li>

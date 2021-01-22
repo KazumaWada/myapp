@@ -4,7 +4,8 @@ class PagesController < ApplicationController
     require 'net/http'
     require 'json'
 
-    @url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&appid=16a5680743eefb3860ffb3112d24ebe9'
+    #@url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&appid=16a5680743eefb3860ffb3112d24ebe9'
+    @url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&lang=ja&appid=16a5680743eefb3860ffb3112d24ebe9'
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
@@ -25,7 +26,19 @@ def about
    @news_uri = URI(@news_url)
    @response = Net::HTTP.get(@news_uri)
    @news_output = JSON.parse(@response)
-end
+
+
+
+   require 'net/http'
+   require 'json'
+
+   @url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&lang=ja&appid=16a5680743eefb3860ffb3112d24ebe9'
+   @uri = URI(@url)
+   @response = Net::HTTP.get(@uri)
+   @output = JSON.parse(@response)
+
+
 
 end
 
+end
