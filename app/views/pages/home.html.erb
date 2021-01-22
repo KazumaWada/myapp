@@ -76,7 +76,7 @@
       <%= select_tag :tag_id,
                      options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                      {
-                       prompt: 'タグ',
+                       prompt: 'カテゴリー',
                        onchange: 'submit(this.form);',
                        class: 'form-control'
                      }
@@ -122,31 +122,72 @@
     </div>
     <div id="news" class="tab-pane">
     <%# ここから3 %>
-    <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
-      <div class="card-body">
-        <h5 class="card-title">ニュース</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
+<%# ############################################################################## %>
+    <%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
 
     <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
+
+      <% if @news_output['articles'][0]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
+      <%= image_tag @news_output['articles'][0]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      
+
       <div class="card-body">
-        <h5 class="card-title">ニュース2</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title"><%= @news_output['articles'][0]['title'] %></h5>
+        <p class="card-text"><%= @news_output['articles'][0]['discription'] %></p>
+      </div>
+
+     </div>
+<% end %>
+   
+ <%# ############################################################################## %>
+
+  <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
+    <div class="card mt-4">
+      <%= image_tag @news_output['articles'][1]['urlToImage'], class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @news_output['articles'][1]['title'] %></h5>
+        <p class="card-text"><%= @news_output['articles'][1]['discription'] %></p>
       </div>
     </div>
+ <% end %>
+
+   <%= link_to @news_output['articles'][2]['url'], target: "_blank" do %> 
+    <div class="card mt-4">
+      <%= image_tag @news_output['articles'][2]['urlToImage'], class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @news_output['articles'][2]['title'] %></h5>
+        <p class="card-text"><%= @news_output['articles'][2]['discription'] %></p>
+      </div>
+    </div>
+ <% end %>
+
+   <%= link_to @news_output['articles'][3]['url'], target: "_blank" do %> 
+    <div class="card mt-4">
+      <%= image_tag @news_output['articles'][3]['urlToImage'], class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @news_output['articles'][3]['title'] %></h5>
+        <p class="card-text"><%= @news_output['articles'][3]['discription'] %></p>
+      </div>
+    </div>
+ <% end %>
+
+   <%= link_to @news_output['articles'][4]['url'], target: "_blank" do %> 
+    <div class="card mt-4">
+      <%= image_tag @news_output['articles'][4]['urlToImage'], class: "img-fluid" %>
+      <div class="card-body">
+        <h5 class="card-title"><%= @news_output['articles'][4]['title'] %></h5>
+        <p class="card-text"><%= @news_output['articles'][4]['discription'] %></p>
+      </div>
+    </div>
+ <% end %>
+
     <%# ここまで3 %>
     </div>
   </div>
 </main>
-
-
-
- 
-   
-
   <%# </div>col mt-4 %>
 
 <%######################投稿カード#################### %>
