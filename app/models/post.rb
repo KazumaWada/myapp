@@ -23,6 +23,16 @@ class Post < ApplicationRecord
   #  validates :image, presence: true
    #/post/newで投稿を作ると、user.rbのこれ↓が機能しなかったから。
   default_scope -> { order(created_at: :desc) }
+
+  def self.search(search)
+    if search
+      # Post.where(['content LIKE ?', "%#{search}%"])
+      Post.where(["content LIKE ? or title Like ?", "%#{search}%", "%#{search}%"])
+    else
+      Post.all.order(created_at: :desc) 
+    end
+  end
+
   #画像サイズの制限
 #   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
 #     message: "must be a valid image format" },

@@ -14,7 +14,7 @@ class FavoritesController < ApplicationController
     end
 
     def destroy
-      Favorite.find_by(params[:post_id]).destroy#paramsだから、method: deleteから飛んで、ここに格納される。
+      Favorite.find_by(params[:post_id]).destroy#paramsだから、method:deleteから飛んで、ここに格納される。
       flash[:success] = "「役に立った」をはずしました。"
       redirect_to request.referrer || root_url
     end

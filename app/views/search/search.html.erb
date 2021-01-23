@@ -1,4 +1,3 @@
-<% if @posts.any? %>
 
  <% @posts.each do |p| %>
  <%= link_to post_path(p), class: 'text-body' do %> 
@@ -25,13 +24,4 @@
     </div>
      
     <% end %><%# each %>
-     <% end %> <%# ifpostsany? %>
  
-
-
-<%# post/showが、@post.user.name これで表示できたから、これもavatarいけると思う。 %>
-
-  <%# アバターは、@postループの外でやればいい。
-  もしくは、@postから、avatarまでたどり着いて、ループの中に書くか。
-  以前までは、belongs_toがなぜかコメントアウトされていたから、今回はうまくいくと思うよ。 %>
-
