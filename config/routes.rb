@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/search'
   # devise_for :users
   get 'sessions/new'
   root 'pages#home'
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   delete '/favorites', to: 'favorites#destroy'
   # get 'favorites/index'
 
+
+  get '/search' => 'search#search'
 
 
 

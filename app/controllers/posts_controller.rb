@@ -5,7 +5,9 @@ class PostsController < ApplicationController
 
     # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
     # impressionist :actions=> [:show]
-
+   def search
+      @posts = Post.search(params[:search])
+    end
 
    #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
    def index
@@ -58,28 +60,7 @@ class PostsController < ApplicationController
         end
       end
 
-
-
-
-  # ユーザーを見つけるだけ。
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
-
-  # ユーザーを更新は、updateを使って送信されたparamsハッシュに基いて行う。createと似ている。
-  # updateは、createと違い、すでに情報を持っているから、それを探す処理。
-  # def update
-  #   @user = User.find(params[:id])
-  #   if @user.update(user_params)
-      
-  #     flash[:success]="Updateしました。"
-  #     redirect_to @user
-  #   else
-  #     render 'edit'
-  #   end
-  # end
-
-  
+  # ユーザーを見つけるだけ。あとはrailsが処理してくれる。
   def edit
     @post = Post.find(params[:id])
   end
@@ -93,16 +74,6 @@ class PostsController < ApplicationController
       render 'edit'
      end
   end
-
-
-
-
-
-
-
-
-
-
   
     def destroy
       @post.destroy
@@ -114,8 +85,15 @@ class PostsController < ApplicationController
       redirect_to request.referrer || root_url
     end  
 
-    # そのうち作る。def edit
-    # end
+
+   
+
+    
+
+
+
+
+
 
     private
 
