@@ -26,8 +26,8 @@
 <div class="btn-group" role="group" aria-label="Basic outlined example"> %>
 <div class="text-center">
  <%#天気ここから %>
- <%= @output['sys']['country'] %>, <%= @output['name'] %>
-
+ <h4>現在の<%= @output['name'] %>天気</h4>
+ <h3>
   <% if @output['weather'][0]['icon'] == "01d" %>
   <%= image_tag '01d.png' %>
   <% elsif @output['weather'][0]['icon'] == "01n" %>
@@ -65,7 +65,12 @@
   <% elsif @output['weather'][0]['icon'] == "50n" %>
   <%= image_tag '50n.png' %>
   <% end %>
+  </h3>
+  <%# shift option 8 %>
+  <h3><%= @output['main']['temp'] %>°C</h3>
   
+  <br>
+  <%# @output['timezone'] %> 
   <%= @output['weather'][0]['main'] %> |<%= @output['weather'][0]['description'] %>
    <%#天気ここまで %>
 
@@ -189,7 +194,7 @@
       
 
       <div class="card-body">
-      <small>3 days ago</small>
+      <small><%= @news_output['articles'][0]['publishedAt'] %></small>
         <h5 class="card-title"><%= @news_output['articles'][0]['title'] %></h5>
         <p class="card-text"><%= @news_output['articles'][0]['discription'] %></p>
       </div>

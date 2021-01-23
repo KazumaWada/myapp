@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     before_action :correct_user,   only: [:destroy, :edit, :update]
 
     # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
-    # impressionist :actions=> [:show]
+    impressionist :actions=> [:show]
    def search
       @posts = Post.search(params[:search])
     end
