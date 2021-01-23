@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     require 'json'
 
     #@url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&appid=16a5680743eefb3860ffb3112d24ebe9'
-    @url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&lang=ja&appid=16a5680743eefb3860ffb3112d24ebe9'
+    @url = 'http://api.openweathermap.org/data/2.5/weather?q=berlin,de&units=metric&lang=ja&appid=16a5680743eefb3860ffb3112d24ebe9'
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
@@ -38,6 +38,14 @@ def about
    @response = Net::HTTP.get(@uri)
    @output = JSON.parse(@response)
 
+
+
+
+
+   require 'tzinfo'
+
+   timezone = TZInfo::Timezone.get('Europe/Berlin')
+   @local_time = timezone.utc_to_local(utc_time)
 
 
 end
