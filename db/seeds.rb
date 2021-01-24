@@ -9,6 +9,7 @@
 
 User.create!(name:  "main-user",
     email: "main@gmail.com",
+    avatar: File.open(Rails.root.join('app', 'assets', 'images', 'the-main.jpg')),
     year: "1年",
     bio: "hello!",
     password:              "password",
@@ -20,6 +21,7 @@ User.create!(name:  "main-user",
 #簡単ログインのユーザー
 User.create!(name: "簡単ログインしたユーザー",
   email: "smooth_login@example.com",
+  avatar: File.open(Rails.root.join('app', 'assets', 'images', 'the-main.jpg')),
   year: "3年",
   bio: "hello!私はゲストユーザーです。",
   password:              "password",

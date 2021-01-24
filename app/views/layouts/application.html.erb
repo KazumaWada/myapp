@@ -10,16 +10,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   
   </head>
-  <body>
-  <%# ここに、homeだったら、表示しないっていうif文を書きたい。 %>
-  <%# unless request.path.include?("/") %>
-  
-  <%# end %>
+  <body> 
+  <div class="container">
   <% unless action_name == "home" %>
   <%= render 'layouts/header' %>
   <% end %>
 
-  <%# <div class="container"> %>
+ 
   <%# デバック %>
     <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -27,7 +24,7 @@
     <%= yield %>
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
-    <%# </div> %>
+    </div>
   </body>
 </html>
 <%# ここをコメントアウトすると、スタイルが崩れる。cssは時間かかるけど、bootstrap.scssでcompileする。 %>

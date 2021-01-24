@@ -2,10 +2,14 @@
 
 
 
+<div class="container">
+<div class="row">
+   <div class="col-md-6">
 
 
-
-
+<div><%# col-md-6 %>
+   <div><%# row %>
+   <div><%# container %>
 
 
 

@@ -31,10 +31,7 @@ module Myapp
 
 
 
-require 'tzinfo'
 
-timezone = TZInfo::Timezone.get('Europe/Berlin')
-local_time = timezone.utc_to_local(utc_time)
 
 
 
