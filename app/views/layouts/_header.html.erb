@@ -5,7 +5,7 @@
   
 <div class="dropdown">
   <button class="btn btn-transparent" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-    <i class="fas fa-bars text-warning"></i>
+    <i class="fas fa-bars text-warning fa-3x"></i>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <%= link_to 'トップページへ', root_path, class: "dropdown-item" %>
@@ -16,6 +16,7 @@
 </div>
 
 
+
  <ul class="nav justify-content-end">
   <%# <li class="nav-item">
   <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
@@ -23,6 +24,12 @@
  </a>
  </li> %>
 <% if logged_in? %>
+
+<%# <div class="d-flex align-items-center justify-content-center p-0">
+<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
+<%# link_to 'ベルリンなうとは？', about_path, class: "btn btn-lg btn-warning center-block text-white" %>
+<%# </div>
+</div> %>
 
 <%# 検索ここから %>
 <%= form_tag(search_path,:method => 'get') do %>
@@ -35,7 +42,8 @@
 
 
  <li class="nav-item ml-1">
- <button type="button" class="btn btn-light p-0">
+ <%# <button type="button" class="btn btn-light p-0"> %>
+ <button type="button" class="btn btn-light">
  <%= link_to current_user, class: "nav-link active text-black" do %>
  <i class="fas fa-user"></i>
  <% end %>
@@ -43,7 +51,8 @@
  </li>
 
 <li class="nav-item ml-1">
- <button type="button" class="btn btn-light p-0">
+ <%# <button type="button" class="btn btn-light p-0"> %>
+ <button type="button" class="btn btn-light">
  <%= link_to logout_path, class: "nav-link active text-black", method: :delete do %>
  <i class="fas fa-sign-out-alt"></i>
  <% end %>
@@ -51,7 +60,8 @@
  </li>
 
 
-<li class="nav-item ml-1"> 
+<%# <li class="nav-item ml-1">  %>
+<li class="nav-item"> 
   <button type="button" class="btn btn-warning p-0"><%= link_to 'Post', new_post_path, class: "nav-link active text-white" %></button>
   </li>
 
@@ -59,7 +69,11 @@
 
  <% else %>
 
- <p>検索</p>
+ <%# <div class="d-flex align-items-center justify-content-center">
+<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
+<%# link_to 'ベルリンなうとは？', about_path, class: "btn btn-lg btn-warning center-block text-white" %>
+<%# </div>
+</div> %>
 
  <li class="nav-item">
  <%# link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-primary center-block" %>

@@ -9,10 +9,9 @@
         <h5 class="card-title"><%= p.title %></h5>
         <p class="card-text">
 
-        #タグ
-        <span class="badge badge-warning">
+        <span class="badge">
         <% p.tags.each do |tag| %>
-    　　<%= tag.name %>
+       <i class="fas fa-tag"><%= tag.name %></i>
 　　　　　<% end %>      
         </span>
 
