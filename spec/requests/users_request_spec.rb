@@ -15,15 +15,6 @@ RSpec.describe "User http prorerly", type: :request do
 
   describe "Get users#show" do
 
-    #ログイン済みユーザー
-#     context "as a logged_in user" do
-#         it "returns http 200 success" do
-#         sign_in_as user
-#         get user_path(user)
-#         expect(response).to have_http_status "200"
-#     end
-#    end
-
    #ログインしていないユーザー
    context "as a stranger try to edit" do
     it "is redirects to login_url" do
@@ -33,8 +24,6 @@ RSpec.describe "User http prorerly", type: :request do
    end
 
 end
-
-
 
  describe "GET #new" do
   it "return http success" do
@@ -46,23 +35,15 @@ end
 
  describe "GET #show" do
 
-  context "as logged_in user" do
-    it "response successfully" do
-      sign_in_as(user)
-      get user_path(user)
-      expect(response).to have_http_status "200"
-    end
-  end
+  # context "as logged_in user" do
+  #   it "response successfully" do
+  #     sign_in_as(user)
+  #     get user_path(user)
+  #     expect(response).to have_http_status "200"
+  #   end
+  # end
   
  end#  get show
-
-
-
-
-
-
-
-
 
 
 
