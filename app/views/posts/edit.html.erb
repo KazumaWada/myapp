@@ -5,7 +5,18 @@
   <%= f.text_field :title, class: 'form-control form-control-lg mt-4', placeholder: "title" %>
 
   <%# <%= f.label :tag, class: 'mb-3  form-label' %> 
-  <%= f.select :tag, ["移住", "ドイツ語", "生活", "食べ物", "街並み"], class: "form-control mt-4" %>
+    <div class="check_box">
+    <span>関連するキーワード</span>
+    <%# tag_idにsがつく。 %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+     <div>
+       <%= tag.label do %>
+         <%= tag.check_box %>
+         <%= tag.text %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>
 
   <div class="field">
     <%= f.text_area :content, placeholder: "あなたのベルリンでの経験をシェアしよう。", class: "form-control mt-4", id: "exampleFormControlTextarea1" %>

@@ -4,6 +4,10 @@
 <h1><%= @post.title %></h1>
 </div>
 <i class="fas fa-eye"><%= @post.impressionist_count %></i>
+<% @post.tags.each do |tag| %>
+    <%= tag.name %>
+<% end %>
+<br>
 <%# ###########いいね###################### %>
 <%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
 <%# if !条件式 は条件式が偽だった場合に処理 %>
@@ -41,9 +45,7 @@
 <p><%= @post.content %></p>
 <br>
 
-<% @post.tags.each do |tag| %>
-    <%= tag.name %>
-<% end %>
+<%= render_with_hashtags(@post.content) %>
 <br>
 
 <div class="mt-5">

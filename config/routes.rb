@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#search'
 
+  #tag
+  get 'posts/hashtag/:name', to:'posts#hashtags'
+
 
 
 # ゲストログイン

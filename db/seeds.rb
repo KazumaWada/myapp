@@ -33,14 +33,14 @@ User.create!(name: "簡単ログインしたユーザー",
 
 
 #そもそもtagない。schembaに。Postテーブルに。
-  Tag.create([
-    { name: '移住' },
-    { name: 'ワーキングホリデー' },
-    { name: '食べ物'},
-    { name: '転職'},
-    { name: '街歩き'},
-    { name: '生活'}
-    ])
+  # Tag.create([
+  #   { name: '移住' },
+  #   { name: 'ワーキングホリデー' },
+  #   { name: '食べ物'},
+  #   { name: '転職'},
+  #   { name: '街歩き'},
+  #   { name: '生活'}
+  #   ])
 
 # postTagは、そもそもデータベースに入ってない。
 # [6] pry(main)> PostTag.all
@@ -65,17 +65,13 @@ User.create!(name: "簡単ログインしたユーザー",
 User.all.each do |user|
   user.posts.create!(
     title: 'jest jako przykładow',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id justo tempus, congue erat ac, maximus lectus. Praesent pharetra rhoncus laoreet. Mauris ultricies ullamcorper arcu eu hendrerit. Nam a sem sed turpis tincidunt mattis. Vivamus maximus metus sit amet vestibulum pharetra. Vestibulum in lacinia elit, in tempor ipsum. Vestibulum ornare maximus leo. Quisque a nulla ac neque fermentum ultricies a non diam. Aliquam nec iaculis risus. Pellentesque gravida sollicitudin ipsum, at tristique velit.
-
-    Sed tincidunt nulla eros, nec sollicitudin sapien vehicula cursus. Quisque volutpat quam a erat finibus, vel rhoncus lacus tempor. Donec vel ultricies arcu. Phasellus vel sapien ut eros faucibus sagittis in ut quam. Nulla facilisi. Phasellus euismod, metus id blandit semper, erat tellus facilisis nibh, dictum cursus nisi arcu vel lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris nec congue nunc, et gravida neque. Fusce vel tortor vitae dolor lacinia sollicitudin vel et nisi. Nunc rutrum magna eu odio bibendum imperdiet. Sed sed lacus pulvinar, ullamcorper eros sit amet, euismod ipsum. Vestibulum pretium ante orci. Etiam eget augue ut odio semper condimentum.
+    # tags: Tag.first,
+    tag: "#移住",
+    content: '#タグテスト Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id justo tempus, congue erat ac, maximus lectus. Praesent pharetra rhoncus laoreet. Mauris ultricies ullamcorper arcu eu hendrerit. Nam a sem sed turpis tincidunt mattis. Vivamus maximus metus sit amet vestibulum pharetra. Vestibulum in lacinia elit, in tempor ipsum. Vestibulum ornare maximus leo. Quisque a nulla ac neque fermentum ultricies a non diam. Aliquam nec iaculis risus. Pellentesque gravida sollicitudin ipsum, at tristique velit.
     
-    Sed laoreet tincidunt ultrices. Nam ut leo sollicitudin, ultricies ipsum viverra, lacinia justo. Nulla condimentum egestas consequat. Integer aliquam, nisi non eleifend ullamcorper, eros sem pulvinar felis, nec finibus metus turpis dignissim mauris. Praesent efficitur imperdiet bibendum. Maecenas ut tellus eget nibh faucibus viverra sit amet at lorem. Proin volutpat augue sed iaculis interdum. Phasellus porttitor scelerisque sapien, ut aliquet mauris volutpat id. Sed blandit lacus ex, ut auctor tellus aliquet id. Pellentesque nec condimentum quam. Cras imperdiet ligula dolor, laoreet mollis velit rhoncus ac. Sed quis nisi gravida massa elementum semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    
-    Integer eleifend quam ultricies, laoreet ligula eget, pretium nisi. Fusce dapibus, tellus id luctus pharetra, est nulla blandit elit, ut euismod nunc urna vel erat. Etiam in mattis sem, a rutrum orci. Morbi eu mauris in turpis tempus tincidunt. Nulla quis consequat sapien. Praesent eu massa ipsum. Fusce tincidunt, lectus at faucibus accumsan, massa turpis cursus velit, a mattis enim est tincidunt nunc. Aliquam pretium feugiat tellus sed varius. Vivamus diam orci, pulvinar vitae erat nec, efficitur hendrerit erat. Morbi a magna tortor.
-    
-    Curabitur in condimentum nisl, et tincidunt massa. Fusce vel tempor dolor, eu fermentum nulla. Quisque et orci consequat lectus hendrerit faucibus id a nulla. Sed dignissim diam ut odio hendrerit, sed fringilla massa rutrum. Aliquam sollicitudin id massa sit amet vehicula. Quisque interdum tempus tristique. Aliquam erat volutpat. Sed dignissim diam id mi tristique, ac vulputate eros malesuada. Duis efficitur sem sed sagittis convallis.',
-    covid: '前',
-    image: File.open(Rails.root.join('app', 'assets', 'images', 'post_img1.jpeg'))
+    Sed tincidunt nulla eros, nec sollic eu fermentum nulla. Quisque et orci consequat lectus hendrerit faucibus id a nulla. Sed dignissim diam ut odio hendrerit, sed fringilla massa rutrum. Aliquam sollicitudin id massa sit amet vehicula. Quisque interdum tempus tristique. Aliquam erat volutpat. Sed dignissim diam id mi tristique, ac vulputate eros malesuada. Duis efficitur sem sed sagittis convallis.',
+    covid: 'コロナ前',
+    image: File.open(Rails.root.join('app', 'assets', 'images', 'post_sample.jpg'))
   )
 end
 end
