@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   belongs_to :user
   has_many :post_tags, dependent: :destroy
-  has_many :tags, through: :post_tags
+  has_and_belongs_to_many :tags
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: 'user'
   # view数 
@@ -32,6 +32,32 @@ class Post < ApplicationRecord
       Post.all.order(created_at: :desc) 
     end
   end
+
+  # callback
+  after_create do
+    post = Post.find_by(id: self.id)
+    #post.content内に#があたら、それに続く文字列を取得する。(/#\w+/)は日本語に対応できているか？
+     hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+     hashtags.uniq.map do |hashtag|
+      #すでにあったらそれ。なかったら作る。         #はDBに格納しない。
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+      # <<配列に要素を追加する。
+      post.tags << tag
+    end
+  end
+
+  before_update do
+    post = Post.find_by(id: self.id)
+    #update時に一旦既存のhashtagを消す。そしてまた追加する。
+    post.tags.clear
+    hashtags = self.content.scan(/#\w+/)
+    #hashtags = self.body.scan(/#\w+/)
+    #map: hashtags配列に入っている要素を順に実行する。
+    hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+      post.tags << tag
+  end
+end
 
   #画像サイズの制限
 #   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],

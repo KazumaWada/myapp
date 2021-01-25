@@ -5,14 +5,17 @@
 
    <div class="card mt-2">
       <%= image_tag p.image.url, class: 'img-fluid' %>
+       <div class="card-body">
+        <p class="card-text">
+         <%= render_with_hashtags(p.content) %>
+        </p>
       <% end %><%# post_path_link %>
-      <div class="card-body">
+     
     　<h5 class="card-title">
       <%# link_to user_path(@user) do %>
       <%= image_tag p.user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
       <%# end %>
       <%= p.title %>
-        <%= render_with_hashtags(p.content) %>
       </h5>
         <p class="card-text">
         <% p.tags.each do |tag| %>
@@ -34,12 +37,3 @@
   
 
      <% end %> <%# ifpostsany? %>
- 
-
-
-<%# post/showが、@post.user.name これで表示できたから、これもavatarいけると思う。 %>
-
-  <%# アバターは、@postループの外でやればいい。
-  もしくは、@postから、avatarまでたどり着いて、ループの中に書くか。
-  以前までは、belongs_toがなぜかコメントアウトされていたから、今回はうまくいくと思うよ。 %>
-
