@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_url
     else
+      flash[:danger]="ログイン情報が正しくありません。"
       render 'new'
     end
   #   user = User.find_by(email: params[:session][:email].downcase)

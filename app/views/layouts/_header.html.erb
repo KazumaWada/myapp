@@ -1,9 +1,9 @@
 <header>
-<div class="nav-wrapper">
-    <nav class="navbar navbar-light bg-transparent">
-  <div class="container-fluid bg-transparent panel-transparent transparent">
-  
-<div class="dropdown">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container">
+
+ <div class="dropdown">
   <button class="btn btn-transparent" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-bars text-warning fa-3x"></i>
   </button>
@@ -15,67 +15,46 @@
   </div>
 </div>
 
+  
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
+       <!-- この下の行に mr-auto クラスを付与するだけ -->
+      <ul class="navbar-nav mr-auto">　
 
- <ul class="nav justify-content-end">
-  <%# <li class="nav-item">
-  <a href="https://kaz34.github.io/about" target="_blank" class="nav-link active text-white">
-  これを作った人
- </a>
- </li> %>
-<% if logged_in? %>
-
-<%# <div class="d-flex align-items-center justify-content-center p-0">
-<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
-<%# link_to 'ベルリンなうとは？', about_path, class: "btn btn-lg btn-warning center-block text-white" %>
-<%# </div>
-</div> %>
-
-<%# 検索ここから %>
-<%= form_tag(search_path,:method => 'get') do %>
+  <a class="navbar-brand " href="/">ベルリンなう</a>
+      </ul> 
+<%# ########################################################## %>
+      <ul class="navbar-nav">
+      <% if logged_in? %>
+        <li class="nav-item">
+        <%= form_tag(search_path,:method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
-
-
-<%# 検索ここまで %>
-
-
- <li class="nav-item ml-1">
- <%# <button type="button" class="btn btn-light p-0"> %>
- <button type="button" class="btn btn-light">
+        </li>
+          <li class="nav-item">
+        <button type="button" class="btn btn-light">
  <%= link_to current_user, class: "nav-link active text-black" do %>
  <i class="fas fa-user"></i>
  <% end %>
  </button>
- </li>
-
-<li class="nav-item ml-1">
- <%# <button type="button" class="btn btn-light p-0"> %>
- <button type="button" class="btn btn-light">
- <%= link_to logout_path, class: "nav-link active text-black", method: :delete do %>
+        </li>
+            <li class="nav-item">
+        <button type="button" class="btn btn-light">
+ <%= link_to logout_path, class: "nav-link active text-black", title: "logout", method: :delete do %>
  <i class="fas fa-sign-out-alt"></i>
  <% end %>
   </button>
- </li>
+        </li>
+              <li class="nav-item">
+     <button type="button" class="btn btn-warning p-0"><%= link_to 'Post', new_post_path, class: "nav-link active text-white" %></button>
 
-
-<%# <li class="nav-item ml-1">  %>
-<li class="nav-item"> 
-  <button type="button" class="btn btn-warning p-0"><%= link_to 'Post', new_post_path, class: "nav-link active text-white" %></button>
-  </li>
-
- 
-
- <% else %>
-
- <%# <div class="d-flex align-items-center justify-content-center">
-<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
-<%# link_to 'ベルリンなうとは？', about_path, class: "btn btn-lg btn-warning center-block text-white" %>
-<%# </div>
-</div> %>
-
- <li class="nav-item">
+        </li>
+        <% else %>
+         <li class="nav-item">
  <%# link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-primary center-block" %>
  <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white" %>
  </li>
@@ -88,13 +67,22 @@
   <li class="nav-item">
   <%= link_to 'Signup', signup_path, class: "nav-link active text-white" %>
  </li>
+        <% end %>
 
-  <% end %>
+        <%# <li class="nav-item">
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li> %>
+      </ul>
 
-
-
-
-  </div><%#container-fluid %>
+    </div>
+  </div>
 </nav>
-</div><%# nav-wrapper %>
+
+
 </header>
+
+
+<%# ##################################################### %>
