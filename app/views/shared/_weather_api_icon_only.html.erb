@@ -1,0 +1,45 @@
+<%#天気ここから %>
+<div class="text-center m-0 p-0">
+ <p>
+  <% if @output['weather'][0]['icon'] == "01d" %>
+  <%= image_tag '01d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "01n" %>
+  <%# <span　class="mt-2">夜</span> %><%= image_tag '01n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "02d" %>
+  <%= image_tag '02d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "02n" %>
+  <%= image_tag '02n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "03d" %>
+  <%= image_tag '03d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "03n" %>
+  <%= image_tag '03n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "04d" %>
+  <%= image_tag '04d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "04n" %>
+  <%= image_tag '04n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "09d" %>
+  <%= image_tag '09d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "09n" %>
+  <%= image_tag '09n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "10d" %>
+  <%= image_tag '10d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "10n" %>
+  <%= image_tag '10n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "11d" %>
+  <%= image_tag '11d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "11n" %>
+  <%= image_tag '11n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "13d" %>
+  <%= image_tag '13d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "13n" %>
+  <%= image_tag '13n.png' %>
+  <% elsif @output['weather'][0]['icon'] == "50d" %>
+  <%= image_tag '50d.png' %>
+  <% elsif @output['weather'][0]['icon'] == "50n" %>
+  <%= image_tag '50n.png' %>
+  <% end %>
+  </div>
+  
+  <%# @output['timezone'] %> 
+  
+  <%#天気ここまで %>

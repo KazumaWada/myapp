@@ -1,36 +1,13 @@
 <%= render 'layouts/header' %>
-<%# <div class="d-flex align-items-center justify-content-center">
-<h2 class="font-weight-bold">ベルリンなうへようこそ！</h2><br>
-</div> %>
-<%# main-title %>
-
-<%# <div class="d-flex align-items-center justify-content-center">
-<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
-<%# link_to 'ベルリンなうとは？', about_path, class: "btn btn-lg btn-warning center-block text-white" %>
-<%# </div>
-</div> %>
-
-<%# <div class="d-flex align-items-center justify-content-center p-4">
-<div class="btn-group" role="group" aria-label="Basic outlined example"> %>
-
-
-
-  </div>
-<%# </div><div class="card bg-dark text-white header-wrapper bg-transparent"> %>
-</div>
-<%# 33333333333333333333333333333333333header3333333333333333333333333333333333333333 %>
-
-
 
 <div class="container mt-4">
  <div class="row">
 
-<%############################左############################# %>
-  <div class="col-md-8">
+<div class="col-md-8">
  
  <main class="p-3">
-  <!-- 3個分のタブ -->
-  <ul class="nav nav-tabs justify-content-center">
+  <!-- タブ -->
+  <ul class="nav nav-justified">
     <li class="nav-item bg-dark">
       <a href="#new" class="nav-link text-white" data-toggle="tab">新着</a>
     </li>
@@ -41,12 +18,6 @@
       <a href="#news" class="nav-link text-white" data-toggle="tab">何か</a>
     </li>
   </ul>
-
-
-
-
-
-
 
 <!-- 投稿部分 -->
   <div class="tab-content">
@@ -64,19 +35,10 @@
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
-
-    <div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
-      <div class="card-body">
-        <h5 class="card-title">人気投稿2</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
     <%# ここまで2 %>
     </div>
     <div id="news" class="tab-pane">
     <%# ここから3 %>
-<%# ############################################################################## %>
     <%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
 
     <div class="card mt-4">
@@ -97,7 +59,6 @@
      </div>
 <% end %>
    
- <%# ############################################################################## %>
 
      <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
 
@@ -136,145 +97,38 @@
 
      </div>
 <% end %>
-
-
     <%# ここまで3 %>
     </div>
   </div>
 </main>
-  <%# </div>col mt-4 %>
-
-<%######################投稿カード#################### %>
 </div><%# col-md-8 %>
 
-    <%############################右############################# %>
-     <%######################サイドバー#################### %>
   
-
 <div class="col-md-4 mt-4">
- 
   
  <ul class="list-group">
- <li class="list-group-item"><%= form_tag posts_path, method: :get, class: 'nav justify-content-cente' do %>
-      <%= select_tag :tag_id,
-                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグ一覧',
-                       onchange: 'submit(this.form);',
-                       class: 'form-control'
-                     }
-      %>
-    <% end %></li>
+ <li class="list-group-item">
+  <%= render partial: 'shared/select_tag' %>
+  </li>
  <li class="list-group-item"><h4><h4>現在の<%= @output['name'] %>天気</h4></h4></li>
  <li class="list-group-item">
  <%#天気ここから %>
- <h3>
-  <% if @output['weather'][0]['icon'] == "01d" %>
-  <%= image_tag '01d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "01n" %>
-  <%# <span　class="mt-2">夜</span> %><%= image_tag '01n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "02d" %>
-  <%= image_tag '02d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "02n" %>
-  <%= image_tag '02n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "03d" %>
-  <%= image_tag '03d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "03n" %>
-  <%= image_tag '03n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "04d" %>
-  <%= image_tag '04d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "04n" %>
-  <%= image_tag '04n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "09d" %>
-  <%= image_tag '09d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "09n" %>
-  <%= image_tag '09n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "10d" %>
-  <%= image_tag '10d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "10n" %>
-  <%= image_tag '10n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "11d" %>
-  <%= image_tag '11d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "11n" %>
-  <%= image_tag '11n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "13d" %>
-  <%= image_tag '13d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "13n" %>
-  <%= image_tag '13n.png' %>
-  <% elsif @output['weather'][0]['icon'] == "50d" %>
-  <%= image_tag '50d.png' %>
-  <% elsif @output['weather'][0]['icon'] == "50n" %>
-  <%= image_tag '50n.png' %>
-  <% end %><br><%= @output['weather'][0]['main'] %>, <%= @output['weather'][0]['description'] %>
-  </h3>
-  <%# shift option 8 %>
-  <h3><%= @output['main']['temp'] %>°C</h3>
-  
-  <br>
-  <%# @output['timezone'] %> 
-  
+<%= render partial: 'shared/weather_api', locals: { output: @output } %>
   <%#天気ここまで %>
  </li>
  <li class="list-group-item"><h4>ニュース</h4><span>(もっと見る)</span></li>
   <li class="list-group-item">
-     <%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
-    <%# <div class="card"> %>
-      <% if @news_output['articles'][0]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][0]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      <%# <div class="card-body"> %>
-      <small><%= @news_output['articles'][0]['publishedAt'] %></small>
-        <p class="card-title"><%= @news_output['articles'][0]['title'] %></p>
-      <%# </div>
-     </div> %>
-   <% end %>
+   <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
   </li>
-
-    <li class="list-group-item">
-     <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
-    <%# <div class="card"> %>
-      <% if @news_output['articles'][1]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][1]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      <%# <div class="card-body"> %>
-      <small><%= @news_output['articles'][1]['publishedAt'] %></small>
-        <p class="card-title"><%= @news_output['articles'][1]['title'] %></p>
-      <%# </div>
-     </div> %>
-   <% end %>
-  </li>
-    <li class="list-group-item">
-     <%= link_to @news_output['articles'][2]['url'], target: "_blank" do %> 
-    <%# <div class="card"> %>
-      <% if @news_output['articles'][2]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][2]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      <%# <div class="card-body"> %>
-      <small><%= @news_output['articles'][2]['publishedAt'] %></small>
-        <p class="card-title"><%= @news_output['articles'][2]['title'] %></p>
-      <%# </div>
-     </div> %>
-   <% end %>
-  </li>
-  
-  
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+  <li class="list-group-item">Po</li>
+  <li class="list-group-item">Ves</li>
 </ul>
-</div> 
 
-  <%######################サイドバー#################### %>
+</div> 
 
  </div><%# row %>
 </div><%# container %>
 
-<%# 33333333333333333333333333333333333投稿カード&サイドバー3333333333333333333333333333333333333333 %>
 
 
 

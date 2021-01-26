@@ -7,47 +7,43 @@
 <%# 中央寄せ %>
 <div class="mx-auto" style="width: 900px;">
 
-<%# ここから下プロフィール %>
+
 <div class="profile-wrapper">
 
 <section class="user_info">
 　　　
      <%#user-name %> <%#プロフィール編集 %>
-      <h1>
+      <div class="text-center">
       <%###################アバター########################### %>
      <% if @user.avatar? %>
-     <%= image_tag @user.avatar.url, class: "rounded-circle", width: "80px", height: "80px" %>
+     <%= image_tag @user.avatar.url, class: "rounded-circle ", width: "80px", height: "80px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
      <% end %>
      <%# <% end %> <%#もう一個これ必要じゃ無い？？ %>
+      </div>
     
         <%#image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
       <%###################名前########################### %>
-        <%= @user.name %>
+        <h1 class="text-center"> <%= @user.name %> </h1>
       <%###################プロフィール編集########################### %>
+      <div class="text-center">
         <button type="button" class="btn btn-warning">
         <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light edit-btn' %>
         </button>
+        </div>
       <%###################投稿ページへ########################### %>
+        <div class="text-center">
+         <%= render 'shared/stats' %>
+        </div>
+     
+     <div class="card bg-white mb-10">
+  <div class="card-body">
+    <h5 class="card-title">ベルリン歴<%= @user.year %></h5>
+    <p class="card-text"><%= @user.bio %></p>
+  </div>
+</div>
 
-      </h1>
-
-      <%###################在住歴########################### %><%# %>
-       <h5 class="mt-4">
-        ベルリン歴<%= @user.year %>
-      </h5>
-      <%###################ひとこと########################### %> 
-       <p class="mt-4">
-        <%= @user.bio %>
-      </p>
-
-      
-
-  <%###################フォローフォロワー########################### %>
-   <section class="stats">
-    <%= render 'shared/stats' %>
-   </section><%#stats %>
 
     </section><%#user_info %>
     <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
@@ -108,9 +104,6 @@
 </main>
 
 
-
-
-</div><%#中央寄せ %>
 </div><%#row %>
 </div><%#container %>
 
