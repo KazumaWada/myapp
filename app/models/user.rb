@@ -88,10 +88,13 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-
-
-
   ################################################################
+
+  #rspec用
+  def update_verified
+    self.update(verified: true)
+  end 
+
 
 
 

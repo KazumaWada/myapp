@@ -27,6 +27,9 @@ module Helpers
                                         　password: user.password } }
    end
 
+   def update_verified
+    self.update(verified: true)
+  end 
   
 
 end
