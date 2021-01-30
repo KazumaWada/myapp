@@ -28,8 +28,11 @@ gem 'mini_magick',                '4.9.5'
 gem 'bcrypt',         '3.1.13'
 gem 'bcrypt-ruby', '3.1.2' 
 gem 'bootstrap-sass', '3.4.1'
-gem 'faker',                   '2.1.2'
+# gem 'faker',  
+#avatarが格納されないから、こっちを使って見る。                 '2.1.2'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'will_paginate',           '3.1.8'
+gem 'kaminari'
 gem 'bootstrap-will_paginate', '1.0.0'
 # Use mysql as the database for Active Record
 gem 'mysql2', '~> 0.5'
@@ -112,7 +115,9 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  
+#エラーを見やすくするgem
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

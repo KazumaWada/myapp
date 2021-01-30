@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   get 'posts/hashtag/:name', to:'posts#hashtags'
 
 
-
 # ゲストログイン
 #resources :smooth_login_session, only: :create
 resources :testsessions, only: :create

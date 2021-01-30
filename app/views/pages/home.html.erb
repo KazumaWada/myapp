@@ -15,7 +15,7 @@
       <a href="#popular" class="nav-link text-white" data-toggle="tab">人気</a>
     </li>
     <li class="nav-item bg-warning">
-      <a href="#news" class="nav-link text-white" data-toggle="tab">何か</a>
+      <a href="#news" class="nav-link text-white" data-toggle="tab">アクセス数</a>
     </li>
   </ul>
 
@@ -23,7 +23,7 @@
   <div class="tab-content">
     <div id="new" class="tab-pane active">
    <%# ここから1 %>
-   <%= render partial: 'posts/index', locals: { posts: @posts, user: @user } %>
+   <%= render partial: 'posts/index', locals: { posts: @posts, user: @user, post: @post } %>
    <%# ここまで1 %>
     </div>
     <div id="popular" class="tab-pane">
@@ -35,68 +35,12 @@
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       </div>
     </div>
+    <%# render partial: 'posts/our_favorite_posts', locals: { our_favorite_posts: @our_favorite_posts } %>
     <%# ここまで2 %>
     </div>
     <div id="news" class="tab-pane">
     <%# ここから3 %>
-    <%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
 
-    <div class="card mt-4">
-
-      <% if @news_output['articles'][0]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][0]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      
-
-      <div class="card-body">
-      <small><%= @news_output['articles'][0]['publishedAt'] %></small>
-        <h5 class="card-title"><%= @news_output['articles'][0]['title'] %></h5>
-        <p class="card-text"><%= @news_output['articles'][0]['discription'] %></p>
-      </div>
-
-     </div>
-<% end %>
-   
-
-     <%= link_to @news_output['articles'][1]['url'], target: "_blank" do %> 
-
-    <div class="card mt-4">
-
-      <% if @news_output['articles'][1]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][1]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      
-
-      <div class="card-body">
-        <h5 class="card-title"><%= @news_output['articles'][1]['title'] %></h5>
-        <p class="card-text"><%= @news_output['articles'][1]['discription'] %></p>
-      </div>
-
-     </div>
-<% end %>
-
-   <%= link_to @news_output['articles'][2]['url'], target: "_blank" do %> 
-
-    <div class="card mt-4">
-
-      <% if @news_output['articles'][2]['urlToImage'].nil? %>
-      <%= image_tag "no_image.png", class: 'img-fluid'%>
-      <% else %>
-      <%= image_tag @news_output['articles'][2]['urlToImage'], class: "img-fluid" %>
-      <% end %>
-      
-
-      <div class="card-body">
-        <h5 class="card-title"><%= @news_output['articles'][2]['title'] %></h5>
-        <p class="card-text"><%= @news_output['articles'][2]['discription'] %></p>
-      </div>
-
-     </div>
-<% end %>
     <%# ここまで3 %>
     </div>
   </div>

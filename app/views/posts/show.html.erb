@@ -1,56 +1,49 @@
-<p class="mt-5">*この記事は、<%= @post.covid %>の内容です。</p>
-<%= image_tag @post.image.url, class: 'img-fluid' %>
-<div>
-<h1><%= @post.title %></h1>
+<% if current_user?(@user) %>
+<div class="text-right mr-3">
+<%= link_to '編集する',edit_post_path(@post) %>
 </div>
-<i class="fas fa-eye"><%= @post.impressionist_count %></i>
-<% @post.tags.each do |tag| %>
+ <% end %>
+ 
+<div class="card mb-3 mt-3">
+<%= image_tag @post.image.url, class: "img-fluid" %>
+  <div class="card-body">
+    <p>*この記事は、<%= @post.covid %>の内容です。</p>
+    <h3 class="card-title"><strong><%= @post.title %></strong></h3>
+    <p class="card-text">
+
+    <h3>
+   <%= link_to user_path(@user) do %>
+   <%= @post.user.name %>
+   <% end %>
+   の投稿
+   </h3> 
+   <p><%# @post.content %></p>
+  <p><%= time_ago_in_words(@post.created_at) %> ago</p>
+
+    <i class="fas fa-eye">
+    <%= @post.impressionist_count %>
+    </i>
+    <% @post.tags.each do |tag| %>
     <i class="fas fa-tag"><%= tag.name %></i>
-<% end %>
-<br>
-<%# ###########いいね###################### %>
-<%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
-<%# if !条件式 は条件式が偽だった場合に処理 %>
-<% if !@post.favorite_users.include?(current_user) %>
- <%= link_to favorites_path(post_id: @post.id), method: :post do %>
- <i class="far fa-thumbs-up"></i>
- <% end %>
- <% else %>
+    <% end %>
+
+  <% if !@post.favorite_users.include?(current_user) %>
+  <%= link_to favorites_path(post_id: @post.id), method: :post do %>
+  <i class="far fa-thumbs-up"></i>
+  <% end %>
+  <% else %>
   <%= link_to favorites_path(post_id: @post.id), method: :delete do %>
- <i class="fas fa-thumbs-up"></i>
- <% end %>
-<% end %>
-<%= @post.favorite_users.count %>
-<%# ###########いいね###################### %>
-<h3>
-<%= link_to user_path(@user) do %>
-<%= @post.user.name %>
-<% end %>
-の投稿
-</h3> 
+  <i class="fas fa-thumbs-up"></i>
+  <% end %>
+  <% end %>
+  <%= @post.favorite_users.count %>
+    
+    </p>
+    
+    <p><%= render_with_hashtags(@post.content) %></p>
 
-<p>作成日<%= @post.created_at %></p>
-<p>更新日<%= @post.updated_at %></p>
-
-
-<br>
-
-
-<span class="badge badge-warning"><%# @post.tag %></span>
-
-<br>
-
-
-<br>
-<p><%= @post.content %></p>
-<br>
-
-<%= render_with_hashtags(@post.content) %>
-<br>
-
-<div class="mt-5">
-  <%# <h4>コメントをする</h4> %>
-  <%# ajax用のid設定 %>
+ <p class="card-text">
+    <div class="mt-5">
    <div id="comments_area">
    <%# comments/_indexのviewを呼び出している。その部品内で@commentsが使われている(@comments: ログインしていない場合、コメントsを見れるだけだから。) %>
 　　<%= render partial: 'comments/index', locals: { comments: @comments } %>
@@ -59,9 +52,11 @@
    <%# comments/_formのviewを呼び出している。その部品内で@comment,@postが使われている(@comment, @post: ログインしていれば、自分が@commentコメントできるから。@postを探して来た後で。) %>
    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
    <% end %>
+　　</div>
+ </p>
+
+  </div>
 </div>
-
-
 
 
 

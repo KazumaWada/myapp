@@ -1,4 +1,4 @@
-<div class="card" style="width: 50rem;">
+<div class="card mt-4" style="width: 50rem;">
 
   <%= link_to post_path(post), class: 'text-body' do %> 
   <% if post.image? %>
@@ -15,9 +15,25 @@
     <p class="card-text">
     <h4>
     <span class="badge badge-warning">
-    <%= post.tag %></span><i class="fas fa-eye"><%= post.impressions_count %></i>
+    <%= post.tag %>
+    </span>
+    <i class="fas fa-eye"><%= post.impressions_count %></i>
     </h4>
     <%= post.covid %>
+<%# ###########いいね###################### %>
+<%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
+<%# if !条件式 は条件式が偽だった場合に処理 %>
+<% if !post.favorite_users.include?(current_user) %>
+ <%= link_to favorites_path(post_id: post.id), method: :post do %>
+ <i class="far fa-thumbs-up"></i>
+ <% end %>
+ <% else %>
+  <%= link_to favorites_path(post_id: post.id), method: :delete do %>
+ <i class="fas fa-thumbs-up"></i>
+ <% end %>
+<% end %>
+<%= post.favorite_users.count %>
+<%# ###########いいね###################### %>
     </p>
    <%# edit %>
    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>

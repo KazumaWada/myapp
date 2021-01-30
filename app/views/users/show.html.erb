@@ -20,6 +20,8 @@
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
      <% end %>
+     <%# フォローボタン %>
+     <%= render 'follow_form' if logged_in? %>
      <%# <% end %> <%#もう一個これ必要じゃ無い？？ %>
       </div>
     
@@ -27,11 +29,13 @@
       <%###################名前########################### %>
         <h1 class="text-center"> <%= @user.name %> </h1>
       <%###################プロフィール編集########################### %>
+     <% if current_user?(@user) %>
       <div class="text-center">
         <button type="button" class="btn btn-warning">
         <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light edit-btn' %>
         </button>
         </div>
+      <% end %>
       <%###################投稿ページへ########################### %>
         <div class="text-center">
          <%= render 'shared/stats' %>
@@ -41,14 +45,11 @@
   <div class="card-body">
     <h5 class="card-title">ベルリン歴<%= @user.year %></h5>
     <p class="card-text"><%= @user.bio %></p>
+    <p class="card-text">contribute:<%= @user.favorite_posts.count %> </p>
   </div>
 </div>
 
-
     </section><%#user_info %>
-    <%# もちろん管理ユーザーuser/1は自分だから表示されない。 %>
-    <%= render 'follow_form' if logged_in? %>
-
  </div><%#profile-wrapper %>
 
 
@@ -56,47 +57,32 @@
 <%# ここから下tab %>
 <main class="p-3">
   <!-- 3個分のタブ -->
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs nav-justified">
     <li class="nav-item">
       <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
     </li>
     <li class="nav-item">
-      <a href="#helped" class="nav-link" data-toggle="tab">役に立った記事</a>
+      <a href="#helped" class="nav-link" data-toggle="tab">いいねした投稿</a>
     </li>
   </ul>
 <!-- 投稿部分 -->
   <div class="tab-content">
 
     <div id="post" class="tab-pane active">
-   <%# ここから投稿 %>
-
-        <%# ↓　投稿内容リファクタリングここをコメントアウトすれば、元に戻る %>
-
-
          <% if @user.posts.any? %>
     　  <ol class="posts">
          <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
        </ol> 
    　 <%= will_paginate @posts %>
    　　 <% end %>
-
-
-
-      <%# ↑　投稿内容リファクタリングここをコメントアウトすれば、元に戻る %>
-
-   <%# ここまで投稿 %>
      </div><%##post %>
 
     <div id="helped" class="tab-pane">
-    <%# ここから役に立った %>
-<div class="card mt-4">
-      <%= image_tag 'the-main.jpg', class: "img-fluid" %>
-      <div class="card-body">
-        <h5 class="card-title">この人が役に立った記事</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-    <%# ここまで役に立った %>
+    <% if @favorite_posts.any? %>
+      <%= render partial: 'posts/likes_posts', locals: { favorite_posts: @favorite_posts, posts: @posts }%>
+      <% else %>
+      <p class="mt-5">いいねした投稿はまだありません。</p> 
+    <% end %>
     </div> <%# id=helped %>
     
   </div><%# tab-content %>
