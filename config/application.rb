@@ -31,8 +31,9 @@ module Myapp
 
 
 
-
-
+   #fakerの日本語化
+    config.i18n.available_locales = %i[ja en]
+    config.i18n.default_locale = :ja
 
 
 

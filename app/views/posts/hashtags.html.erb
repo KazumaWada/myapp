@@ -13,8 +13,11 @@
      
     　<h5 class="card-title">
       <%# link_to user_path(@user) do %>
+      <% if p.user.avatar? %>
       <%= image_tag p.user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
-      <%# end %>
+      <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
       <%= p.title %>
       </h5>
         <p class="card-text">
