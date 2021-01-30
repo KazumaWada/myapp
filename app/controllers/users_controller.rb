@@ -11,17 +11,16 @@ class UsersController < ApplicationController
     # @favorite_posts = current_user.favorite_posts
     #########userがしたいいね一覧.Rspecでエラーになるから、一時コメントアウト。############
     @users = User.paginate(page: params[:page])
-    
   end
 
   # 特定のユーザーを表示する
   def show
       #########userがしたいいね一覧.Rspecでエラーになるから、一時コメントアウト。############
-  
     #########userがしたいいね一覧.Rspecでエラーになるから、一時コメントアウト。############
     @user=User.find(params[:id])
+    @posts = Post.page(params[:page]).per(4)
     #正常に処理が行われると、@user=User.find(1)となる。
-    @posts = @user.posts.paginate(page: params[:page])
+    # @posts = @user.posts.paginate(page: params[:page])
    @favorite_posts = current_user.favorite_posts
 
     # view数(詳細ページを訪れると、カウントされる仕組み。)

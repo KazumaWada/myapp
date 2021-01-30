@@ -3,39 +3,24 @@ class PostsController < ApplicationController
     before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
     before_action :correct_user,   only: [:destroy, :edit, :update]
 
-    # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
-    impressionist :actions=> [:show]
-   def search
-      @posts = Post.search(params[:search])
-    end
-
-    #同じインスタンス変数でも、アクションごとに定義が区別されているから大丈夫。
-    def hashtags
-      tag = Tag.find_by(name: params[:name])
-      @posts = tag.posts
-    end
-
-   #posts/1ではなく、user/1/post/1とかの方が良く無い？？「投稿詳細　router」ググる。
    def index
-    # @posts = @user.posts.paginate(page: params[:page])
-    #  @hashtag = 
-    # @post = Post.find(params[:id])
-    # @hashtag = @post.tags
-     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc) 
-    # @post = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.find(params[:id])
+    #  @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc) 
+    #新しい順は、モデルで設定するか？paginate書いたから。
+    @posts = Post.page(params[:page]).per(5)
+
     # @post = Post.find(params[:id])
      #home画面に投稿を表示するため。
-     if logged_in?
-      @post = current_user.posts.build
-        #個人の投稿の塊。ランダムな人の投稿の塊ではない。
-          @contents_feed = current_user.feed.paginate(page: params[:page])
-     end
+    #  if logged_in?
+    #   @post = current_user.posts.build
+    #       @contents_feed = current_user.feed.paginate(page: params[:page])
+    #  end
      
    end
 
     def show
       # @posts = Post.all.order(created_at: :desc) 
      @post = Post.find(params[:id])
+     @posts = Post.page(params[:page]).per(4)
      # view数(詳細ページを訪れると、カウントされる仕組み。)
       impressionist(@post, nil, unique: [:session_hash])
       @comment = Comment.new
@@ -91,10 +76,18 @@ class PostsController < ApplicationController
       redirect_to request.referrer || root_url
     end  
 
-
+    #同じインスタンス変数でも、アクションごとに定義が区別されているから大丈夫。
+    def hashtags
+      tag = Tag.find_by(name: params[:name])
+      @posts = tag.posts
+    end
    
 
-    
+    # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
+    impressionist :actions=> [:show]
+   def search
+      @posts = Post.search(params[:search])
+    end
 
 
 

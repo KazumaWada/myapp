@@ -42,3 +42,52 @@
       <%# </div>
      </div> %>
    <% end %>
+
+  <li class="list-group-item">
+     <%= link_to @news_output['articles'][3]['url'], target: "_blank" do %> 
+    <%# <div class="card"> %>
+      <% if @news_output['articles'][3]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
+      <%= image_tag @news_output['articles'][3]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      <%# <div class="card-body"> %>
+      <small><%= @news_output['articles'][3]['publishedAt'] %></small>
+        <p class="card-title"><%= @news_output['articles'][3]['title'] %></p>
+      <%# </div>
+     </div> %>
+   <% end %>
+
+     <li class="list-group-item">
+     <%= link_to @news_output['articles'][4]['url'], target: "_blank" do %> 
+    <%# <div class="card"> %>
+      <% if @news_output['articles'][4]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
+      <%= image_tag @news_output['articles'][4]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      <%# <div class="card-body"> %>
+      <small><%= @news_output['articles'][4]['publishedAt'] %></small>
+        <p class="card-title"><%= @news_output['articles'][4]['title'] %></p>
+      <%# </div>
+     </div> %>
+   <% end %>
+
+     <li class="list-group-item">
+     <%= link_to @news_output['articles'][5]['url'], target: "_blank" do %> 
+    <%# <div class="card"> %>
+      <% if @news_output['articles'][5]['urlToImage'].nil? %>
+      <%= image_tag "no_image.png", class: 'img-fluid'%>
+      <% else %>
+      <%= image_tag @news_output['articles'][5]['urlToImage'], class: "img-fluid" %>
+      <% end %>
+      <%# <div class="card-body"> %>
+      <small><%= @news_output['articles'][5]['publishedAt'] %></small>
+        <p class="card-title"><%= @news_output['articles'][5]['title'] %></p>
+      <%# </div>
+     </div> %>
+   <% end %>
+
+
+
+
