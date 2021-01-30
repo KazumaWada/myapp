@@ -24,6 +24,10 @@
     <div id="new" class="tab-pane active">
    <%# ここから1 %>
    <%= render partial: 'posts/index', locals: { posts: @posts, user: @user, post: @post } %>
+   <div class="mt-4">
+   <%= paginate @posts %>
+   </div>
+   
    <%# ここまで1 %>
     </div>
     <div id="popular" class="tab-pane">
@@ -64,8 +68,6 @@
   <li class="list-group-item">
    <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
   </li>
-  <li class="list-group-item">Po</li>
-  <li class="list-group-item">Ves</li>
 </ul>
 
 </div> 

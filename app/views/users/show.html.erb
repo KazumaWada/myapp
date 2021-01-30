@@ -73,9 +73,12 @@
     　  <ol class="posts">
          <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
        </ol> 
-   　 <%= will_paginate @posts %>
+   　 <%# will_paginate @posts %>
    　　 <% end %>
-     </div><%##post %>
+    <div class="mt-4">
+     
+
+
 
     <div id="helped" class="tab-pane">
     <% if @favorite_posts.any? %>
