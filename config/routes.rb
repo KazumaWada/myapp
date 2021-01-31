@@ -22,10 +22,8 @@ Rails.application.routes.draw do
 #_follow_formのrender follow,unfollow用
   resources :relationships,       only: [:create, :destroy]
 
-  #役に立ったボタン。
-  post   '/favorites', to: 'favorites#create'
-  delete '/favorites', to: 'favorites#destroy'
-  # get 'favorites/index'
+  post 'like/:id' => 'likes#create', as: 'create_like'
+  delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
 
 
   get '/search' => 'search#search'
