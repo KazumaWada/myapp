@@ -26,7 +26,6 @@ class PostsController < ApplicationController
       @comment = Comment.new
       @comments = @post.comments
       @user = User.find_by(id: @post.user_id)
-      @favorite_posts = current_user.favorite_posts
     end
 
     def new

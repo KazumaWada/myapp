@@ -16,10 +16,11 @@ class CommentsController < ApplicationController
 
     def destroy
       @comment = Comment.find(params[:id])
-      if @comment.destroy
+      @comment.destroy
         # recder :index
         flash[:success] = "コメントを削除しました！"
-      end
+        redirect_to request.referrer || root_url
+      
     end
 
       private

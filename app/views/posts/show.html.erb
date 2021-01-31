@@ -27,18 +27,13 @@
     <i class="fas fa-tag"><%= tag.name %></i>
     <% end %>
 
-  <% if !@post.favorite_users.include?(current_user) %>
-  <%= link_to favorites_path(post_id: @post.id), method: :post do %>
-  <i class="far fa-thumbs-up"></i>
-  <% end %>
-  <% else %>
-  <%= link_to favorites_path(post_id: @post.id), method: :delete do %>
-  <i class="fas fa-thumbs-up"></i>
-  <% end %>
-  <% end %>
-  <%= @post.favorite_users.count %>
+
     
-    </p>
+         <%= render 'likes', post: @post %>
+   
+  
+    
+    </p><%# card-text %>
     
     <p><%= render_with_hashtags(@post.content) %></p>
 

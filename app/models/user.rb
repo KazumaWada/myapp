@@ -1,8 +1,7 @@
 class User < ApplicationRecord
     has_many :posts, dependent: :destroy
     has_many :comments, dependent: :destroy
-    has_many :favorites
-    has_many :favorite_posts, through: :favorites, source: 'post'
+    has_many :likes
     #アバター
     mount_uploader :avatar, AvatarUploader
    #view数
@@ -89,10 +88,11 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-
-
-  ################################################################
-
+  #####################いいねのメソッド#########################################
+  #likeテーブル内に、post_idが存在しているかどうか。
+  def liked_by?(post_id)
+    likes.where(post_id: post_id).exists?
+  end
 
 
     private

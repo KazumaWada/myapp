@@ -23,16 +23,7 @@
 <%# ###########いいね###################### %>
 <%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
 <%# if !条件式 は条件式が偽だった場合に処理 %>
-<% if !post.favorite_users.include?(current_user) %>
- <%= link_to favorites_path(post_id: post.id), method: :post do %>
- <i class="far fa-thumbs-up"></i>
- <% end %>
- <% else %>
-  <%= link_to favorites_path(post_id: post.id), method: :delete do %>
- <i class="fas fa-thumbs-up"></i>
- <% end %>
-<% end %>
-<%= post.favorite_users.count %>
+
 <%# ###########いいね###################### %>
     </p>
    <%# edit %>
