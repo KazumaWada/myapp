@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     @posts = Post.page(params[:page]).per(4)
     #正常に処理が行われると、@user=User.find(1)となる。
     # @posts = @user.posts.paginate(page: params[:page])
-   @favorite_posts = current_user.favorite_posts
+
+    @smooth_login_user = User.find_by(email: "smooth_login@example.com")
 
     # view数(詳細ページを訪れると、カウントされる仕組み。)
     # impressionist(@user, nil, unique: [:session_hash])
@@ -34,6 +35,11 @@ class UsersController < ApplicationController
 
 # 　　これなんじゃないかと思ってきたこれは個人のpost。
     # @post = current_user.posts.find_by(id: params[:id])
+  end
+
+  def smooth
+    flash[:danger] = "簡単ログインしたユーザーは編集できません。"
+    redirect_to request.referrer || root_url
   end
 
   #signup

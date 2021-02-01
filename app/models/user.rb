@@ -2,10 +2,12 @@ class User < ApplicationRecord
     has_many :posts, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :likes
+    # 自分がlikeした投稿
+    has_many :liked_posts, through: :likes, source: :post
     #アバター
     mount_uploader :avatar, AvatarUploader
    #view数
-    # is_impressionable counter_cache: true
+    is_impressionable counter_cache: true
     ############following関係######################################
     has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
