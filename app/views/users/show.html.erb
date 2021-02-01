@@ -45,7 +45,8 @@
   <div class="card-body">
     <h5 class="card-title">ベルリン歴<%= @user.year %></h5>
     <p class="card-text"><%= @user.bio %></p>
-    <p class="card-text">contribute:<%= @user.favorite_posts.count %> </p>
+    <p class="card-text">contribute: </p>
+    <p class="card-text">投稿すう </p>
   </div>
 </div>
 
@@ -81,11 +82,7 @@
 
 
     <div id="helped" class="tab-pane">
-    <% if @favorite_posts.any? %>
-      <%= render partial: 'posts/likes_posts', locals: { favorite_posts: @favorite_posts, posts: @posts }%>
-      <% else %>
-      <p class="mt-5">いいねした投稿はまだありません。</p> 
-    <% end %>
+    
     </div> <%# id=helped %>
     
   </div><%# tab-content %>

@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_and_belongs_to_many :tags
   has_many :likes
+  #likeした人を取得
+  has_many :liked_users, through: :likes, source: :user
   # view数 
   is_impressionable counter_cache: true
  
@@ -21,7 +23,7 @@ class Post < ApplicationRecord
    validates :covid, presence: true
   #  validates :image, presence: true
    #/post/newで投稿を作ると、user.rbのこれ↓が機能しなかったから。
-  default_scope -> { order(created_at: :desc) }
+  # default_scope -> { order(created_at: :desc) }
 
   def self.search(search)
     if search
