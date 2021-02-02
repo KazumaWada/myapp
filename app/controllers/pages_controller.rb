@@ -20,9 +20,10 @@ class PagesController < ApplicationController
     #  @posts = Post.page(params[:page]).per(4)
    
 
-     
-# 　　newer_posts = Post.order(created_at: 'DESC')
-#    @newer_posts = Post.page(params[:page]).per(4)
+
+
+ 　newer_posts = Post.order(created_at: 'DESC')
+  @newer_posts = Post.page(params[:page]).per(4)
 
      posts_get_likes = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
     #ここで上のpostsを定義して、@postsに代入している。
@@ -31,6 +32,7 @@ class PagesController < ApplicationController
 
      posts_get_views = Post.order(impressions_count: 'DESC')
      @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)
+
 
    end 
 

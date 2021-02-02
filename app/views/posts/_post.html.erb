@@ -10,7 +10,15 @@
 
   <div class="card-body">
    <%#タイトル %>
-    <p class="card-text"><%= post.title %></p>
+    <p class="card-text">
+     <% if post.user.avatar? %>
+     <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+    <%= post.title %>
+    
+    </p>
     <%# view, tag, covid %>
     <p class="card-text">
     <h4>
@@ -31,7 +39,7 @@
     <%# delete %>
     <p class="card-text">
     <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
+    投稿 <%= time_ago_in_words(post.created_at) %> 前.
     <%# if current_user?(post.user) %>
     <%= link_to "削除する", post, method: :delete,
                                        data: { confirm: "You sure?" } %>
@@ -42,6 +50,7 @@
    </div><%#%# card-body %> 
 
 </div><%# card %>
+
 
 
 

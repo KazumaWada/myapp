@@ -1,82 +1,51 @@
+  <div class="card mt-4" style="width: 50rem;">
+  <%= link_to post_path(@post), class: 'text-body' do %> 
+  <% if @post.image? %>
+  <%= image_tag @post.image.url, class: 'card-img-top' %>
+  <% else %>
+  <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+  <% end %>
+  <% end %><%# link_to %>
 
-   <% if @favorite_posts.any? %>
-      <%= render partial: 'posts/likes_posts', locals: { favorite_posts: @favorite_posts, posts: @posts }%>
-      <% else %>
-      <p class="mt-5">いいねした投稿はまだありません。</p> 
-    <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div id="new" class="tab-pane">
-   <%# ここから1 %>
-
-   <%# render partial: 'posts/index', locals: { posts: @posts, user: @user, post: @post, newer_posts: @newer_posts } %>
- 
-
-<% if @newer_posts.any? %>
-
- <% @newer_posts.each do |newer_post| %>
- <%= link_to post_path(newer_post), class: 'text-body' do %> 
-
-   <div class="card mt-2">
-      <%= image_tag p.image.url, class: 'img-fluid' %>
-      <% end %><%# post_path_link %>
-      <div class="card-body">
-    　<h5 class="card-title"> 
-      <%= link_to user_path(newer_post.user) do %>
-   
-     <% if newer_post.user.avatar? %>
-     <%= image_tag newer_post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+  <div class="card-body">
+   <%#タイトル %>
+    <p class="card-text">
+     <% if @post.user.avatar? %>
+     <%= image_tag @post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
      <% end %>
-      <%# link_to p.user.avatar.url, current_user %>
-      <%#image_tag p.user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
-     <%= newer_post.title %>
-      <p><%= newer_post.user.name %></p> 
-      <% end %>
-      
-        <%# render_with_hashtags(p.content) %>
-      </h5>
-        <p class="card-text">
-        <%# ###########いいね###################### %>
+    <%= @post.title %>
+    
+    </p>
+    <%# view, tag, covid %>
+    <p class="card-text">
+    <h4>
+    <span class="badge badge-warning">
+    <%= @post.tag %>
+    </span>
+    <i class="fas fa-eye"><%= @post.impressions_count %></i>
+    </h4>
+    <%= @post.covid %>
+<%# ###########いいね###################### %>
+<%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
+<%# if !条件式 は条件式が偽だった場合に処理 %>
 
 <%# ###########いいね###################### %>
+    </p>
+   <%# edit %>
+   <p class="card-text"><%= link_to '編集する',edit_post_path(@post) %></p>
+    <%# delete %>
+    <p class="card-text">
+    <span class="timestamp">
+    投稿 <%= time_ago_in_words(@post.created_at) %> 前.
+    <%# if current_user?(post.user) %>
+    <%= link_to "削除する", @post, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <%# end %>
+  　</span>
+　　</p>
 
+   </div><%#%# card-body %> 
 
-       
-        <%# link_to posts_hashtag_path(p.tags) do %> 
-        <% newer_post.tags.each do |tag| %>
-    　　<span><i class="fas fa-tag"><%= tag.name %></i></span>
-        <% end %>
-        <%# end %>
-
-        <span>
-        <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
-        </span>
-
-        </p>
-      </div><%# card-body %>
-    </div><%# card %>
-     
-    <% end %><%# each %>
-  
-     <% end %> <%# ifpostsany? %>
-
-       <div class="mt-4">
-   <%= paginate @newer_posts %>
-   </div>
-   <%# ここまで1 %>
-    </div>
-
+</div><%# card %>

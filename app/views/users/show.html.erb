@@ -32,7 +32,14 @@
      <% if current_user?(@user) %>
       <div class="text-center">
         <button type="button" class="btn btn-warning">
-        <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light edit-btn' %>
+
+    <% if @user.email == "smooth_login@example.com" %>
+    <%= link_to 'プロフィール編集' ,smooth_edit_path, class: 'text-light edit-btn' %>
+    <% else %>
+    <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light edit-btn' %>
+    <% end %>
+
+       
         </button>
         </div>
       <% end %>
@@ -70,14 +77,64 @@
   <div class="tab-content">
 
     <div id="post" class="tab-pane active">
-         <% if @user.posts.any? %>
-    　  <ol class="posts">
-         <%= render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
-       </ol> 
-   　 <%# will_paginate @posts %>
-   　　 <% end %>
-    <div class="mt-4">
-     
+         <%# <% if @user.posts.any? %>
+         <%# if @post.any? %>
+    　
+         <%# render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
+   
+  <%# #################################################################### %>
+  <%# postsは、user.rbで定義している。 %>
+    　　
+  　　　
+      <% @user.posts.each do |post| %>
+      <div class="card" style="width: 50rem;">
+      <%= link_to post_path(post) do %> 
+      <% if post.image? %>
+       <%= image_tag post.image.url, class: 'card-img-top' %>
+      <% else %>
+      <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+      <% end %>
+      <% end %><%# link_to %>
+      <div class="card-body">
+      <%= post.title %> 
+   <p class="card-text">
+     <% if post.user.avatar? %>
+     <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+    </p>
+
+    <p class="card-text">
+    <h4>
+    <span class="badge badge-warning">
+    <%= post.tag %>
+    </span>
+    <i class="fas fa-eye"><%= post.impressions_count %></i>
+    </h4>
+    <%= post.covid %>
+    <%# ###########いいね###################### %>
+    <%# ###########いいね###################### %>
+    </p>
+    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>
+    <p class="card-text">
+    <span class="timestamp">
+    投稿 <%= time_ago_in_words(post.created_at) %> 前.
+   </span>
+    <%= link_to "削除する", post, method: :delete,
+                                       data: { confirm: "削除してよろしいですか?" } %>
+　　　</p>
+      
+      </div>card-body
+     </div>card
+     <% end %>
+    <%# #################################################################### %>
+      
+   </div>
+  
+   　　 <%# end %>
+
+      <%# paginate @post %>
 
 
 
