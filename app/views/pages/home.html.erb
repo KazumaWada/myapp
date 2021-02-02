@@ -26,6 +26,7 @@
     <%# ここから2 %>
     <% if @posts_get_likes.any? %>
     <% @posts_get_likes.each do |post_get_like| %>
+
     <%= link_to post_path(post_get_like), class: 'text-body' do %> 
     <div class="card mt-4">
     <%= image_tag post_get_like.image.url, class: "img-fluid" %>
@@ -53,6 +54,28 @@
         <i class="fas fa-eye"><%= post_get_like.impressions_count %></i>
         </span>
 
+        <span>
+        <%# ここで@postを定義できなければ、3つとも全部書くことになる。controllerをrenderできないかな %>
+           <% if current_user.liked_by?(post_get_like.id) %>
+
+  <td>
+  <%= link_to destroy_like_path(post_get_like), method: :DELETE, remote: true do %>
+  <i class="fas fa-heart"></i>
+  <% end %>
+  <%= post_get_like.likes.count %>
+  </td>
+
+  <% else %>
+
+  <td>
+  <%= link_to create_like_path(post_get_like), method: :POST, remote: true do %>
+  <i class="far fa-heart"></i>
+  <% end %><%= post_get_like.likes.count %>
+  </td>
+
+  <% end %>
+</span>
+
         </p>
       </div><%# card-body %>
     </div><%# card %>
@@ -61,7 +84,7 @@
   
      <% end %> <%# ifpostsany? %>
       <div class="mt-4">
-    <%# paginate @posts_get_likes %>  
+    <%= paginate @posts_get_likes %>  
    </div>
 
     <%# ここまで2 %>
@@ -70,9 +93,59 @@
 
    <div id="new" class="tab-pane">
    <%# ここから1 %>
-     <span>
-        readme行って
+   <% if @newer_posts.any? %>
+
+ <% @newer_posts.each do |newer_post| %>
+ <%= link_to post_path(newer_post), class: 'text-body' do %> 
+
+   <div class="card mt-2">
+      <%= image_tag newer_post.image.url, class: 'img-fluid' %>
+      <% end %><%# post_path_link %>
+      <div class="card-body">
+    　<h5 class="card-title"> 
+      <%= link_to user_path(newer_post.user) do %>
+   
+     <% if newer_post.user.avatar? %>
+     <%= image_tag newer_post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+      
+      <p><%= newer_post.title %></p> 
+      <p><%= newer_post.user.name %></p> 
+      <% end %> <%# 多分link %>
+      
+        <% render_with_hashtags(newer_post.content) %>
+      </h5>
+       <p><%= time_ago_in_words(newer_post.created_at) %> 前</p>
+        <p class="card-text">
+        <%# ###########いいね###################### %>
+
+<%# ###########いいね###################### %>
+
+
+       
+        <%# link_to posts_hashtag_path(p.tags) do %> 
+        <% newer_post.tags.each do |tag| %>
+    　　<span><i class="fas fa-tag"><%= tag.name %></i></span>
+        <% end %>
+        <%# end %>
+
+        <span>
+        <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
         </span>
+
+        </p>
+      </div><%# card-body %>
+    </div><%# card %>
+     
+    <% end %><%# each %>
+  
+     <% end %> <%# ifpostsany? %>
+
+       <div class="mt-4">
+   <%= paginate @newer_posts %>
+   </div>
    <%# ここまで1 %>
     </div>
 <%# ############################################################################## %>
@@ -115,7 +188,7 @@
   
      <% end %> <%# ifpostsany? %>
       <div class="mt-4">
-    <%# paginate @posts_get_view %>  
+    <%= paginate @posts_get_views %>  
    </div>
 
 

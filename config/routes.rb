@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [:create, :destroy]
   end
+  get '/smooth' => 'users#smooth', as: 'smooth_edit'
+
 
 
 #_follow_formのrender follow,unfollow用
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
 
-  post 'users/:id' => 'users#smooth', as: 'smooth_edit'
+  
 
   get '/search' => 'search#search'
 

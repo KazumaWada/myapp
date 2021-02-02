@@ -10,7 +10,7 @@
     　<h5 class="card-title"> 
       <%= link_to user_path(newer_post.user) do %>
    
-     <% if p.user.avatar? %>
+     <% if newer_post.user.avatar? %>
      <%= image_tag newer_post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>

@@ -18,11 +18,14 @@ class UsersController < ApplicationController
       #########userがしたいいね一覧.Rspecでエラーになるから、一時コメントアウト。############
     #########userがしたいいね一覧.Rspecでエラーになるから、一時コメントアウト。############
     @user=User.find(params[:id])
-    @posts = Post.page(params[:page]).per(4)
+    # @posts = Post.page(params[:page]).per(4)
     #正常に処理が行われると、@user=User.find(1)となる。
-    # @posts = @user.posts.paginate(page: params[:page])
+    @posts = @user.posts.paginate(page: params[:page])
 
     @smooth_login_user = User.find_by(email: "smooth_login@example.com")
+   
+    
+
 
     # view数(詳細ページを訪れると、カウントされる仕組み。)
     # impressionist(@user, nil, unique: [:session_hash])
@@ -39,7 +42,7 @@ class UsersController < ApplicationController
 
   def smooth
     flash[:danger] = "簡単ログインしたユーザーは編集できません。"
-    redirect_to request.referrer || root_url
+    redirect_to request.referrer || 'users/2'
   end
 
   #signup

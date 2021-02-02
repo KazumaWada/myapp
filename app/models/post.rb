@@ -25,6 +25,11 @@ class Post < ApplicationRecord
    #/post/newで投稿を作ると、user.rbのこれ↓が機能しなかったから。
   # default_scope -> { order(created_at: :desc) }
 
+  #自分の投稿
+  # def posts
+  #   return Post.where(user_id: self.id)
+  # end
+
   def self.search(search)
     if search
       # Post.where(['content LIKE ?', "%#{search}%"])

@@ -1,3 +1,9 @@
+<% if @user.email == "smooth_login@example.com" %>
+<p>ゲストユーザーは編集できません</p>
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>
+<% else %>
 <h1>Update your profile</h1>
 
 <%# Post(login)と全く一緒だけど、railsが判断して、postかpatchかを判断している。 %>
@@ -36,3 +42,5 @@
     </div> %>
   </div>
 </div>
+
+ <% end %>
