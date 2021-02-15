@@ -3,7 +3,14 @@
 server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-set :ssh_options, keys: '~/.ssh/key_berlin_now_rsa' 
+
+#01
+# set :ssh_options, keys: '~/.ssh/key_berlin_now_rsa' 
+# ssh_options[:forward_agent] = true
+#02
+#set :ssh_options, { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/key_berlin_now_rsa) }
+#03
+ssh_options = {keys: %w(~/.ssh/key_berlin_now_rsa), forward_agent: true}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
