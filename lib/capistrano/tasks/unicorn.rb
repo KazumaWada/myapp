@@ -43,6 +43,9 @@ namespace :unicorn do
       end
     end
   
+#  　既に起動しているPIDがあるかどうか確認
+#  　起動しているPIDがあればそれをKILL(削除)する)
+# 　 unicorn起動
   #既にunicornが起動している場合再起動を、まだの場合起動を行うtask
     desc "Restart unicorn server gracefully"
     task restart: :environment do

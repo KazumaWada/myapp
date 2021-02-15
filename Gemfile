@@ -113,6 +113,7 @@ group :development do
 end
 
 group :production, :staging do
+  #Railsアプリ用のアプリケーションサーバー
   gem 'unicorn'
 end
 
