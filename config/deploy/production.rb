@@ -10,7 +10,9 @@ server '52.197.166.41', user: 'kazumawada', roles: %w{app db web}
 #02
 #set :ssh_options, { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/key_berlin_now_rsa) }
 #03
-ssh_options = {keys: %w(~/.ssh/key_berlin_now_rsa), forward_agent: true}
+# ssh_options = {keys: %w(~/.ssh/key_berlin_now_rsa), forward_agent: true}
+
+ssh_options = {keys: ["~/.ssh/key_berlin_now_rsa"], forward_agent: true}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -54,11 +56,12 @@ ssh_options = {keys: %w(~/.ssh/key_berlin_now_rsa), forward_agent: true}
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/user_name/.ssh/id_rsa),
-#    forward_agent: false,
+ set :ssh_options, {
+   keys: %w(~/.ssh/key_berlin_now_rsa),
+   forward_agent: true,
 #    auth_methods: %w(password)
-#  }
+  }
+
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
