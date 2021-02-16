@@ -1,6 +1,6 @@
 
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
+# server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
 
@@ -12,7 +12,7 @@ server '52.197.166.41', user: 'kazumawada', roles: %w{app db web}
 #03
 # ssh_options = {keys: %w(~/.ssh/key_berlin_now_rsa), forward_agent: true}
 
-ssh_options = {keys: ["~/.ssh/key_berlin_now_rsa"], forward_agent: true}
+# ssh_options = {keys: ["~/.ssh/key_berlin_now_rsa"], forward_agent: true}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -56,22 +56,21 @@ ssh_options = {keys: ["~/.ssh/key_berlin_now_rsa"], forward_agent: true}
 #
 # Global options
 # --------------
- set :ssh_options, {
-   keys: %w(~/.ssh/key_berlin_now_rsa),
-   forward_agent: true,
-#    auth_methods: %w(password)
-  }
+#  set :ssh_options, {
+#    keys: %w(~/.ssh/key_berlin_now_rsa),
+#    forward_agent: true,
+# #    auth_methods: %w(password)
+#   }
+#   server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
 
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }
+server "52.197.166.41",
+  user: "kazumawada",
+  roles: %w{web app db},
+  ssh_options: {
+    user: "kazumawada", # overrides user setting above
+    keys: %w(~/.ssh/key_berlin_now_rsa),
+    forward_agent: true,
+  }
