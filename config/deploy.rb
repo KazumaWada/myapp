@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 
 # ここはデフォルトで生成されていたコード
- lock "~> 3.15.0"
+ lock "~> 3.4.0"
 
 # set :application, "my_app_name"
 # set :repo_url, "git@example.com:me/my_repo.git"
@@ -54,7 +54,7 @@ set :repo_url, 'git@github.com:kazumawada/myapp.git'
 set :branch, 'main'
 
 #Net::SSH::AuthenticationFailed: Authentication failed for user解決のため。
-# ssh_options[:forward_agent] = true
+ssh_options[:forward_agent] = true
 
 # deploy先のディレクトリ。 
 set :deploy_to, '/var/www/myapp'

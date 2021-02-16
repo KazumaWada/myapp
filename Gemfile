@@ -90,7 +90,9 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   #awsデプロイ
-  gem 'capistrano'
+  gem 'capistrano', '3.4.0'
+  # gem 'capistrano'
+  # gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
