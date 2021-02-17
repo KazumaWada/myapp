@@ -1,9 +1,15 @@
 
+
+
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-# server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
+server '52.197.166.41', user: 'kazumawada', roles: %w{app db web} 
 
 #デプロイするサーバーにsshログインする鍵の情報を記述
-
+set :ssh_options, {
+  port: 22,
+  forward_agent: true,
+  keys: ['~/.ssh/key_berlin_now_rsa']
+}
 #01
 # set :ssh_options, keys: '~/.ssh/key_berlin_now_rsa' 
 # ssh_options[:forward_agent] = true
@@ -66,11 +72,4 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server "52.197.166.41",
-  user: "kazumawada",
-  roles: %w{web app db},
-  ssh_options: {
-    user: "kazumawada", # overrides user setting above
-    keys: %w(~/.ssh/key_berlin_now_rsa),
-    forward_agent: true,
-  }
+

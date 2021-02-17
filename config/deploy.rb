@@ -54,7 +54,10 @@ set :repo_url, 'git@github.com:kazumawada/myapp.git'
 set :branch, 'main'
 
 #Net::SSH::AuthenticationFailed: Authentication failed for user解決のため。
-ssh_options[:forward_agent] = true
+# ssh_options[:forward_agent] = true
+
+set :ssh_options, auth_methods: ['publickey'],
+                  keys: ['~/.ssh/key_berlin_now_rsa'] 
 
 # deploy先のディレクトリ。 
 set :deploy_to, '/var/www/myapp'
