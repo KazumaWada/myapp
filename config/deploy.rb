@@ -53,6 +53,7 @@ set :repo_url, 'git@github.com:kazumawada/myapp.git'
 # deployするブランチ。デフォルトはmasterなのでなくても可。
 set :branch, 'main'
 
+
 #Net::SSH::AuthenticationFailed: Authentication failed for user解決のため。
 # ssh_options[:forward_agent] = true
 
