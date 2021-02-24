@@ -116,7 +116,7 @@ end
 
 group :production, :staging do
   #Railsアプリ用のアプリケーションサーバー
-  gem 'unicorn'
+#   gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
