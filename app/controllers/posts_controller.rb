@@ -2,19 +2,13 @@
 class PostsController < ApplicationController
     before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :update]
     before_action :correct_user,   only: [:destroy, :edit, :update]
-
+    
+    impressionist :actions=> [:show]
+    
    def index
     #  @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc) 
-    #新しい順は、モデルで設定するか？paginate書いたから。
-    @posts = Post.page(params[:page]).per(5)
-
-    # @post = Post.find(params[:id])
-     #home画面に投稿を表示するため。
-    #  if logged_in?
-    #   @post = current_user.posts.build
-    #       @contents_feed = current_user.feed.paginate(page: params[:page])
-    #  end
-     
+    redirect_to request.referrer || '/'
+    @posts = Post.page(params[:page]).per(5)     
    end
 
     def show
@@ -31,26 +25,19 @@ class PostsController < ApplicationController
     def new
         @post=current_user.posts.build if logged_in?
         @comment = Comment.new(post_id: params[:post_id])
-        # これじゃダメなの??
-        # @post = Post.new
     end
 
     def create
         @post = current_user.posts.build(post_params)
-        # binding.pry
         if @post.save
-          # flash[:success] = render_to_string(:partial => "shared/check_my_post")
-          flash[:success] = "投稿しました！"#ここに、「投稿を見に行く」とかがあったらいいかも。
-          #ここをuser/:idに。
+          flash[:success] = "投稿しました！"
           redirect_to root_url
         else
-          #失敗した場合に壊れてしまわないように、@を置いておく。
          @contents_feed = current_user.feed.paginate(page: params[:page])
           render 'posts/new'
         end
       end
 
-  # ユーザーを見つけるだけ。あとはrailsが処理してくれる。
   def edit
     @post = Post.find(params[:id])
   end
@@ -67,23 +54,16 @@ class PostsController < ApplicationController
   
     def destroy
       @post.destroy
-      flash[:success] ="post deleted"
-                  #一つ前のurlを返す。元に戻すurlが見つからなかった場合、users/:id。
-      # redirect_to request.referrer || root_url
-      # redirect_to request.referrer　これはエラーなし。
-      #ホームにする。東欧したものがすぐ観れるのはhomeもusers/:idも変わらないから。
+      flash[:success] ="削除しました"
       redirect_to request.referrer || root_url
     end  
 
-    #同じインスタンス変数でも、アクションごとに定義が区別されているから大丈夫。
     def hashtags
       tag = Tag.find_by(name: params[:name])
       @posts = tag.posts
     end
    
-
-    # これを書くと、リロードするたびにview数が増える。コメントアウトすると、一度だけしか反映されない。
-    impressionist :actions=> [:show]
+   
    def search
       @posts = Post.search(params[:search])
     end

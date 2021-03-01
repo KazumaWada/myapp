@@ -1,13 +1,9 @@
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <%# <%= f.label :title, class: 'mb-3' %> 
   <%= f.text_field :title, class: 'form-control form-control-lg mt-4', placeholder: "title" %>
-
-  <%# <%= f.label :tag, class: 'mb-3  form-label' %> 
     <div class="check_box">
     <span>関連するキーワード</span>
-    <%# tag_idにsがつく。 %>
     <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
      <div>
        <%= tag.label do %>
@@ -26,6 +22,6 @@
    <%= f.label :image, class: "mt-4" %> 
   <%= f.file_field :image, class: "form-control" %> 
 
-  <%= f.submit "あなたの経験を読者に再び届ける", class: "btn btn-primary mt-4" %>
+  <%= f.submit "更新する", class: "btn btn-primary mt-4" %>
 
 <% end %>
