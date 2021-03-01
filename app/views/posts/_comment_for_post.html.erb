@@ -1,0 +1,12 @@
+ <p class="card-text">
+    <div class="mt-5">
+   <div id="comments_area">
+   <%# comments/_indexのviewを呼び出している。その部品内で@commentsが使われている(@comments: ログインしていない場合、コメントsを見れるだけだから。) %>
+　　<%= render partial: 'comments/index', locals: { comments: @comments } %>
+   </div> 
+   <% if logged_in? %>
+   <%# comments/_formのviewを呼び出している。その部品内で@comment,@postが使われている(@comment, @post: ログインしていれば、自分が@commentコメントできるから。@postを探して来た後で。) %>
+   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+   <% end %>
+　　</div>
+ </p>

@@ -1,57 +1,33 @@
-<% if current_user?(@user) %>
-<div class="text-right mr-3">
-<%= link_to '編集する',edit_post_path(@post) %>
-</div>
- <% end %>
- 
+<%= render 'edit_my_post' %>
 <div class="card mb-3 mt-3">
+<%# メイン画像 %>
 <%= image_tag @post.image.url, class: "img-fluid" %>
-  <div class="card-body">
-    <p>*この記事は、<%= @post.covid %>の内容です。</p>
-    <h3 class="card-title"><strong><%= @post.title %></strong></h3>
-    <p class="card-text">
-
-    <h3>
-   <%= link_to user_path(@user) do %>
-   <%= @post.user.name %>
-   <% end %>
-   の投稿
-   </h3> 
-   <p><%# @post.content %></p>
-  <p><%= time_ago_in_words(@post.created_at) %> ago</p>
-
-    <i class="fas fa-eye">
-    <%= @post.impressionist_count %>
-    </i>
-    <% @post.tags.each do |tag| %>
-    <i class="fas fa-tag"><%= tag.name %></i>
-    <% end %>
-
-
-    
-         <%= render 'likes', post: @post %>
-   
-  
-    
-    </p><%# card-text %>
-    
-    <p><%= render_with_hashtags(@post.content) %></p>
-
+<div class="card-body">
+ <h2 class="card-title">
+ <%# タイトル %>
+ <strong><%= @post.title %></strong>
+ </h2>
  <p class="card-text">
-    <div class="mt-5">
-   <div id="comments_area">
-   <%# comments/_indexのviewを呼び出している。その部品内で@commentsが使われている(@comments: ログインしていない場合、コメントsを見れるだけだから。) %>
-　　<%= render partial: 'comments/index', locals: { comments: @comments } %>
-   </div> 
-   <% if logged_in? %>
-   <%# comments/_formのviewを呼び出している。その部品内で@comment,@postが使われている(@comment, @post: ログインしていれば、自分が@commentコメントできるから。@postを探して来た後で。) %>
-   <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-   <% end %>
-　　</div>
- </p>
-
-  </div>
-</div>
+ <%# 投稿者のavatar,name %>
+ <span>
+   <%= link_to user_path(@user) do %>
+   <%= image_tag @post.user.avatar.url, class: "rounded-circle ", width: "30px", height: "30px" %> <%= @post.user.name %>
+   <% end %>の投稿
+ </span>   
+ <%# 投稿日 %>
+ <p><%= time_ago_in_words(@post.created_at) %>前</p>
+ <%# いいね&インプレッション %>
+ <p><i class="fas fa-eye"><%= @post.impressionist_count %></i><%= render 'likes', post: @post %></p>
+ </p><%# card-text %>
+ <%# コロナ %>
+ <p>*この記事は、<%= @post.covid %>の内容です。</p>
+ <%# コンテンツ内容 %>
+ <p><%= render_with_hashtags(@post.content) %></p> 
+ <%# コメント %>
+ <%= render 'comment_for_post' %>
+</div><%# card-body %>
+</div><%# card　%>
+ 
 
 
 

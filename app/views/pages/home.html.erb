@@ -1,23 +1,13 @@
 <%= render 'layouts/header' %>
 
+
 <div class="container mt-4">
  <div class="row">
-
-<div class="col-md-8">
+<div class="col-md-8 mt-4">
  
  <main class="p-3">
   <!-- タブ -->
-  <ul class="nav nav-justified">
-    <li class="nav-item bg-dark">
-      <a href="#popular" class="nav-link text-white" data-toggle="tab">人気</a>
-    </li>
-    <li class="nav-item bg-danger">
-      <a href="#new" class="nav-link text-white" data-toggle="tab">新着</a>
-    </li>
-    <li class="nav-item bg-warning">
-      <a href="#views" class="nav-link text-white" data-toggle="tab">アクセス数</a>
-    </li>
-  </ul>
+  <%= render 'tabs' %>
 
 <!-- 投稿部分 -->
   <div class="tab-content">
@@ -184,25 +174,13 @@
 </main>
 </div><%# col-md-8 %>
 
-  
+<%# サイドバー %>
 <div class="col-md-4 mt-4">
-  
  <ul class="list-group">
- <li class="list-group-item">
-  <%= render partial: 'shared/select_tag' %>
-  </li>
- <li class="list-group-item"><h4><h4>現在の<%= @output['name'] %>天気</h4></h4></li>
- <li class="list-group-item">
- <%#天気ここから %>
-<%= render partial: 'shared/weather_api', locals: { output: @output } %>
-  <%#天気ここまで %>
- </li>
- <li class="list-group-item"><h4>ニュース</h4><span>(もっと見る)</span></li>
-  <li class="list-group-item">
-   <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
-  </li>
-</ul>
-
+ <li class="list-group-item"><%= render partial: 'shared/select_tag' %></li>
+  <%= render 'weather' %>
+  <%= render 'news' %>
+  </ul>
 </div> 
 
  </div><%# row %>
