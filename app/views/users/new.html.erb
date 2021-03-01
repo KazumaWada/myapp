@@ -1,28 +1,14 @@
-<%# <%= link_to 'トップページ', root_path, class: "top-large", id: "top" %> 
-<%# 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3"> %>
- <%# https://railstutorial.jp/chapters/sign_up?version=6.0#sec-signup_error_messages %>
-
 <div class="container">
 <div class="row">
-  <%# <div class="col-md-10 col-md-offset-6"> %>
-  <%# <div class="col-md-8 col-md-offset-4"> %>
-  <%# 中央寄せ %>
-  <div class="mx-auto" style="width: 500px;">
+
+<div class="mx-auto" style="width: 500px;">
 
 <% provide(:title, "Signup") %>
 <div class="card mt-4">
-  <div class="card-body">
+<div class="card-body">
     
- <h1>ユーザー登録</h1>
-
-
-
-
+ <h1>新規ユーザー登録</h1>
 <%###################これ参考にするhttps://pikawaka.com/rails/form_with#################################%>
-
-
 
   <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
@@ -64,16 +50,7 @@
   　　 <%= f.submit "アカウント作成", class: "btn btn-primary mr-4" %>
      </div>
     　<% end %>
-<%##################################################################################################3 a %>
-      <%# ベルリン滞在、渡航歴 https://pikawaka.com/rails/form_for#f.number_field　%>
-      <%# <div class="form-group">
-    <label for="exampleFormControlSelect1">ベルリン滞在、渡航歴</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1年</option>
-      <option>2年</option>
-      <option>3年以上</option>
-    </select>
- 　 </div> %>
+
      
 
 

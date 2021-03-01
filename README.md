@@ -1,51 +1,36 @@
-  <div class="card mt-4" style="width: 50rem;">
-  <%= link_to post_path(@post), class: 'text-body' do %> 
-  <% if @post.image? %>
-  <%= image_tag @post.image.url, class: 'card-img-top' %>
+  <span>
+  <%# そもそもpost_get_lkeが定義されていないから、ここをみても意味がない %>
+  <%# liked_byは定義されているかもしれないけど、引数がhome独特だから、それが定義されていないのかも %>
+
+  <% if current_user.liked_by?(post_get_like.id) %>
+
+  <td>
+  <%= link_to destroy_like_path(post_get_like), method: :DELETE, remote: true do %>
+  <i class="fas fa-heart"></i>
+  <% end %><%= post_get_like.likes.count %>
+  </td>
+
   <% else %>
-  <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+
+  <td>
+  <%= link_to create_like_path(post_get_like), method: :POST, remote: true do %>
+  <i class="far fa-heart"></i>
+  <% end %><%= post_get_like.likes.count %>
+  </td>
+
+  <% end %> 
+ </span>
+--------------------------------------------
+follow一覧
+ <div class="text-left mt-4">
+  <h4><%= @user.name %>の<%= @title %>一覧</h4>
+  <% if @users.any? %>
+    <%= image_tag @user.avatar.url, class: "rounded-circle ", width: "80px", height: "80px" %>
+    <%= render @users %>
+    <% else %>
+    まだ<%= @title %>がいません。
   <% end %>
-  <% end %><%# link_to %>
+</div>
 
-  <div class="card-body">
-   <%#タイトル %>
-    <p class="card-text">
-     <% if @post.user.avatar? %>
-     <%= image_tag @post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
-     <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
-    <%= @post.title %>
-    
-    </p>
-    <%# view, tag, covid %>
-    <p class="card-text">
-    <h4>
-    <span class="badge badge-warning">
-    <%= @post.tag %>
-    </span>
-    <i class="fas fa-eye"><%= @post.impressions_count %></i>
-    </h4>
-    <%= @post.covid %>
-<%# ###########いいね###################### %>
-<%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
-<%# if !条件式 は条件式が偽だった場合に処理 %>
 
-<%# ###########いいね###################### %>
-    </p>
-   <%# edit %>
-   <p class="card-text"><%= link_to '編集する',edit_post_path(@post) %></p>
-    <%# delete %>
-    <p class="card-text">
-    <span class="timestamp">
-    投稿 <%= time_ago_in_words(@post.created_at) %> 前.
-    <%# if current_user?(post.user) %>
-    <%= link_to "削除する", @post, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <%# end %>
-  　</span>
-　　</p>
-
-   </div><%#%# card-body %> 
-
-</div><%# card %>
+ 

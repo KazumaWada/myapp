@@ -1,192 +1,24 @@
-<%# ここは、users#show定義されているのは、
-@user=User.find(params[:id])と
-@posts = @user.posts.paginate(page: params[:page])。 %>
-
-<div class="container">
-<div class="row">
-<%# 中央寄せ %>
+<%# _users_postsに、いいねした投稿がまだない %>
 <div class="mx-auto" style="width: 900px;">
-
-
-<div class="profile-wrapper">
-
-<section class="user_info">
-　　　
-     <%#user-name %> <%#プロフィール編集 %>
-      <div class="text-center">
-      <%###################アバター########################### %>
+    <div class="text-center">
+     <%# avatar %>
      <% if @user.avatar? %>
      <%= image_tag @user.avatar.url, class: "rounded-circle ", width: "80px", height: "80px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
      <% end %>
-     <%# フォローボタン %>
+     <%# following/followed %>
      <%= render 'follow_form' if logged_in? %>
-     <%# <% end %> <%#もう一個これ必要じゃ無い？？ %>
-      </div>
-    
-        <%#image_tag 'a.jpg', class: "rounded-circle", width: "80px", height: "80px" %>
-      <%###################名前########################### %>
-        <h1 class="text-center"> <%= @user.name %> </h1>
-      <%###################プロフィール編集########################### %>
-     <% if current_user?(@user) %>
-      <div class="text-center">
-        <button type="button" class="btn btn-warning">
-
-    <% if @user.email == "smooth_login@example.com" %>
-    <%= link_to 'プロフィール編集' ,smooth_edit_path, class: 'text-light edit-btn' %>
-    <% else %>
-    <%= link_to 'プロフィール編集' ,edit_user_path(@user), class: 'text-light edit-btn' %>
-    <% end %>
-
-       
-        </button>
-        </div>
-      <% end %>
-      <%###################投稿ページへ########################### %>
-        <div class="text-center">
-         <%= render 'shared/stats' %>
-        </div>
-     
-     <div class="card bg-white mb-10">
-  <div class="card-body">
-    <h5 class="card-title">ベルリン歴<%= @user.year %></h5>
-    <p class="card-text"><%= @user.bio %></p>
-    <p class="card-text">contribute: </p>
-    <p class="card-text">投稿すう </p>
-  </div>
-</div>
-
-    </section><%#user_info %>
- </div><%#profile-wrapper %>
-
-
-
-<%# ここから下tab %>
-<main class="p-3">
-  <!-- 3個分のタブ -->
-  <ul class="nav nav-tabs nav-justified">
-    <li class="nav-item">
-      <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
-    </li>
-    <li class="nav-item">
-      <a href="#helped" class="nav-link" data-toggle="tab">いいねした投稿</a>
-    </li>
-  </ul>
-<!-- 投稿部分 -->
-  <div class="tab-content">
-
-    <div id="post" class="tab-pane active">
-         <%# <% if @user.posts.any? %>
-         <%# if @post.any? %>
-    　
-         <%# render @posts %><%# app/view/posts/_post.html.erbに投稿のoutputがある。cardとかは全部そこに行って。 %>
-   
-  <%# #################################################################### %>
-  <%# postsは、user.rbで定義している。 %>
-    　　
-  　　　
-      <% @user.posts.each do |post| %>
-      <div class="card" style="width: 50rem;">
-      <%= link_to post_path(post) do %> 
-      <% if post.image? %>
-       <%= image_tag post.image.url, class: 'card-img-top' %>
-      <% else %>
-      <%= image_tag "the-main.jpg", class: 'card-img-top'%>
-      <% end %>
-      <% end %><%# link_to %>
-      <div class="card-body">
-      <%= post.title %> 
-   <p class="card-text">
-     <% if post.user.avatar? %>
-     <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
-     <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
-    </p>
-
-    <p class="card-text">
-    <h4>
-    <span class="badge badge-warning">
-    <%= post.tag %>
-    </span>
-    <i class="fas fa-eye"><%= post.impressions_count %></i>
-    </h4>
-    <%= post.covid %>
-    <%# ###########いいね###################### %>
-    <%# ###########いいね###################### %>
-    </p>
-    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>
-    <p class="card-text">
-    <span class="timestamp">
-    投稿 <%= time_ago_in_words(post.created_at) %> 前.
-   </span>
-    <%= link_to "削除する", post, method: :delete,
-                                       data: { confirm: "削除してよろしいですか?" } %>
-　　　</p>
-      
-      </div>card-body
-     </div>card
-     <% end %>
-    <%# #################################################################### %>
-      
-   </div>
-  
-   　　 <%# end %>
-
-      <%# paginate @post %>
-
-
-
-    <div id="helped" class="tab-pane">
-    
-    </div> <%# id=helped %>
-    
-  </div><%# tab-content %>
-
-</main>
-
-
-</div><%#row %>
-</div><%#container %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <%# name %>
+    <h1><%= @user.name %></h1>
+    <%# プロフィール編集 %>
+    <%= render 'users/edit_profile' %>
+    <%# follow数, followed数 %>
+    <%= render 'shared/stats' %>
+    <%# ベルリン歴、bio,いいねもらった数、投稿数 %>
+    <div class="text-left">
+    <%= render 'users/bio' %>
+    </div>
+    </div><%#text-center %>
+<%# 投稿、いいねした投稿 %>
+<%= render 'users/users_posts' %>

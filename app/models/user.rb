@@ -96,6 +96,12 @@ class User < ApplicationRecord
     likes.where(post_id: post_id).exists?
   end
 
+  def liked_by?(post_get_like)
+    likes.where(post_id: post_get_like).exists?
+　end
+
+
+
 
     private
 
@@ -107,4 +113,6 @@ class User < ApplicationRecord
         self.activation_token  = User.new_token
         self.activation_digest = User.digest(activation_token)
     end
+end
+
 end
