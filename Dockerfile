@@ -18,8 +18,9 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 COPY . /myapp
-#puma?
-RUN mkdir /myapp/tmp/sockets
+
+# puma.sockを配置するディレクトリを作成
+RUN mkdir -p tmp/sockets
 
 # Start Server
 CMD bundle exec puma -d && \
