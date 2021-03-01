@@ -4,9 +4,8 @@
   <button>戻る</button>
 <% end %>
 <% else %>
-<h1>Update your profile</h1>
+<h1>プロフィールの更新</h1>
 
-<%# Post(login)と全く一緒だけど、railsが判断して、postかpatchかを判断している。 %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @user, local: true) do |f| %>
@@ -23,7 +22,6 @@
       <%= f.label :year, "ベルリン滞在、渡航歴", class: 'mt-4' %>
 　　 　<%= f.select :year, ["1年", "2年", "3年", "4年", "5年以上"], class: 'form-control' %>
 
-     <%#bio%>
       <%= f.label :bio, "あなたについて何か書こう", class: 'mt-4' %> 
   　　 <%= f.text_field :bio, class: 'form-control' %>
 
@@ -36,10 +34,6 @@
       <%= f.submit "Save changes", class: "btn btn-primary save-changes-btn" %>
     <% end %>
 
-    <%# <div class="gravatar_edit"> %>
-      <%# <%= #gravatar_for @user %> 
-      <%# <a href="https://gravatar.com/emails" target="_blank">change</a>
-    </div> %>
   </div>
 </div>
 

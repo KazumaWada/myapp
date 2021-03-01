@@ -7,9 +7,9 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     # && mkdir /myapp下に移動した
 
 # Nginx
-ADD nginx.conf /etc/nginx/sites-available/app.conf
+ADD nginx.conf /etc/nginx/sites-available/myapp.conf
 RUN rm -f /etc/nginx/sites-enabled/default && \
-    ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf
+    ln -s /etc/nginx/sites-available/myapp.conf /etc/nginx/sites-enabled/myapp.conf
 
 # Rails App
 RUN mkdir /myapp

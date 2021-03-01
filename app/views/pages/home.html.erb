@@ -21,7 +21,7 @@
 
 <!-- 投稿部分 -->
   <div class="tab-content">
-  <%# ############################################################################## %>
+  <%# ######################人気投稿######################################################## %>
     <div id="popular" class="tab-pane active">
     <%# ここから2 %>
     <% if @posts_get_likes.any? %>
@@ -42,39 +42,23 @@
     <%= post_get_like.title %>
     <p><%= post_get_like.user.name %></p> 
     <% end %>
-      
    </h5>   
     <p class="card-text">
      <% post_get_like.tags.each do |likes_tag| %>
     　　<span><i class="fas fa-tag"><%= likes_tag.name %></i></span>
         <% end %>
         <%# end %>
-
         <span>
         <i class="fas fa-eye"><%= post_get_like.impressions_count %></i>
         </span>
 
-        <span>
-        <%# ここで@postを定義できなければ、3つとも全部書くことになる。controllerをrenderできないかな %>
-           <% if current_user.liked_by?(post_get_like.id) %>
 
-  <td>
-  <%= link_to destroy_like_path(post_get_like), method: :DELETE, remote: true do %>
-  <i class="fas fa-heart"></i>
-  <% end %>
-  <%= post_get_like.likes.count %>
-  </td>
 
-  <% else %>
+  <span>
+  readme
+ </span>
 
-  <td>
-  <%= link_to create_like_path(post_get_like), method: :POST, remote: true do %>
-  <i class="far fa-heart"></i>
-  <% end %><%= post_get_like.likes.count %>
-  </td>
 
-  <% end %>
-</span>
 
         </p>
       </div><%# card-body %>
@@ -89,7 +73,7 @@
 
     <%# ここまで2 %>
     </div><%# popular %>
-<%# ############################################################################## %>
+<%# #############################新規投稿############################################### %>
 
    <div id="new" class="tab-pane">
    <%# ここから1 %>
@@ -148,7 +132,7 @@
    </div>
    <%# ここまで1 %>
     </div>
-<%# ############################################################################## %>
+<%# ###########################view数################################################# %>
     <div id="views" class="tab-pane">
     <%# ここから3 %>
      <% if @posts_get_views.any? %>

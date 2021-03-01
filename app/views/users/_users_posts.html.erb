@@ -1,0 +1,60 @@
+<main class="p-3">
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
+    </li>
+    <li class="nav-item">
+      <a href="#post-i-liked" class="nav-link" data-toggle="tab">いいねした投稿</a>
+    </li>
+  </ul>
+<!-- 投稿 -->
+  <div class="tab-content">
+    <div id="post" class="tab-pane active">　　　
+　    <% @user.posts.each do |post| %>
+      <div class="card" style="width: 50rem;">
+      <%= link_to post_path(post) do %> 
+      <% if post.image? %>
+       <%= image_tag post.image.url, class: 'card-img-top' %>
+      <% else %>
+      <%= image_tag "the-main.jpg", class: 'card-img-top'%>
+      <% end %>
+      <% end %><%# link_to %>
+      <div class="card-body">
+      <%= post.title %> 
+   <p class="card-text">
+     <% if post.user.avatar? %>
+     <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+    </p>
+
+    <p class="card-text">
+    <h4>
+    <span class="badge badge-warning">
+    <%= post.tag %>
+    </span>
+    <i class="fas fa-eye"><%= post.impressions_count %></i>
+    </h4>
+    <%= post.covid %>
+    <%# ###########いいね###################### %>
+    <%# ###########いいね###################### %>
+    </p>
+    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>
+    <p class="card-text">
+    <span class="timestamp">
+    投稿 <%= time_ago_in_words(post.created_at) %> 前.
+   </span>
+    <%= link_to "削除する", post, method: :delete,
+                                       data: { confirm: "削除してよろしいですか?" } %>
+　　　</p>
+      </div><%# card-body %>
+     </div><%# card %>
+     <% end %>
+   </div>
+  
+    <div id="post-i-liked" class="tab-pane">
+    
+    </div> <%# id=post-i-liked %>
+  </div><%# tab-content %>
+</main>
