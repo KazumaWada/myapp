@@ -38,8 +38,8 @@ Rails.application.configure do
 
 
 #################mailer#########################
-host = 'localhost:3000' 
-config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+# host = 'localhost:3000' 
+# config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
 
 
