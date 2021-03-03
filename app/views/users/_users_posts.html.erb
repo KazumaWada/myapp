@@ -1,60 +1,66 @@
-<main class="p-3">
-  <ul class="nav nav-tabs nav-justified">
-    <li class="nav-item">
-      <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
-    </li>
-    <li class="nav-item">
-      <a href="#post-i-liked" class="nav-link" data-toggle="tab">いいねした投稿</a>
-    </li>
-  </ul>
-<!-- 投稿 -->
-  <div class="tab-content">
     <div id="post" class="tab-pane active">　　　
 　    <% @user.posts.each do |post| %>
-      <div class="card" style="width: 50rem;">
+      <%# <div class="card" style="width: 50rem;"> %>
+      <div class="card">
+      <%# サムネイル画像 %>
       <%= link_to post_path(post) do %> 
       <% if post.image? %>
        <%= image_tag post.image.url, class: 'card-img-top' %>
       <% else %>
       <%= image_tag "the-main.jpg", class: 'card-img-top'%>
       <% end %>
-      <% end %><%# link_to %>
-      <div class="card-body">
-      <%= post.title %> 
-   <p class="card-text">
+      <% end %>
+
+  <div class="card-body">
+  　<%# タイトル %>
+  　<%= post.title %> 
+    
+   　<div class="card-text">
+　　　<%# アバター %>
+     <%= link_to user_path(post.user) do %>
+     <span>
      <% if post.user.avatar? %>
      <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
      <% end %>
-    </p>
-
-    <p class="card-text">
-    <h4>
-    <span class="badge badge-warning">
-    <%= post.tag %>
+     <%# 名前 %>
+     <%= post.user.name %>
     </span>
+    <% end %>
+    </div>
+    <h4 class="card-text">
+    <%#view数 %>
     <i class="fas fa-eye"><%= post.impressions_count %></i>
-    </h4>
-    <%= post.covid %>
-    <%# ###########いいね###################### %>
-    <%# ###########いいね###################### %>
+    </h4><%#card-text %>
+    <%#コロナ %>
+    時期:<%= post.covid %>
+    <%#いいね %>
+    <%# このファイル内のpostをこのループ内で定義されたpostに変換 %>
+    <%= render 'shared/likes', post: post %> 
     </p>
-    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>
-    <p class="card-text">
+    
+    <div class="card-text">
+    <%# 投稿日 %>
     <span class="timestamp">
-    投稿 <%= time_ago_in_words(post.created_at) %> 前.
-   </span>
-    <%= link_to "削除する", post, method: :delete,
-                                       data: { confirm: "削除してよろしいですか?" } %>
-　　　</p>
+  　 <%= time_ago_in_words(post.created_at) %> 前
+    </span>
+
+    <% if current_user?(@user) %>
+    <%#編集 %>
+    <div class="card-text">
+    <%= link_to edit_post_path(post) do %>
+    <p><i class="fas fa-edit"></i></p>
+    <% end %>
+    </div>
+    <%# 削除 %>
+    <%= link_to post, method: :delete, data: { confirm: "削除してよろしいですか?" } do %>
+    <i class="fas fa-trash"></i>
+    <% end %>
+    <% end %><%# current_user %>
+
+　　 </div><%# card-text %>
       </div><%# card-body %>
      </div><%# card %>
      <% end %>
    </div>
-  
-    <div id="post-i-liked" class="tab-pane">
-    
-    </div> <%# id=post-i-liked %>
-  </div><%# tab-content %>
-</main>
