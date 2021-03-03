@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @smooth_login_user = User.find_by(email: "smooth_login@example.com")
    
     
+    
 
 
     # view数(詳細ページを訪れると、カウントされる仕組み。)

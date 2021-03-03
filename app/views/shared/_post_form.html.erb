@@ -1,21 +1,16 @@
-<%# readmeにいったん移動 %>
-
-<%# #####################↓renderされてるから、classが効かないのかも。cssは親ページに行こう############################################### %>
-<%# <div class="container">
-<div class="row">
-<aside class="col-md-8"> %>
 <h1 class="text-center mt-4">新規投稿</h1>
 
 <%= form_with(model: @post, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+   <%= f.label :投稿内容の時期, class: "mt-4" %>
    <%= f.select :covid, ["コロナ前", "コロナ後"], class: "form-control mt-4" %>
 
   <%# <%= f.label :title, class: 'mb-3' %> 
   <%= f.text_field :title, class: 'form-control form-control-lg mt-4', placeholder: "title" %>
 
   <div class="field">
-    <%= f.text_area :content, placeholder: "あなたのベルリンでの経験をシェアしよう。タグは#をつけて文中に記入してください。", class: "form-control mt-4", id: "exampleFormControlTextarea1" %>
+    <%= f.text_area :content, placeholder: "あなたのベルリンでの経験をシェアしよう。タグ(#)は、前後にスペースを空けてください", class: "form-control mt-4", id: "exampleFormControlTextarea1" %>
   </div>
 
  <%# サムネイル %>
@@ -23,25 +18,6 @@
   <%= f.file_field :image, class: "form-control" %> 
 
 <div class="text-center">
-  <%= f.submit "投稿する", class: "btn btn-primary mt-4" %>
+  <%= f.submit "投稿する", class: "btn btn-warning mt-4 text-white" %>
 </div>
 <% end %>
-
-
-<%###################outputはapp/view/posts/_post.html.erb ############################%>
-
-
-
-<%# <script type="text/javascript">
-  $("#mpost_image").bind("change", function() {
-    const size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert("Maximum file size is 5MB. Please choose a smaller file.");
-      $("#post_image").val("");
-    }
-  });
-</script> %>
-
-<%# </aside>
-</div>
-</div>  %>

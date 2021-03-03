@@ -1,11 +1,10 @@
-<%# _users_postsに、いいねした投稿がまだない %>
 <div class="mx-auto" style="width: 900px;">
     <div class="text-center">
      <%# avatar %>
      <% if @user.avatar? %>
-     <%= image_tag @user.avatar.url, class: "rounded-circle ", width: "80px", height: "80px" %>
+     <%= image_tag @user.avatar.url, class: "rounded-circle ", width: "100px", height: "100px" %>
      <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "80px", height: "80px" %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "100px", height: "100px" %>
      <% end %>
      <%# following/followed %>
      <%= render 'follow_form' if logged_in? %>
@@ -20,5 +19,12 @@
     <%= render 'users/bio' %>
     </div>
     </div><%#text-center %>
-<%# 投稿、いいねした投稿 %>
-<%= render 'users/users_posts' %>
+<%# 各ユーザーの投稿 %>
+<main class="p-3">
+<%= render 'users_tabs' %>
+<div class="tab-content">
+<%= render 'users_posts' %>
+<%# いいねした投稿がまだない %>
+<%= render 'users_likes' %>
+</div><%# tab-content %>
+</main>

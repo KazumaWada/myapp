@@ -33,7 +33,6 @@ class PostsController < ApplicationController
           flash[:success] = "投稿しました！"
           redirect_to root_url
         else
-         @contents_feed = current_user.feed.paginate(page: params[:page])
           render 'posts/new'
         end
       end

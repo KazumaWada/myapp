@@ -17,7 +17,11 @@
  <%# 投稿日 %>
  <p><%= time_ago_in_words(@post.created_at) %>前</p>
  <%# いいね&インプレッション %>
- <p><i class="fas fa-eye"><%= @post.impressionist_count %></i><%= render 'likes', post: @post %></p>
+ <p>
+ <i class="fas fa-eye"><%= @post.impressionist_count %></i>
+ <%= render 'shared/likes', post: @post %> 
+ </p>
+
  </p><%# card-text %>
  <%# コロナ %>
  <p>*この記事は、<%= @post.covid %>の内容です。</p>
