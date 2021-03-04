@@ -29,9 +29,12 @@ class PagesController < ApplicationController
     #ここで上のpostsを定義して、@postsに代入している。
      @posts_get_likes = Kaminari.paginate_array(posts_get_likes).page(params[:page]).per(4)
 
+   
 
      posts_get_views = Post.order(impressions_count: 'DESC')
      @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)
+
+
 
 
    end 

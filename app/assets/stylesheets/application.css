@@ -14,5 +14,9 @@
  *= require_self
  */
 
+ .under {
+	text-decoration: none;
+}
+
 
  
