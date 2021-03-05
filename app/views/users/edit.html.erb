@@ -11,6 +11,9 @@
     <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
+     <%= f.label :avatar, class: "mt-4" %>
+  　　<%= f.file_field :avatar, class: "form-control" %>
+
       <%# @userで自動的にnameが入ってる。 %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>

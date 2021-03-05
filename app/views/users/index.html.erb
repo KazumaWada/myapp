@@ -10,17 +10,20 @@
      <%= image_tag user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
+     <% end %>  <%# avatar %>
   
-  <%#image_tag user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
   <%= link_to user.name, user %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  
-  <% end %>
+
+  <% if user.name == "簡単ログインしたユーザー" %>
+  | <%= link_to "このユーザーは削除することができません", request.referrer %>
+  <% elsif current_user?(user) %> 
+    | <%= link_to "アカウントを削除する", user, method: :delete,
+                                  data: { confirm: "アカウントを削除しますか？" } %>
+  <% end %> <%# if %>
 </li>
 
-  <% end %>  
+  <% end %>  <%# each %>  
+
+
 
 

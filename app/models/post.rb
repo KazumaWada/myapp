@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   # 投稿が消されたら、コメントも一緒に消す。
   has_many :comments, dependent: :destroy
   belongs_to :user
-  has_many :post_tags, dependent: :destroy
+  # has_many :post_tags, dependent: :destroy
   has_and_belongs_to_many :tags
   has_many :likes
   #likeした人を取得
