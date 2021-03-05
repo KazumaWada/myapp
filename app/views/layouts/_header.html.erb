@@ -10,7 +10,8 @@
     <%= link_to 'トップページへ', root_path, class: "dropdown-item" %>
      <%= link_to 'ベルリンなうとは？', about_path, class: "dropdown-item" %>
     <%= link_to 'ユーザー一覧', users_path, class: "dropdown-item" %>
-    <%= link_to '作った人の技術ブログ', about_path, class: "dropdown-item" %>
+    <%= link_to '作った人の技術ブログ', 'https://kazumawada.hateblo.jp/', class: "dropdown-item", target: :_blank %>
+    <%= link_to 'ソースコード', 'https://github.com/kazumawada/myapp', class: "dropdown-item", target: :_blank %>
    </div>
  </div>
 
@@ -36,8 +37,12 @@
          <button type="button" class="btn btn-white p-0">
          <%= link_to current_user, class: "nav-link active text-black" do %>
          <%# <i class="fas fa-user"></i> %>
-         <%= image_tag current_user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
-         <% end %>
+　　　　　<% if current_user.avatar? %>
+         <%= image_tag current_user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
+        <% else %>
+        <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+        <% end %>
+        <% end %>
          </button>
         </li>
 

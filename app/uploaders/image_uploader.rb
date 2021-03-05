@@ -19,7 +19,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 #################### ここコメントアウトした ###########################
 def default_url
-  'the-main.jpg'
+  'the-mainn.jpg'
 end
 
 
