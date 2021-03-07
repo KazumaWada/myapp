@@ -7,166 +7,24 @@
  
  <main class="p-3">
   <!-- タブ -->
-  <%= render 'tabs' %>
+  
+ <ul class="nav nav-justified">
+    <li class="nav-item bg-danger">
+      <a href="#popular" class="nav-link text-white" data-toggle="tab">人気</a>
+    </li>
+    <li class="nav-item bg-dark">
+      <a href="#new" class="nav-link text-white active" data-toggle="tab">新着</a>
+    </li>
+    <li class="nav-item bg-warning">
+      <a href="#views" class="nav-link text-white" data-toggle="tab">アクセス数</a>
+    </li>
+  </ul>
 
 <!-- 投稿部分 -->
   <div class="tab-content">
-  <%# ######################人気投稿######################################################## %>
-    <div id="popular" class="tab-pane active">
-    <%# ここから2 %>
-    <% if @posts_get_likes.any? %>
-    <% @posts_get_likes.each do |post_get_like| %>
-
-    <%= link_to post_path(post_get_like), class: 'text-body under' do %> 
-    <div class="card mt-4">
-    <%= image_tag post_get_like.image.url, class: "img-fluid" %>
-     <% end %><%# posts#show %>
-     <div class="card-body">
-     <h5 class="card-title">
-     <%# name, avatar  %>
-     <span class="small">
-     <%= link_to user_path(post_get_like.user), class: 'under' do %>
-     <% if post_get_like.user.avatar? %>
-     <%= image_tag post_get_like.user.avatar.url, class: "rounded-circle mb-3", width: "40px", height: "40px" %>
-     <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
-    <% end %>
-    <%= post_get_like.user.name %>
-    </span>
-    <p><%= post_get_like.title %></p> 
-    <span><%= render_with_hashtags(post_get_like.content.truncate(85)) %><%= link_to '続きを読む', post_path(post_get_like) %></span> 
-    
-   </h5>   
-    <p class="card-text">
-        <span>
-        <i class="fas fa-eye"><%= post_get_like.impressions_count %></i>
-        </span>
-  <span>
-  readme
- </span>
-
-
-
-        </p>
-      </div><%# card-body %>
-    </div><%# card %>
-     
-    <% end %><%# each %>
-  
-     <% end %> <%# ifpostsany? %>
-      <div class="mt-4">
-    <%= paginate @posts_get_likes %>  
-   </div>
-
-    <%# ここまで2 %>
-    </div><%# popular %>
-<%# #############################新規投稿############################################### %>
-
-   <div id="new" class="tab-pane">
-   <%# ここから1 %>
-   <% if @newer_posts.any? %>
-
- <% @newer_posts.each do |newer_post| %>
- <%= link_to post_path(newer_post), class: 'text-body' do %> 
-
-   <div class="card mt-2">
-      <%= image_tag newer_post.image.url, class: 'img-fluid' %>
-      <% end %><%# post_path_link %>
-      <div class="card-body">
-    　<h5 class="card-title"> 
-      <%= link_to user_path(newer_post.user) do %>
-   
-     <% if newer_post.user.avatar? %>
-     <%= image_tag newer_post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
-     <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
-      
-      <p><%= newer_post.title %></p> 
-      <p><%= newer_post.user.name %></p> 
-      <% end %> <%# 多分link %>
-      
-        <% render_with_hashtags(newer_post.content) %>
-      </h5>
-       <p><%= time_ago_in_words(newer_post.created_at) %> 前</p>
-        <p class="card-text">
-        <%# ###########いいね###################### %>
-
-<%# ###########いいね###################### %>
-
-
-       
-        <%# link_to posts_hashtag_path(p.tags) do %> 
-        <% newer_post.tags.each do |tag| %>
-    　　<span><i class="fas fa-tag"><%= tag.name %></i></span>
-        <% end %>
-        <%# end %>
-
-        <span>
-        <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
-        </span>
-
-        </p>
-      </div><%# card-body %>
-    </div><%# card %>
-     
-    <% end %><%# each %>
-  
-     <% end %> <%# ifpostsany? %>
-
-       <div class="mt-4">
-   <%= paginate @newer_posts %>
-   </div>
-   <%# ここまで1 %>
-    </div>
-<%# ###########################view数################################################# %>
-    <div id="views" class="tab-pane">
-    <%# ここから3 %>
-     <% if @posts_get_views.any? %>
-    <% @posts_get_views.each do |post_get_view| %>
-    <%= link_to post_path(post_get_view), class: 'text-body' do %> 
-    <div class="card mt-4">
-    <%= image_tag post_get_view.image.url, class: "img-fluid" %>
-     <% end %><%# posts#show %>
-     <div class="card-body">
-     <h5 class="card-title"> 
-    <%= link_to user_path(post_get_view.user) do %>
-     <% if post_get_view.user.avatar? %>
-     <%= image_tag post_get_view.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
-     <% else %>
-     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
-     <% end %>
-    <%= post_get_view.title %>
-    <p><%= post_get_view.user.name %></p> 
-    <% end %>
-      
-   </h5>   
-    <p class="card-text">
-     <% post_get_view.tags.each do |view_tag| %>
-    　　<span><i class="fas fa-tag"><%= view_tag.name %></i></span>
-        <% end %>
-        <%# end %>
-
-        <span>
-        <i class="fas fa-eye"><%= post_get_view.impressions_count %></i>
-        </span>
-
-        </p>
-      </div><%# card-body %>
-    </div><%# card %>
-     
-    <% end %><%# each %>
-  
-     <% end %> <%# ifpostsany? %>
-      <div class="mt-4">
-    <%= paginate @posts_get_views %>  
-   </div>
-
-
-
-    <%# ここまで3 %>
-    </div><%# view %>
+  <%= render 'popular_posts' %>
+  <%= render 'new_posts' %>
+  <%= render 'view_posts' %>
  <%# ############################################################################## %>
   </div><%# tab-content %>
 </main>

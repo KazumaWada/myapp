@@ -28,10 +28,12 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = current_user.posts.build(post_params)
+      @post = current_user.posts.build(post_params)
+       @user = User.find_by(id: @post.user_id)
+        
         if @post.save
           flash[:success] = "投稿しました！"
-          redirect_to root_url
+          redirect_to user_path(@user)
         else
           render 'posts/new'
         end
