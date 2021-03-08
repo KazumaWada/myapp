@@ -16,7 +16,8 @@ gem 'devise'
 #画像アップロード
 gem 'carrierwave'
 #画像アップロードのサイズ調節
-gem 'rmagick'
+# gem 'rmagick'
+# circleciで、Make sure that `gem install rmagick -v '4.1.2' --source 'https://rubygems.org/'`って言われたから、コマンドからインストールしている。
 #AWSを使う時に画像をアップロードするgem。
 # gem 'aws-sdk-s3',              '1.46.0', require: false
 #active_recordのvalidationがネイティブでサポートされていないため。
