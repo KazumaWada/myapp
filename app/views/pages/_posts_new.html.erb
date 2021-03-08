@@ -34,9 +34,9 @@
        <span>
        <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
       </span>
-     <span>
+     <h3>
       <%= time_ago_in_words(newer_post.created_at) %> 前
-      </span>
+      </h3>
         </p>
       </div><%# card-body %>
     </div><%# card %>
@@ -45,7 +45,7 @@
   
      <% end %> <%# ifpostsany? %>
       <div class="mt-4">
-    <%= paginate @posts_get_likes %>  
+    <%= paginate @newer_posts %>  
    </div>
 
     <%# ここまで2 %>
