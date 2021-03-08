@@ -1,4 +1,4 @@
-    <div id="popular" class="tab-pane active">
+    <div id="popular" class="tab-pane">
     <%# ここから2 %>
     <% if @posts_get_likes.any? %>
     <% @posts_get_likes.each do |post_get_like| %>
@@ -27,9 +27,9 @@
    </h5>   
     <p class="card-text">
         <%# likes %>
-        <span>
+        <h3>
         <%= render 'shared/likes', post: post_get_like %> 
-        </span>
+        </h3>
     <%# impression %>
        <span>
        <i class="fas fa-eye"><%= post_get_like.impressions_count %></i>

@@ -26,12 +26,18 @@ class PagesController < ApplicationController
 
 
 
- 　newer_posts = Post.order(created_at: 'DESC')
-  @newer_posts = Post.page(params[:page]).per(4)
+#  　newer_posts = Post.order(created_at: 'DESC')
+#   # @のなかに、新着の要素が入っていない
+  
+#   @newer_posts = Post.page(params[:page]).per(4)
 
     
 
-   
+# @newer_posts = Post.order(created_at: :desc).page(params[:page]).per(4)
+
+# @newer_posts = Post.order('created_at DESC').page(params[:page]).per(4)
+newer_posts = Post.order(created_at: 'DESC')
+@newer_posts = Kaminari.paginate_array(newer_posts).page(params[:page]).per(4)
 
      posts_get_views = Post.order(impressions_count: 'DESC')
      @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)

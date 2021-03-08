@@ -117,7 +117,9 @@ User.all.each do |user|
     title: Faker::Lorem.word,
     content: '#街並み udin iLorem ipsum dolor sit amet, consectetur adipiscing elit. #生活　Phasellus magna enim, tempus tristique dignissim sit amet, iaculis in nibh. Vestibulum sed neque nibh. Morbi augue nunc, interdum quis nunc sit amet, auctor dignissim neque. Nunc mi eros, vehicula molestie mollis in, porta vitae nulla. Sed in lobortis arcu. Nullam ante purus, tincidunt sit amet eros ut, dignissim pellentesque lectus. Proin semper vestibulum lacus, quis hendrerit turpis venenatis in. Vivamus vel porta augue. Integer quis ullamcorper ex. Nunc lacinia arcu et justo pretium, ut porttitor neque feugiat. Maecenas facilisis consectetur metus sit amet imperdiet. Nullam vel felis dapibus, accumsan purus sed, pretium massa. Nullam condimentum augue eget lectus blandit, sit amet elementum elit tincidunt. Aliquam ac tellus diam. Nullam dignissim tempus est, non vulputate nisi egestas ultricies.allis.',
     covid: 'コロナ後',
-    image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg'))
+    image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg')),#これもrandでいけるのでは？
+    created_at: (rand*10).days.ago,
+    impressions_count: (rand*80)
   )
 end
 # end
@@ -128,7 +130,9 @@ end
       title: Faker::Lorem.word,
       content: '#移住 udin id Lorem ipsum dolor sit amet, #転職　consectetur adipiscing elit. Phasellus magna enim, tempus tristique dignissim sit amet, iaculis in nibh. Vestibulum sed neque nibh. Morbi augue nunc, interdum quis nunc sit amet, auctor dignissim neque. Nunc mi eros, vehicula molestie mollis in, porta vitae nulla. Sed in lobortis arcu. Nullam ante purus, tincidunt sit amet eros ut, dignissim pellentesque lectus. Proin semper vestibulum lacus, quis hendrerit turpis venenatis in. Vivamus vel porta augue. Integer quis ullamcorper ex. Nunc lacinia arcu et justo pretium, ut porttitor neque feugiat. Maecenas facilisis consectetur metus sit amet imperdiet. Nullam vel felis dapibus, accumsan purus sed, pretium massa. Nullam condimentum augue eget lectus blandit, sit amet elementum elit tincidunt. Aliquam ac tellus diam. Nullam dignissim tempus est, non vulputate nisi egestas ultricies. efficitur sem sed sagittis convallis.',
       covid: 'コロナ後',
-      image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg'))
+      image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg')),
+      created_at: (rand*10).days.ago,
+      impressions_count: (rand*80)
     )
   end
   # end
@@ -139,9 +143,17 @@ end
         title: Faker::Lorem.word,
         content: '#転職 udin id mrisLorem #ワーキングホリデー ipsum dolor sit amet, consectetur adipiscing elit. Phasellus magna enim, tempus tristique dignissim sit amet, iaculis in nibh. Vestibulum sed neque nibh. Morbi augue nunc, interdum quis nunc sit amet, auctor dignissim neque. Nunc mi eros, vehicula molestie mollis in, porta vitae nulla. Sed in lobortis arcu. Nullam ante purus, tincidunt sit amet eros ut, dignissim pellentesque lectus. Proin semper vestibulum lacus, quis hendrerit turpis venenatis in. Vivamus vel porta augue. Integer quis ullamcorper ex. Nunc lacinia arcu et justo pretium, ut porttitor neque feugiat. Maecenas facilisis consectetur metus sit amet imperdiet. Nullam vel felis dapibus, accumsan purus sed, pretium massa. Nullam condimentum augue eget lectus blandit, sit amet elementum elit tincidunt. Aliquam ac tellus diam. Nullam dignissim tempus est, non vulputate nisi egestas ultricies.da. Duis efficitur sem sed sagittis convallis.',
         covid: 'コロナ後',
-        image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg'))
+        image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img03.jpg')),
+        created_at: (rand*10).days.ago,
+        impressions_count: (rand*80)
       )
     end
+
+
+    # project = Project.create(:name => 'Dummy Project')
+    # project.created_at = (rand*10).days.ago
+    # project.save
+
 
 
  
@@ -163,11 +175,16 @@ end
 #   },
 # ])
 
-
+Like.create(user_id: 3, post_id: 1)
+Like.create(user_id: 4, post_id: 2)
+Like.create(user_id: 5, post_id: 3)
+Like.create(user_id: 3, post_id: 3)
+Like.create(user_id: 4, post_id: 1)
+Like.create(user_id: 5, post_id: 2)
 
 
  
-
+# :impressions_count => "#{rand(80)} " 
 
 # 追加のユーザーをまとめて生成する
 
