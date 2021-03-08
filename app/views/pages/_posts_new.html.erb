@@ -1,0 +1,52 @@
+     <div id="new" class="tab-pane active">
+    <%# ここから2 %>
+    <% if @newer_posts.any? %>
+    <% @newer_posts.each do |newer_post| %>
+
+    <%= link_to post_path(newer_post), class: 'text-body under' do %> 
+    <div class="card mt-4">
+    <%= image_tag newer_post.image.url, class: "img-fluid" %>
+     <% end %><%# posts#show %>
+     <div class="card-body">
+     <h5 class="card-title">
+     <%# name, avatar  %>
+     <span class="small">
+     <%= link_to user_path(newer_post.user), class: 'under' do %>
+     <% if newer_post.user.avatar? %>
+     <%= image_tag newer_post.user.avatar.url, class: "rounded-circle mb-3", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+    <% end %>
+    <%= newer_post.user.name %>
+    </span>
+    <%# title  %>
+    <p><%= newer_post.title %></p> 
+    <%# tag, description  %>
+    <span><%= render_with_hashtags(newer_post.content.truncate(85)) %><%= link_to '続きを読む', post_path(newer_post) %></span> 
+   </h5>   
+    <p class="card-text">
+        <%# likes %>
+        <span>
+        <%= render 'shared/likes', post: newer_post %> 
+        </span>
+    <%# impression %>
+       <span>
+       <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
+      </span>
+     <span>
+      <%= time_ago_in_words(newer_post.created_at) %> 前
+      </span>
+        </p>
+      </div><%# card-body %>
+    </div><%# card %>
+     
+    <% end %><%# each %>
+  
+     <% end %> <%# ifpostsany? %>
+      <div class="mt-4">
+    <%= paginate @posts_get_likes %>  
+   </div>
+
+    <%# ここまで2 %>
+    </div><%# popular %>

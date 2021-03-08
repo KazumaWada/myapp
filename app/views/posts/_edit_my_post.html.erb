@@ -1,8 +1,23 @@
 <%# current_userの編集 %>
 <% if current_user?(@user) %>
+
 <div class="text-right mr-3">
+
 <%= link_to edit_post_path(@post) do %>
 <p><i class="fas fa-edit"></i>編集する</p>
 <% end %>
+
+<%# link_to destroy_post_path(@post) data: { confirm: "削除してもよろしいですか? %>
+<%# link_to post_path(@post), method: :DELETE do %>
+ <%# <p><i class="fas fa-trash"></i>削除する</p> %>
+<%# end %>
+
 </div>
+
+
 <% end %>
+
+
+
+
+   

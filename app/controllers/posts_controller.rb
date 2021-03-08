@@ -54,6 +54,7 @@ class PostsController < ApplicationController
   end
   
     def destroy
+      @post = Post.find(params[:id])
       @post.destroy
       flash[:success] ="削除しました"
       redirect_to request.referrer || root_url
