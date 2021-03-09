@@ -42,7 +42,7 @@ jobs:
           # POSTGRES_DB: rails_blog_test
           # POSTGRES_PASSWORD: ""
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_USER: root
+          MYSQL_USER: ci-test-user
           MYSQL_PASSWORD: password
     # environment variables specific to Ruby/Rails, applied to the primary container.
     environment:
