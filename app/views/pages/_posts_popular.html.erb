@@ -21,7 +21,7 @@
     <%= post_get_like.user.name %>
     </span>
     <%# title  %>
-    <p><%= post_get_like.title %></p> 
+    <h3><%= post_get_like.title %></h3> 
     <%# tag, description  %>
     <span><%= render_with_hashtags(post_get_like.content.truncate(85)) %><%= link_to '続きを読む', post_path(post_get_like) %></span> 
    </h5>   
@@ -44,9 +44,9 @@
     <% end %><%# each %>
   
      <% end %> <%# ifpostsany? %>
-      <div class="mt-4">
+      <%# <div class="mt-4">
     <%= paginate @posts_get_likes %>  
-   </div>
+   <%# </div> %> 
 
     <%# ここまで2 %>
     </div><%# popular %>

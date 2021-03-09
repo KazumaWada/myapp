@@ -21,10 +21,17 @@
     </div><%#text-center %>
 <%# 各ユーザーの投稿 %>
 <main class="p-3">
-<%= render 'users_tabs' %>
+  <ul class="nav nav-tabs nav-justified">
+    <li class="nav-item">
+      <a href="#post" class="nav-link active" data-toggle="tab">投稿</a>
+    </li>
+    <%# <li class="nav-item">
+      <a href="#post-i-liked" class="nav-link" data-toggle="tab">いいねした投稿</a>
+    </li> %>
+  </ul>
 <div class="tab-content">
 <%= render 'users_posts' %>
 <%# いいねした投稿がまだない %>
-<%= render 'users_likes' %>
+<%# render 'users_likes' %>
 </div><%# tab-content %>
 </main>

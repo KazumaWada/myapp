@@ -21,7 +21,7 @@
     <%= post_get_view.user.name %>
     </span>
     <%# title  %>
-    <p><%= post_get_view.title %></p> 
+    <h3><%= post_get_view.title %></h3> 
     <%# tag, description  %>
     <span><%= render_with_hashtags(post_get_view.content.truncate(85)) %><%= link_to '続きを読む', post_path(post_get_view) %></span> 
    </h5>   
@@ -44,9 +44,9 @@
     <% end %><%# each %>
   
      <% end %> <%# ifpostsany? %>
-      <div class="mt-4">
+      <%# <div class="mt-4">
     <%= paginate @posts_get_views %>  
-   </div>
+   <%# </div> %> 
 
     <%# ここまで2 %>
     </div><%# popular %>

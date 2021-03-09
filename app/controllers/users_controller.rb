@@ -21,6 +21,9 @@ class UsersController < ApplicationController
     # @posts = Post.page(params[:page]).per(4)
     #正常に処理が行われると、@user=User.find(1)となる。
     @posts = @user.posts.paginate(page: params[:page])
+    # @posts = @user.posts.page(params[:page]).per(2)
+    # @users = User.page(params[:page]).per(10)
+
 
     @smooth_login_user = User.find_by(email: "smooth_login@example.com")
    
