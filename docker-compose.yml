@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   # ruby
   app:
@@ -17,12 +17,14 @@ services:
   # mysql
   db:
     image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     env_file:
       - ./environments/db.env
     volumes:
       # - db-data:/var/lib/mysql
       #mysql8の認証のため。
-        - ./mysql-confd:/etc/mysql/conf.d
+      - ./mysql-confd:/etc/mysql/conf.d
   # nginx
   web:
     build:
