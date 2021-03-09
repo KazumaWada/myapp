@@ -21,7 +21,7 @@
     <%= newer_post.user.name %>
     </span>
     <%# title  %>
-    <p><%= newer_post.title %></p> 
+    <h3><%= newer_post.title %></h3> 
     <%# tag, description  %>
     <span><%= render_with_hashtags(newer_post.content.truncate(85)) %><%= link_to '続きを読む', post_path(newer_post) %></span> 
    </h5>   
@@ -44,9 +44,9 @@
     <% end %><%# each %>
   
      <% end %> <%# ifpostsany? %>
-      <div class="mt-4">
+      <%# <div class="mt-4">
     <%= paginate @newer_posts %>  
-   </div>
+   <%# </div> %> 
 
     <%# ここまで2 %>
     </div><%# popular %>
