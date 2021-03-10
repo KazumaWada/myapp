@@ -67,8 +67,28 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+       - run:
+          name: setup for mysql8 01
+          command: apt update && apt install -y lsb-release \ 
+                   && apt remove -y libmariadb-dev-compat libmariadb-dev
+       - run:
+          name: setup for mysql8 02
+          command: wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-common_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/libmysqlclient21_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-community-client-core_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-community-client_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/libmysqlclient-dev_8.0.18-1debian10_amd64.deb
+
+      - run:
+          name: setup for mysql8 03
+          command: dpkg -i mysql-common_8.0.18-1debian10_amd64.deb \
+    libmysqlclient21_8.0.18-1debian10_amd64.deb \
+    mysql-community-client-core_8.0.18-1debian10_amd64.deb \
+    mysql-community-client_8.0.18-1debian10_amd64.deb \
+    libmysqlclient-dev_8.0.18-1debian10_amd64.deb
+     
       # Run rspec in parallel
-      - ruby/rspec-test
+      # - ruby/rspec-test
 
 # We use workflows to orchestrate the jobs that we declared above.
 workflows:
