@@ -1,34 +1,43 @@
-<% if @posts.any? %>
 
- <% @posts.each do |p| %>
- <%= link_to post_path(p), class: 'text-body' do %> 
+        <% if @posts.any? %>
+    <% @posts.each do |p| %>
 
-   <div class="card mt-2">
-      <%= image_tag p.image.url, class: 'img-fluid' %>
-       <div class="card-body">
-        <p class="card-text">
-         <%= render_with_hashtags(p.content) %>
-        </p>
-      <% end %><%# post_path_link %>
-     
-    　<h5 class="card-title">
-      <%# link_to user_path(@user) do %>
-      <% if p.user.avatar? %>
-      <%= image_tag p.user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
-      <% else %>
+    <%= link_to post_path(p), class: 'text-body under' do %> 
+    <div class="card mt-4">
+    <%= image_tag p.image.url, class: "img-fluid" %>
+     <% end %><%# posts#show %>
+     <div class="card-body">
+     <h5 class="card-title">
+     <%# name, avatar  %>
+     <span class="small">
+     <%= link_to user_path(p.user), class: 'under' do %>
+     <% if p.user.avatar? %>
+     <%= image_tag p.user.avatar.url, class: "rounded-circle mb-3", width: "40px", height: "40px" %>
+     <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
      <% end %>
-      <%= p.title %>
-      </h5>
-        <p class="card-text">
-        <% p.tags.each do |tag| %>
-    　　<i class="fas fa-tag"><%= tag.name %></i>
-　　　　　<% end %>      
-        <span>
-        <i class="fas fa-eye"><%= p.impressions_count %></i>
-        </span>
+    <% end %>
+    <%= p.user.name %>
+    </span>
+    <%# title  %>
+    <h3><%= p.title %></h3> 
+    <%# tag, description  %>
+    <span><%= render_with_hashtags(p.content.truncate(85)) %><%= link_to '続きを読む', post_path(p) %></span> 
+   </h5>   
+    <p class="card-text">
+        <%# likes %>
+        <p><%= render 'shared/likes', post: p %></p>
+    <%# impression %>
+       <span>
+       <i class="fas fa-eye"><%= p.impressions_count %></i>
+      </span>
+     <span>
+      <%= time_ago_in_words(p.created_at) %> 前
+      </span>
         </p>
       </div><%# card-body %>
     </div><%# card %>
+     
     <% end %><%# each %>
-    <% end %> <%# ifpostsany? %>
+  
+     <% end %> <%# ifpostsany? %>
