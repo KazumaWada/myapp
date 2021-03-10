@@ -34,6 +34,7 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
       - image: circleci/mysql:8.0
+        # - image: mysql:8.0
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
@@ -61,12 +62,25 @@ jobs:
           cache-key: "yarn.lock"
       # Here we make sure that the secondary container boots
       # up before we run operations on the database.
+      # - run:
+      #     name: Wait for DB
+      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+          name: database setup 01
+          command: bundle exec rails db:create
+      - run:
+          name: database setup 02
+          command: bundle exec rails db:migrate
+      - run:
+          name: database setup 03
+          command: bundle exec rails db:seed
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+
+      - run:
+          name: rails6 webpacker setup
+          command: bundle exec rails webpacker:install
       # Run rspec in parallel
       - ruby/rspec-test
 
