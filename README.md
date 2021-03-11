@@ -57,3 +57,11 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 [アップデート中の機能 1](https://github.com/kazumawada/myapp/issues/143#issue-822792867)
 
 [アップデート中の機能 2](https://github.com/kazumawada/myapp/issues/146#issue-823820013)
+
+## 各種リンク
+
+[Qiita](https://qiita.com/kazumawada)
+
+[技術ブログ](https://kazumawada.hateblo.jp/)
+
+
