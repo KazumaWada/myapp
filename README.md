@@ -5,12 +5,12 @@
 http://35.72.202.115/
 
 
-![FireShot Capture 055 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110719957-1e76dc00-8251-11eb-9d45-6c02e7cf2f5e.png)
+![FireShot Capture 058 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110724328-f2f7ef80-8258-11eb-9567-9db3ff722a4f.png)
 
 <br><br>
 
 ## クラウドアーキテクチャー
-Rails,MySQL,PumaとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。
+Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。
 
 
 ![cloud-architect](https://user-images.githubusercontent.com/57794648/110573294-5a9d3480-819e-11eb-8c83-e259f971a50f.png)
@@ -20,10 +20,10 @@ Rails,MySQL,PumaとNginxをDockerコンテナに乗せて、EC2インスタン�
 
 ## 機能一覧
 ・CRUD機能(User,Post)<br>
-・ソート（人気、新着、view数順でそれぞれ表示）
-・ゲストログイン
+・ソート（人気、新着、view数順でそれぞれ表示）<br>
+・ゲストログイン<br>
 ・ゲストログインを編集させない<br>
-・画像アップロード(CarrierWave)<br>
+・画像アップロード(gem 'carrierwave')<br>
 ・いいね<br>
 ・返信/コメント<br>
 ・impression数(gem 'impressionist')<br>
