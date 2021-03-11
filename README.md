@@ -32,7 +32,6 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・API(gem 'json')<br>
 ・天気API<br>
 ・気温API<br>
-・時刻API<br>
 ・ニュースAPI
 
 <br>
