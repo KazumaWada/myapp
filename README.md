@@ -35,7 +35,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・時刻API<br>
 ・ニュースAPI
 
-<br><br>
+<br>
 
 ## 使用技術
 ・Ruby 2.6.6<br>
@@ -50,6 +50,8 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・Weather API<br>
 ・News API
 
+<br>
+
 ## アップデート中のもの
 
 [バグ](https://github.com/kazumawada/myapp/issues/142#issue-821933525)
@@ -57,6 +59,8 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 [アップデート中の機能 1](https://github.com/kazumawada/myapp/issues/143#issue-822792867)
 
 [アップデート中の機能 2](https://github.com/kazumawada/myapp/issues/146#issue-823820013)
+
+<br>
 
 ## 各種リンク
 
