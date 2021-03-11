@@ -30,9 +30,9 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・タグ(記事内にハッシュタグで表示)<br>
 ・検索<br>
 ・API(gem 'json')<br>
-・ベルリンの天気API<br>
-・ベルリンの気温API<br>
-・ドイツのニュースAPI
+ &nbsp; &nbsp;・ベルリンの天気API<br>
+ &nbsp; &nbsp;・ベルリンの気温API<br>
+ &nbsp; &nbsp;・ドイツのニュースAPI
 
 <br>
 
