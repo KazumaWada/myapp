@@ -27,9 +27,9 @@ jobs:
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      DBUSER: test-user
-      DBPASSWORD: password
+      DB_HOST: 127.0.0.1
+      DB_USER: test-user
+      DB_PASSWORD: password
       RAILS_ENV: test
     steps:
       - checkout
@@ -40,7 +40,9 @@ jobs:
       - run:
           name: Wait for DB
           # ここを参考にして、3306にしたhttps://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
+          #https://circleci.com/docs/ja/2.0/databases/?section=examples-and-guides#dockerize-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%81%AE%E5%BE%85%E6%A9%9F
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run: bundle exec rails db:create
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
