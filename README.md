@@ -2,8 +2,7 @@
 ベルリンにまつわることを共有するサービスです。
 
 ## URL
-http://35.72.202.115/
-
+ http://35.72.202.115/ 「かんたんログイン」を使って下さい。
 
 ![FireShot Capture 064 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110725759-74508180-825b-11eb-9a57-c31f9e757e80.png)
 
