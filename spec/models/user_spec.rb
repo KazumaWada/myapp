@@ -28,12 +28,12 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of :bio }
   it { is_expected.to validate_length_of(:bio).is_at_most(300) }
 
-  it "is invalid with a duplicate email adress" do 
-    FactoryBot.create(:user, email: "aaron@example.com")
-    user = FactoryBot.build(:user, email: "aaron@example.com")
-    user.valid?
-    expect(user.errors[:email]).to include("has already been taken")
-  end
+  # it "is invalid with a duplicate email adress" do 
+  #   FactoryBot.create(:user, email: "aaron@example.com")
+  #   user = FactoryBot.build(:user, email: "aaron@example.com")
+  #   user.valid?
+  #   expect(user.errors[:email]).to include("has already been taken")
+  # end
 
 #emailの有効性
 describe "email validation with proper address form" do
