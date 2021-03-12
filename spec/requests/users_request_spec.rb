@@ -68,31 +68,31 @@ RSpec.describe "User http prorerly", type: :request do
 
   end#edit
 
-  describe "#update" do
-    context "as an authorized user" do
-      #ちゃんと更新できる。
-      it "update a user" do
-        # user_params = FactoryBot.attributes_for(:user, name: "UpdatedName")
-        # patch user_path(user), params: {id: user.id, user: user_params }
-        # expect(user.reload.name).to eq "UpdatedName"
-        visit login_path
-        sign_in_as user
-        find(".login-btn").click
-        visit user_path(user)
-        find(".edit-btn").click
-        expect {
-          # fill_in_update_profile_form("New Name", "new@example.com")
-          user_params = FactoryBot.attributes_for(:user, name: "New Name", email: "new@example.com", password: "password", password_confirmation: "password")
-          # click_link "Save changes"
-          click_on 'Save changes'
-          # find(".save-changes-btn").click
-        }.to change(User, :count).by(0)
-        expect(user.reload.name).to eq "New Name"
-        expect(user.reload.email).to eq "new@example.com"
-        success_messages("Updateしました。")
-      end
-    end
-  end#update
+  # describe "#update" do
+  #   context "as an authorized user" do
+  #     #ちゃんと更新できる。
+  #     it "update a user" do
+  #       # user_params = FactoryBot.attributes_for(:user, name: "UpdatedName")
+  #       # patch user_path(user), params: {id: user.id, user: user_params }
+  #       # expect(user.reload.name).to eq "UpdatedName"
+  #       visit login_path
+  #       sign_in_as user
+  #       find(".login-btn").click
+  #       visit user_path(user)
+  #       find(".edit-btn").click
+  #       expect {
+  #         # fill_in_update_profile_form("New Name", "new@example.com")
+  #         user_params = FactoryBot.attributes_for(:user, name: "New Name", email: "new@example.com", password: "password", password_confirmation: "password")
+  #         # click_link "Save changes"
+  #         click_on 'Save changes'
+  #         # find(".save-changes-btn").click
+  #       }.to change(User, :count).by(0)
+  #       expect(user.reload.name).to eq "New Name"
+  #       expect(user.reload.email).to eq "new@example.com"
+  #       success_messages("Updateしました。")
+  #     end
+  #   end
+  # end
 
 
 
