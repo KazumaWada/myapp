@@ -19,33 +19,50 @@ jobs:
     parallelism: 3
     docker:
       - image: circleci/ruby:2.6.6-node-browsers
+        environment:
+          # BUNDLER_VERSION: 2.0.1
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: ci-test #rootエラーを防ぐためのもので、それ以外はない
+          DB_PASSWORD: password
+
       - image: circleci/mysql:8.0
         environment:
+          BUNDLE_JOBS: "3"
+          BUNDLE_RETRY: "3"
+          MYSQL_DATABASE: ci_test #databaseymlのtest.database
+          MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_USER: test-user
-          MYSQL_PASSWORD: password
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      DB_HOST: 127.0.0.1
-      DB_USER: test-user
-      DB_PASSWORD: password
-      RAILS_ENV: test
+
+    working_directory: ~/myapp
+
+    #     environment:
+    #       MYSQL_ROOT_PASSWORD: password
+    #       MYSQL_USER: test-user
+    #       MYSQL_PASSWORD: password
+    # environment:
+    #   BUNDLE_JOBS: "3"
+    #   BUNDLE_RETRY: "3"
+    #   DB_HOST: 127.0.0.1
+    #   DB_USER: test-user
+    #   DB_PASSWORD: password
+    #   RAILS_ENV: test
     steps:
       - checkout
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: "yarn.lock"
+          cache-key:
+            "yarn.lock"
+
+            # Database setup
       - run:
-          name: Wait for DB
-          # ここを参考にして、3306にしたhttps://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
-          #https://circleci.com/docs/ja/2.0/databases/?section=examples-and-guides#dockerize-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%81%AE%E5%BE%85%E6%A9%9F
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run: bundle exec rails db:create
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          name: bundle exec
+          command: |
+            dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+            bundle exec rake db:create
+            bundle exec rake db:schema:load --trace
+
       # Run rspec in parallel
       - ruby/rspec-test
       - ruby/rubocop-check
@@ -58,3 +75,12 @@ workflows:
       - test:
           requires:
             - build
+# -run
+#     name: Wait for DB
+#     # ここを参考にして、3306にしたhttps://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
+#     #https://circleci.com/docs/ja/2.0/databases/?section=examples-and-guides#dockerize-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%81%AE%E5%BE%85%E6%A9%9F
+#     command: dockerize -wait tcp://localhost:3306 -timeout 1m
+# - run: bundle exec rails db:create
+# - run:
+#     name: Database setup
+#     command: bundle exec rails db:schema:load --trace
