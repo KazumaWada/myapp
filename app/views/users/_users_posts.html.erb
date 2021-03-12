@@ -2,63 +2,64 @@
   <% if @user.posts.exists? %>　
 　    <% @user.posts.each do |post| %>
       <%# <div class="card" style="width: 50rem;"> %>
-      <div class="card">
-      <%# サムネイル画像 %>
-      <%= link_to post_path(post) do %> 
-      <% if post.image? %>
-       <%= image_tag post.image.url, class: 'card-img-top' %>
-      <% else %>
-      <%= image_tag "the-mainn.jpg", class: 'card-img-top'%>
-      <% end %>
-      <% end %>
-
-  <div class="card-body">
-  　<%# タイトル %>
-  　<%= post.title %> 
-    
-   　<div class="card-text">
-　　　<%# アバター %>
-     <%= link_to user_path(post.user) do %>
-     <span>
+     <%= link_to post_path(post), class: 'text-body under' do %> 
+    <div class="card mt-4">
+    <%= image_tag post.image.url, class: "img-fluid" %>
+     <% end %><%# posts#show %>
+     <div class="card-body">
+     <h5 class="card-title">
+     <%# avatar  %>
+     <span class="small">
+     <%= link_to user_path(post.user), class: 'under' do %>
      <% if post.user.avatar? %>
-     <%= image_tag post.user.avatar.url, class: "rounded-circle ", width: "40px", height: "40px" %>
+     <%= image_tag post.user.avatar.url, class: "rounded-circle mb-3", width: "40px", height: "40px" %>
      <% else %>
      <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
      <% end %>
-     <%# 名前 %>
-     <%= post.user.name %>
-    </span>
     <% end %>
-    </div>
-    <h4 class="card-text">
-    <%#view数 %>
-    <i class="fas fa-eye"><%= post.impressions_count %></i>
-    </h4><%#card-text %>
-    <%#コロナ %>
-    時期:<%= post.covid %>
-    <%#いいね %>
-    <%# このファイル内のpostをこのループ内で定義されたpostに変換 %>
-    <%= render 'shared/likes', post: post %> 
-    </p>
-    
-    <div class="card-text">
-    <%# 投稿日 %>
-    <span class="timestamp">
-  　 <%= time_ago_in_words(post.created_at) %> 前
+    <%# name %>
+    <%= post.user.name %></span><br>
+    <%# covid  %>
+    <span class="small bg-warning">
+    <%= post.covid %>
     </span>
+    <%# title  %>
+    <h3><%= post.title %></h3> 
+    <%# tag, description  %>
+    <span><%= render_with_hashtags(post.content.truncate(85)) %><%= link_to '続きを読む', post_path(post) %></span> 
+   </h5>   
+    <p class="card-text">
+        <%# likes %>
+        <span>
+        <%= render 'shared/likes', post: post %> 
+        </span>
+    <%# impression %>
+       <span>
+       <i class="fas fa-eye"><%= post.impressions_count %></i>
+      </span>
+     <p>
+      <%= time_ago_in_words(post.created_at) %> 前
+      </p>
 
+    <h5 class="card-title">
+    <%#編集, 削除 %>
+    <span>
     <% if current_user?(@user) %>
-    <%#編集 %>
-    <div class="card-text">
     <%= link_to edit_post_path(post) do %>
-    <p><i class="fas fa-edit"></i></p>
+    <i class="fas fa-edit"></i>
     <% end %>
-    </div>
-    <%# 削除 %>
     <%= link_to post, method: :delete, data: { confirm: "削除してよろしいですか?" } do %>
     <i class="fas fa-trash"></i>
     <% end %>
     <% end %><%# current_user %>
+    <span>
+    </h5>
+
+        </p><%# card-text %>
+      </div><%# card-body %>
+    </div><%# card %>
+
+  
 
 　　 </div><%# card-text %>
       </div><%# card-body %>
@@ -73,3 +74,7 @@
    </div>
    <%# paginate @user.posts %>
 <%# <%= paginate @posts %> 
+
+
+
+  
