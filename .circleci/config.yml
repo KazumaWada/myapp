@@ -1,52 +1,52 @@
+# ########テストコード03############
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.1.0
-  node: circleci/node@2
+  ruby: circleci/ruby@1.1.2
+  node: circleci/node@4.2.0
+  #cimg/ruby:2.6.6-node にはE2Eテスト用のブラウザーが入っていないので、ブラウザーをインストールする
+  browser-tools: circleci/browser-tools@1.0.1
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.6-node-browsers
+      - image: cimg/ruby:2.6.6-node
     steps:
       - checkout
       - ruby/install-deps
-      # Store bundle cache
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
   test:
-    parallelism: 3
     docker:
-      - image: circleci/ruby:2.6.6-node-browsers
-      - image: circleci/mysql:8.0
+      - image: cimg/ruby:2.6.6-node
         environment:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_USER: test-user
+          RAILS_ENV: test
+      - image: circleci/mysql:8.0
+        name: db
+        command: mysqld --default-authentication-plugin=mysql_native_password
+        environment:
+          MYSQL_DATABASE: test_db
+          MYSQL_USER: test_user
           MYSQL_PASSWORD: password
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
-      DB_HOST: 127.0.0.1
-      DB_USER: test-user
-      DB_PASSWORD: password
-      RAILS_ENV: test
+      BUNDLE_PATH: vendor/bundle
     steps:
       - checkout
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-          cache-key: "yarn.lock"
+      #browser-tools: circleci/browser-tools@1.0.1
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           name: Wait for DB
-          # ここを参考にして、3306にしたhttps://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
-          #https://circleci.com/docs/ja/2.0/databases/?section=examples-and-guides#dockerize-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%81%AE%E5%BE%85%E6%A9%9F
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run: bundle exec rails db:create
+          command: dockerize -wait tcp://db:3306 -timeout 1m
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
-      # Run rspec in parallel
       - ruby/rspec-test
       - ruby/rubocop-check
 
@@ -58,3 +58,87 @@ workflows:
       - test:
           requires:
             - build
+# ########テストコード02##########
+# version: 2
+# jobs:
+#   build:
+#     #時間を短縮するために、複数のマシンにテストを分散してテストを並行して実行できます。
+#     parallelism: 3
+#     working_directory: ~/myapp
+#     docker:
+#       - image: circleci/ruby:2.6.6-node-browsers
+#         environment:
+#           BUNDLE_JOBS: 3
+#           BUNDLE_RETRY: 3
+#           BUNDLE_PATH: vendor/bundle
+#           PGHOST: 127.0.0.1
+#           PGUSER: circleci-demo-ruby
+#           RAILS_ENV: test
+#       - image: circleci/postgres:9.5-alpine  # サービス イメージ
+#         environment:
+#           POSTGRES_USER: circleci-demo-ruby
+#           POSTGRES_DB: rails_blog
+#           POSTGRES_PASSWORD: ""
+
+#########テストコード01###############
+
+# version: 2.1
+
+# orbs:
+#   ruby: circleci/ruby@1.1.0
+#   node: circleci/node@2
+
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/ruby:2.6.6-node-browsers
+#     steps:
+#       - checkout
+#       - ruby/install-deps
+#       # Store bundle cache
+#       - node/install-packages:
+#           pkg-manager: yarn
+#           cache-key: "yarn.lock"
+#   test:
+#     parallelism: 3
+#     docker:
+#       - image: circleci/ruby:2.6.6-node-browsers
+#       - image: circleci/mysql:8.0
+#         environment:
+#           MYSQL_ROOT_PASSWORD: password
+#           MYSQL_USER: test-user
+#           MYSQL_PASSWORD: password
+#     environment:
+#       BUNDLE_JOBS: "3"
+#       BUNDLE_RETRY: "3"
+#       DB_HOST: 127.0.0.1
+#       DB_USER: test-user
+#       DB_PASSWORD: password
+#       RAILS_ENV: test
+#     steps:
+#       - checkout
+#       - ruby/install-deps
+#       - node/install-packages:
+#           pkg-manager: yarn
+#           cache-key: "yarn.lock"
+#       - run:
+#           name: Wait for DB
+#           # ここを参考にして、3306にしたhttps://support.circleci.com/hc/en-us/articles/360006773953-Race-Conditions-Wait-For-Database
+#           #https://circleci.com/docs/ja/2.0/databases/?section=examples-and-guides#dockerize-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E4%BE%9D%E5%AD%98%E9%96%A2%E4%BF%82%E3%81%AE%E5%BE%85%E6%A9%9F
+#           command: dockerize -wait tcp://localhost:3306 -timeout 1m
+#       - run: bundle exec rails db:create
+#       - run:
+#           name: Database setup
+#           command: bundle exec rails db:schema:load --trace
+#       # Run rspec in parallel
+#       - ruby/rspec-test
+#       - ruby/rubocop-check
+
+# workflows:
+#   version: 2
+#   build_and_test:
+#     jobs:
+#       - build
+#       - test:
+#           requires:
+#             - build
