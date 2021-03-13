@@ -78,8 +78,9 @@ jobs:
       #       command: bundle exec rails db:test:prepare
       - run:
           name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      #- run: bundle exec rails db:drop db:create db:migrate
+          command: bundle exec rails db:drop db:create db:migrate
+          # bundle exec rails db:schema:load --trace
+      #- run:
       #  上のやつかもしくは、rake db:reset
       - ruby/rspec-test
       - ruby/rubocop-check
