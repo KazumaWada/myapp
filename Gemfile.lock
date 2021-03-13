@@ -374,7 +374,6 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 4.1.0)
   webpacker (~> 5.0)
   will_paginate (= 3.1.8)
