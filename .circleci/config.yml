@@ -26,7 +26,8 @@ jobs:
         environment:
           MYSQL_DATABASE: test_db
           MYSQL_USER: test_user
-          MYSQL_PASSWORD: password
+          # MYSQL_PASSWORD: password
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
@@ -46,8 +47,24 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://db:3306 -timeout 1m
       - run:
+          name: Install MySQL-Client
+          command: sudo apt install -y mysql-client
+      - run:
+          name: Solved Gem::ConfigMap is deprecated 01
+          command: apt update && apt install -y  ruby-dev
+      - run:
+          name: Solve Gem::ConfigMap is deprecated 02
+          command: gem list rubygems-update
+      - run:
+          name: db:create
+          command: bundle exec rails db:create
+      - run:
+          name: test:dr:prepare
+          command: bundle exec rails db:test:prepare
+      - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+      #- run: bundle exec rails db:drop db:create db:migrate
       - ruby/rspec-test
       - ruby/rubocop-check
 
