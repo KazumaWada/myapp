@@ -76,6 +76,9 @@ jobs:
       #   - run:
       #       name: test:dr:prepare
       #       command: bundle exec rails db:test:prepare
+        - run:
+          name: webpacker setup
+          command: bundle exec rails webpacker:install
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
