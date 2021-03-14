@@ -13,7 +13,7 @@ jobs:
           MYSQL_DATABASE: ci_rails_sample_test
     working_directory: ~/myapp
     steps:
-    - checkout
+      - checkout
       - run:
           name: BundLER install
           command: |
