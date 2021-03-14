@@ -1,8 +1,11 @@
 version: 2.1
 
+# orbs:
+#   ruby: circleci/ruby@1.1.2
+#   node: circleci/node@4.2.0
 orbs:
-  ruby: circleci/ruby@1.1.2
-  node: circleci/node@4.2.0
+  ruby: circleci/ruby@1.1.0
+  node: circleci/node@2
   #cimg/ruby:2.6.6-node にはE2Eテスト用のブラウザーが入っていないので、ブラウザーをインストールする
   browser-tools: circleci/browser-tools@1.0.1
 
@@ -15,6 +18,7 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
+          cache-key: "yarn.lock"
   test:
     docker:
       - image: cimg/ruby:2.6.6-node
@@ -40,7 +44,7 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-      #browser-tools: circleci/browser-tools@1.0.1
+      #browser-tools: circleci/browser-tools@1.0.1の影響
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       #  - restore_cache:
@@ -76,6 +80,7 @@ jobs:
       #   - run:
       #       name: test:dr:prepare
       #       command: bundle exec rails db:test:prepare
+
       - run:
           name: webpacker setup
           command: bundle exec rails webpacker:install
