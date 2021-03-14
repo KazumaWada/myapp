@@ -76,9 +76,9 @@ jobs:
       # - run:
       #     name: Solve Gem::ConfigMap is deprecated 02
       #     command: gem list rubygems-update
-      # 　- run:
-      #       name: db:create
-      #       command: bundle exec rails db:create
+      　- run:
+            name: db:create
+            command: bundle exec rails db:create
       #   - run:
       #       name: test:dr:prepare
       #       command: bundle exec rails db:test:prepare
