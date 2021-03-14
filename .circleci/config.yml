@@ -1,115 +1,150 @@
-version: 2.1
+# version: 2.1
 
-orbs:
-  ruby: circleci/ruby@1.1.2
-  node: circleci/node@4.2.0
-  # orbs:
-  #   ruby: circleci/ruby@1.1.0
-  #   node: circleci/node@2
-  #cimg/ruby:2.6.6-node にはE2Eテスト用のブラウザーが入っていないので、ブラウザーをインストールする
-  browser-tools: circleci/browser-tools@1.0.1
+# orbs:
+#   ruby: circleci/ruby@1.1.2
+#   node: circleci/node@4.2.0
+#   # orbs:
+#   #   ruby: circleci/ruby@1.1.0
+#   #   node: circleci/node@2
+#   #cimg/ruby:2.6.6-node にはE2Eテスト用のブラウザーが入っていないので、ブラウザーをインストールする
+#   browser-tools: circleci/browser-tools@1.0.1
+
+# jobs:
+#   build:
+#     docker:
+#       - image: cimg/ruby:2.6.6-node
+#     steps:
+#       - checkout
+#       - ruby/install-deps
+#       - node/install-packages:
+#           pkg-manager: yarn
+#           # cache-key: "yarn.lock"
+#   test:
+#     docker:
+#       - image: cimg/ruby:2.6.6-node
+#         environment:
+#           RAILS_ENV: test
+#       - image: circleci/mysql:8.0
+#         name: db
+#         command: mysqld --default-authentication-plugin=mysql_native_password
+#         environment:
+#           MYSQL_DATABASE: test_db
+#           MYSQL_USER: test_user
+#           # MYSQL_PASSWORD: password
+#           MYSQL_ALLOW_EMPTY_PASSWORD: yes
+#     environment:
+#       BUNDLE_JOBS: "3"
+#       BUNDLE_RETRY: "3"
+#       DB_HOST: 127.0.0.1
+#       DB_USER: test-user
+#       DB_PASSWORD: password
+#       RAILS_ENV: test
+#     steps:
+#       - checkout
+#       - ruby/install-deps
+#       - node/install-packages:
+#           pkg-manager: yarn
+#       #browser-tools: circleci/browser-tools@1.0.1の影響
+#       - browser-tools/install-chrome
+#       - browser-tools/install-chromedriver
+#       #  - restore_cache:
+#       #       name: dependancy cash reproduce
+#       #       keys:
+#       #         - v1-dependencies-{{ checksum "Gemfile.lock" }}
+#       #         - v1-dependencies-
+#       # - run:
+#       #     name: identified which Bundler
+#       #     command: bundle -v
+
+#       # - run:
+#       #     name: install with above bundler
+#       #     command: bundle check || bundle install
+#       # 2.1.4にした方がいいかも
+#       - run:
+#           name: BundLER install
+#           command: |
+#             sudo gem update --system
+#             sudo gem install bundler -v 2.1.4
+#       - run:
+#           name: Bundle Update
+#           command: bundle update
+#       - run:
+#           name: Bundle Install
+#           command: bundle install
+#       - save_cache:
+#           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+#           paths:
+#             - vendor/bundle
+#       - run:
+#           name: Wait for DB
+#           command: dockerize -wait tcp://db:3306 -timeout 1m
+#       # - run:
+#       #     name: Install MySQL-Client
+#       #     command: sudo apt install -y mysql-client
+#       # - run:
+#       #     name: Solved Gem::ConfigMap is deprecated 01
+#       #     command: sudo apt update && sudo apt install -y  ruby-dev
+#       # - run:
+#       #     name: Solve Gem::ConfigMap is deprecated 02
+#       #     command: gem list rubygems-update
+#       # 　- run:
+#       #       name: db:create
+#       #       command: bundle exec rails db:create
+#       #   - run:
+#       #       name: test:dr:prepare
+#       #       command: bundle exec rails db:test:prepare
+
+#       # - run:
+#       #     name: webpacker setup
+#       #     command: bundle exec rails webpacker:install
+#       - run:
+#           name: Database setup
+#           command: bundle exec rails db:schema:load --trace
+#       #- run: bundle exec rails db:drop db:create db:migrate
+#       #  上のやつかもしくは、rake db:reset
+#       - ruby/rspec-test
+#       - ruby/rubocop-check
+
+# workflows:
+#   version: 2
+#   build_and_test:
+#     jobs:
+#       - build
+#       - test:
+#           requires:
+#             - build
+version: 2
 
 jobs:
-  build:
-    docker:
-      - image: cimg/ruby:2.6.6-node
-    steps:
-      - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-          # cache-key: "yarn.lock"
   test:
     docker:
-      - image: cimg/ruby:2.6.6-node
+     - image: cimg/ruby:2.6.6-node
         environment:
           RAILS_ENV: test
       - image: circleci/mysql:8.0
-        name: db
-        command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: test_user
-          # MYSQL_PASSWORD: password
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-    environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      DB_HOST: 127.0.0.1
-      DB_USER: test-user
-      DB_PASSWORD: password
-      RAILS_ENV: test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: ci_rails_sample_test
+    working_directory: ~/myapp
     steps:
       - checkout
-      - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
-      #browser-tools: circleci/browser-tools@1.0.1の影響
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
-      #  - restore_cache:
-      #       name: dependancy cash reproduce
-      #       keys:
-      #         - v1-dependencies-{{ checksum "Gemfile.lock" }}
-      #         - v1-dependencies-
-      # - run:
-      #     name: identified which Bundler
-      #     command: bundle -v
+      - run:
+          name: bundle install
+          command: bundle install --path vendor/bundle
+      - run:
+          name: wait for db
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      - run:
+          name: set up for db
+          command: bundle exec rake db:schema:load
+      - run: 
+          name: rnu rspec
+          command: bundle exec rspec
 
-      # - run:
-      #     name: install with above bundler
-      #     command: bundle check || bundle install
-      # 2.1.4にした方がいいかも
-      - run:
-          name: BundLER install
-          command: |
-            sudo gem update --system
-            sudo gem install bundler -v 2.1.4
-      - run:
-          name: Bundle Update
-          command: bundle update
-      - run:
-          name: Bundle Install
-          command: bundle install
-      - save_cache:
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://db:3306 -timeout 1m
-      # - run:
-      #     name: Install MySQL-Client
-      #     command: sudo apt install -y mysql-client
-      # - run:
-      #     name: Solved Gem::ConfigMap is deprecated 01
-      #     command: sudo apt update && sudo apt install -y  ruby-dev
-      # - run:
-      #     name: Solve Gem::ConfigMap is deprecated 02
-      #     command: gem list rubygems-update
-      # 　- run:
-      #       name: db:create
-      #       command: bundle exec rails db:create
-      #   - run:
-      #       name: test:dr:prepare
-      #       command: bundle exec rails db:test:prepare
-
-      # - run:
-      #     name: webpacker setup
-      #     command: bundle exec rails webpacker:install
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      #- run: bundle exec rails db:drop db:create db:migrate
-      #  上のやつかもしくは、rake db:reset
-      - ruby/rspec-test
-      - ruby/rubocop-check
 
 workflows:
   version: 2
-  build_and_test:
+  workflows:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - test
