@@ -3,6 +3,9 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   node: circleci/node@4.2.0
+  # orbs:
+  #   ruby: circleci/ruby@1.1.0
+  #   node: circleci/node@2
   #cimg/ruby:2.6.6-node にはE2Eテスト用のブラウザーが入っていないので、ブラウザーをインストールする
   browser-tools: circleci/browser-tools@1.0.1
 
@@ -15,6 +18,7 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
+          # cache-key: "yarn.lock"
   test:
     docker:
       - image: cimg/ruby:2.6.6-node
@@ -40,7 +44,7 @@ jobs:
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
-      #browser-tools: circleci/browser-tools@1.0.1
+      #browser-tools: circleci/browser-tools@1.0.1の影響
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       #  - restore_cache:
@@ -48,11 +52,21 @@ jobs:
       #       keys:
       #         - v1-dependencies-{{ checksum "Gemfile.lock" }}
       #         - v1-dependencies-
+      # - run:
+      #     name: identified which Bundler
+      #     command: bundle -v
+
+      # - run:
+      #     name: install with above bundler
+      #     command: bundle check || bundle install
+      # 2.1.4にした方がいいかも
       - run:
-          name: identified which Bundler
-          command: bundle -v
+          name: BundLER install
+          command: |
+            gem update --system
+            gem install bundler -v 1.17.2
       - run:
-          name: install with above bundler
+          name: Bundle Install
           command: bundle check || bundle install
       - save_cache:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -76,6 +90,10 @@ jobs:
       #   - run:
       #       name: test:dr:prepare
       #       command: bundle exec rails db:test:prepare
+
+      - run:
+          name: webpacker setup
+          command: bundle exec rails webpacker:install
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
