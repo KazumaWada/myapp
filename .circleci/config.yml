@@ -70,23 +70,7 @@ jobs:
       - run:
             name: db:create
             command: bundle exec rails db:create
-      - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      #- run: bundle exec rails db:drop db:create db:migrate
-      #  上のやつかもしくは、rake db:reset
-      - ruby/rspec-test
-      - ruby/rubocop-check
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
- # - run:
+            # - run:
       #     name: Install MySQL-Client
       #     command: sudo apt install -y mysql-client
       # - run:
@@ -103,3 +87,20 @@ workflows:
       # - run:
       #     name: webpacker setup
       #     command: bundle exec rails webpacker:install
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      #- run: bundle exec rails db:drop db:create db:migrate
+      #  上のやつかもしくは、rake db:reset
+      - ruby/rspec-test
+      - ruby/rubocop-check
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+ 
