@@ -26,16 +26,21 @@ jobs:
       # specify the version you desire here
       - image: circleci/ruby:2.6.6-stretch-node-browsers-legacy
         environment:
+          # RAILS_ENV: test
+          # MYSQL_HOST: 127.0.0.1
+          # MYSQL_USERNAME: "root"
+          # MYSQL_PASSWORD: ""
           RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USERNAME: "root"
-          MYSQL_PASSWORD: ""
-          MYSQL_PORT: 3306
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: "root"
+          DB_PASSWORD: ""
+
+          # MYSQL_PORT: 3306
       - image: circleci/mysql:8.0
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ""
-          MYSQL_DATABASE: circle_ci_test-test
+        # environment:
+        #   MYSQL_ALLOW_EMPTY_PASSWORD: true
+        #   MYSQL_ROOT_PASSWORD: ""
+        #   MYSQL_DATABASE: circle_ci_test-test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -66,7 +71,8 @@ jobs:
       # Database setup
       - run:
           name: waiting for db
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+      # - run: rails db:test:prepare
       - run: bin/rails db:create
       - run: bin/rails db:schema:load
 
