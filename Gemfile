@@ -67,6 +67,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 #rspecのprogressbarを表示してくれる。実行のコマンド% bin/rspec spec/ --format Fuubar
 gem 'fuubar'
 
+#circleci用
+gem 'rspec_junit_formatter'
+
 group :test do
  #rspecには、以下の3つのgemが必要。
   gem 'rspec-rails'
