@@ -77,9 +77,10 @@ group :test do
   #Capybaraでテスト中に、現在どのページを開いているのか確認するため
   gem 'launchy'
   #便利。validationが一行くらいでかける。
-  gem 'shoulda-matchers',
-    git: 'https://github.com/thoughtbot/shoulda-matchers.git',
-    branch: 'rails-5'
+  # gem 'shoulda-matchers',
+  #   git: 'https://github.com/thoughtbot/shoulda-matchers.git',
+  #   branch: 'rails-5'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development, :test do
