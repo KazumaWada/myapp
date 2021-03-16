@@ -72,7 +72,7 @@ gem 'rspec_junit_formatter'
 
 group :test do
  #rspecには、以下の3つのgemが必要。
-  gem 'rspec-rails'
+  # gem 'rspec-rails' development, :testに移動。
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   #rspecのfeatureで必要。
@@ -89,18 +89,18 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
- #でバッカーツール
+  gem 'rspec-rails', '~> 4.1.0' #https://github.com/rspec/rspec-rails
+  #でバッカーツール
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
   #awsデプロイ
-  gem 'capistrano', '3.4.0'
-  # gem 'capistrano'
-  # gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
+  # gem 'capistrano', '3.4.0'
+  # # gem 'capistrano'
+  # # gem 'capistrano', '~> 3.4.0'
+  # gem 'capistrano-bundler'
+  # gem 'capistrano-rails'
+  # gem 'capistrano-rbenv'
   #RSpecのテストランナーを速くする。
   gem 'spring-commands-rspec'
 end
@@ -120,8 +120,7 @@ group :development do
 end
 
 group :production, :staging do
-  #Railsアプリ用のアプリケーションサーバー
-#   gem 'unicorn'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

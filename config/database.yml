@@ -1,20 +1,10 @@
-#ここをcircleciのために変えたら、localhostが今度は通らなくなりそうだけど、一応やってみる。
 default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST") { 'localhost' } %>
-  username: <%= ENV.fetch("DB_USERNAME") %>
-  password: <%= ENV.fetch("DB_PASSWORD") %>
-  socket: /tmp/mysql.sock
-
-# default: &default
-#   adapter: mysql2
-#   encoding: utf8mb4
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
-#   password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
-#   host: <%= ENV.fetch("MYSQL_HOST", "db") %>
+  username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
+  password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
+  host: <%= ENV.fetch("MYSQL_HOST", "db") %>
 # host: 127.0.0.1
 # Can't connect to MySQL server on '127.0.0.1' (115)
 
