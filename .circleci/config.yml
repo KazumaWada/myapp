@@ -55,7 +55,7 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: install dependencies, bundle install
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
@@ -67,6 +67,8 @@ jobs:
       - run:
           name: waiting for db
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+      # - run: bin/rails db:migrate RAILS_ENV=test
+      - run: bin/rails db:test:prepare
       - run: bin/rails db:create
       - run: bin/rails db:schema:load
 
