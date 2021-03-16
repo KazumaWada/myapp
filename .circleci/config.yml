@@ -67,8 +67,8 @@ jobs:
       - run:
           name: waiting for db
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bin/rails db:create
+      - run: bin/rails db:schema:load
 
       # run tests!
       - run:
