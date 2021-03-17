@@ -5,7 +5,7 @@ default: &default
   username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
   password: <%= ENV.fetch("MYSQL_PASSWORD", "password") %>
   host: <%= ENV.fetch("MYSQL_HOST", "db") %>
-# host: 127.0.0.1
+# host:
 # Can't connect to MySQL server on '127.0.0.1' (115)
 
 development:
@@ -15,6 +15,7 @@ development:
 test:
   <<: *default
   database: myapp_test
+  host: 127.0.0.1
 
 production:
   <<: *default
