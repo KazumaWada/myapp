@@ -20,7 +20,6 @@ require("jquery")
 import "bootstrap"
 import '../src/bootstrap.scss'
 
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log(document.getElementById('hello'));
   });

@@ -19,14 +19,7 @@
  *= require_self
  */
 
-
-
-@import '~bootstrap/scss/bootstrap';
-
-.delete-a-line
-{
-  text-decoration: none;
-}
+@import "~bootstrap/scss/bootstrap";
 
 // We need to override trix.css’s image gallery styles to accommodate the
 // <action-text-attachment> element we wrap around attachments. Otherwise,

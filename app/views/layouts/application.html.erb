@@ -3,13 +3,7 @@
   <head>
      <title><%= yield(:title) %> ベルリンなう</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%# javascript_pack_tag 'application' %>
-    <%# javascript/packs/application.jsにjsを書く %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%# javascript_pack_tag 'home/index'  = packs/home/index.js %>
-    <%# stylesheet_pack_tag 'bootstrap' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   
   </head>
