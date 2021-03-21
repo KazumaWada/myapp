@@ -1,3 +1,14 @@
+## Usage
+
+```
+docker-compose run app bin/rails db:create
+docker-compose run app bin/rails db:migrate
+docker-compose run app bin/rails db:seed
+docker-compose run app bin/rails webpacker:install
+docker-compose run app bin/webpack-dev-server
+```
+
+
 ## ベルリンなう
 ベルリンにまつわることを共有するサービスです。
 
