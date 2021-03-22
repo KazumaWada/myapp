@@ -36,8 +36,22 @@ jobs:
           name: docker-compose down
           command: docker-compose down
 
+    # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
+    deploy:
+      machine:
+        image: circleci/classic:edge
+      steps:
+        - checkout
+        # CircleCI に登録した秘密鍵を呼び出す
+        - add_ssh_keys:
+        # CircleCI に登録した環境変数を使って SSH(Environment Variablesでふたつを設定済み。)
+        - run: ssh -o IdentitiesOnly=yes -i ~/.ssh/berlin_rsa  -l ${USER_NAME} ${HOST_NAME} 'cd myapp && git pull'
+　　　　　　
 workflows:
   version: 2
-  test-and-deploy:
+  test_and_deploy:
     jobs:
       - test
+      - deploy:
+          requires:
+            - test
