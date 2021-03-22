@@ -16,13 +16,19 @@ jobs:
           command: sleep 10
       - run:
           name: rails db:create
-          command: docker-compose run app rails db:create
+          command: docker-compose run app bin/rails db:create
       - run:
           name: rails db:migrate (skip db:seed)
-          command: docker-compose run app rails db:migrate
+          command: docker-compose run app bin/rails db:migrate
       - run:
           name: rails db:test:prepare
-          command: docker-compose run app rails db:test:prepare
+          command: docker-compose run app bin/rails db:test:prepare
+      - run:
+          name: rails webpacker:install
+          command: docker-compose run app bin/rails webpacker:install
+      - run:
+          name: bin/webpack-dev-server
+          command: docker-compose run app bin/webpack-dev-server
       - run:
           name: rspec
           command: docker-compose run app rspec
