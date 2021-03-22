@@ -12,8 +12,8 @@ jobs:
           name: docker-compose up
           command: docker-compose up -d
       - run:
-          name: sleep for waiting launch db
-          command: sleep 20
+          name: sleep for waiting db
+          command: sleep 120
       - run:
           name: rails db:create
           command: docker-compose run app bin/rails db:create
@@ -26,9 +26,9 @@ jobs:
       - run:
           name: rails webpacker:install
           command: docker-compose run app bin/rails webpacker:install
-      - run:
-          name: bin/webpack-dev-server
-          command: docker-compose run app bin/webpack-dev-server
+      # - run:
+      #     name: bin/webpack-dev-server
+      #     command: docker-compose run app bin/webpack-dev-server
       - run:
           name: rspec
           command: docker-compose run app rspec
@@ -41,65 +41,3 @@ workflows:
   test-and-deploy:
     jobs:
       - test
-      # - test-again
-      #      requires: test
-      # - deploy:
-      #     requires:
-      #       - test
-# version: 2
-# jobs:
-#   test:
-#     machine:
-#       image: circleci/classic:edge
-#     steps:
-#       - checkout
-#       - run:
-#           name: docker-compose build
-#           command: docker-compose build
-#       - run:
-#           name: docker-compose up
-#           command: docker-compose up -d
-#       - run:
-#           name: sleep for waiting launch db
-#           command: sleep 10
-#       - run:
-#           name: rails db:create
-#           command: docker-compose run app bin/rails db:create --failure-exit-code=0
-
-#   test-again:
-#     machine:
-#       image: circleci/classic:edge
-#     steps:
-#       - checkout
-#       - run:
-#           name: rails db:create
-#           command: docker-compose run app bin/rails db:create --only-failures
-#       - run:
-#           name: rails db:migrate (skip db:seed)
-#           command: docker-compose run app bin/rails db:migrate
-#       - run:
-#           name: rails db:test:prepare
-#           command: docker-compose run app bin/rails db:test:prepare
-#       - run:
-#           name: rails webpacker:install
-#           command: docker-compose run app bin/rails webpacker:install
-#       - run:
-#           name: bin/webpack-dev-server
-#           command: docker-compose run app bin/webpack-dev-server
-#       - run:
-#           name: rspec
-#           command: docker-compose run app rspec
-#       - run:
-#           name: docker-compose down
-#           command: docker-compose down
-
-# workflows:
-#   version: 2
-#   test-and-deploy:
-#     jobs:
-#       - test
-#       - test-again
-#            requires: test
-#       # - deploy:
-#       #     requires:
-#       #       - test
