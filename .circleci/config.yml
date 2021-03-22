@@ -26,9 +26,6 @@ jobs:
       - run:
           name: rails webpacker:install
           command: docker-compose run app bin/rails webpacker:install
-      # - run:
-      #     name: bin/webpack-dev-server
-      #     command: docker-compose run app bin/webpack-dev-server
       - run:
           name: rspec
           command: docker-compose run app rspec
@@ -36,8 +33,20 @@ jobs:
           name: docker-compose down
           command: docker-compose down
 
+    # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
+  deploy:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - add_ssh_keys:
+      # CircleCI に登録した環境変数を使って SSH(Environment Variablesでふたつを設定済み。)
+      - run: ssh -o IdentitiesOnly=yes -i ~/.ssh/berlin_rsa  -l ${USER_NAME} ${HOST_NAME} 'cd myapp && git pull'
 workflows:
   version: 2
-  test-and-deploy:
+  test_and_deploy:
     jobs:
       - test
+      - deploy:
+          requires:
+            - test
