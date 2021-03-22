@@ -13,10 +13,7 @@ jobs:
           command: docker-compose up -d
       - run:
           name: sleep for waiting launch db
-          command: sleep 2
-      # - run:
-      #     name: waiting for db
-      #     command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
+          command: sleep 10
       - run:
           name: rails db:create
           command: docker-compose run app rails db:create
