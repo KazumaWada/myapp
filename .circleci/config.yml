@@ -12,8 +12,8 @@ jobs:
           name: docker-compose up
           command: docker-compose up -d
       - run:
-          name: sleep for waiting launch db
-          command: sleep 10
+          name: sleep for waiting db
+          command: sleep 120
       - run:
           name: rails db:create
           command: docker-compose run app bin/rails db:create
@@ -26,9 +26,9 @@ jobs:
       - run:
           name: rails webpacker:install
           command: docker-compose run app bin/rails webpacker:install
-      - run:
-          name: bin/webpack-dev-server
-          command: docker-compose run app bin/webpack-dev-server
+      # - run:
+      #     name: bin/webpack-dev-server
+      #     command: docker-compose run app bin/webpack-dev-server
       - run:
           name: rspec
           command: docker-compose run app rspec
