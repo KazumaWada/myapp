@@ -40,9 +40,10 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-      # CircleCI に登録した環境変数を使って SSH(Environment Variablesでふたつを設定済み。)
-      #   - run: ssh -o IdentitiesOnly=yes -i ~/.ssh/berlin_rsa  -l ${USER_NAME} ${HOST_NAME} 'cd myapp && git pull'
+          fingerprints: #sshの暗号化されたもの。
+            - 9d:bf:af:38:ed:42:34:58:de:b0:e4:eb:87:61:37:16
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
+    #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
 workflows:
   version: 2
   test_and_deploy:
