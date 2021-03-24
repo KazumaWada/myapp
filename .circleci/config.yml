@@ -1,37 +1,37 @@
 version: 2
 jobs:
-  test:
-    machine:
-      image: circleci/classic:edge
-    steps:
-      - checkout
-      - run:
-          name: docker-compose build
-          command: docker-compose build
-      - run:
-          name: docker-compose up
-          command: docker-compose up -d
-      - run:
-          name: sleep for waiting db
-          command: sleep 120
-      - run:
-          name: rails db:create
-          command: docker-compose run app bin/rails db:create
-      - run:
-          name: rails db:migrate (skip db:seed)
-          command: docker-compose run app bin/rails db:migrate
-      - run:
-          name: rails db:test:prepare
-          command: docker-compose run app bin/rails db:test:prepare
-      - run:
-          name: rails webpacker:install
-          command: docker-compose run app bin/rails webpacker:install
-      - run:
-          name: rspec
-          command: docker-compose run app rspec
-      - run:
-          name: docker-compose down
-          command: docker-compose down
+  # test:
+  #   machine:
+  #     image: circleci/classic:edge
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: docker-compose build
+  #         command: docker-compose build
+  #     - run:
+  #         name: docker-compose up
+  #         command: docker-compose up -d
+  #     - run:
+  #         name: sleep for waiting db
+  #         command: sleep 120
+  #     - run:
+  #         name: rails db:create
+  #         command: docker-compose run app bin/rails db:create
+  #     - run:
+  #         name: rails db:migrate (skip db:seed)
+  #         command: docker-compose run app bin/rails db:migrate
+  #     - run:
+  #         name: rails db:test:prepare
+  #         command: docker-compose run app bin/rails db:test:prepare
+  #     - run:
+  #         name: rails webpacker:install
+  #         command: docker-compose run app bin/rails webpacker:install
+  #     - run:
+  #         name: rspec
+  #         command: docker-compose run app rspec
+  #     - run:
+  #         name: docker-compose down
+  #         command: docker-compose down
 
     # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
   deploy:
@@ -46,9 +46,12 @@ jobs:
     #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
 workflows:
   version: 2
-  test_and_deploy:
-    jobs:
-      - test
-      - deploy:
-          requires:
-            - test
+    deploy:
+       jobs:
+         -deploy
+  # test_and_deploy:
+  #   jobs:
+  #     - test
+  #     - deploy:
+  #         requires:
+  #           - test
