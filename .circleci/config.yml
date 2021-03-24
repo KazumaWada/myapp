@@ -49,6 +49,8 @@ workflows:
   test_and_deploy:
     jobs:
       # - test
-      - deploy:
-          # requires:
-          #   - test
+      # requiresなどが必要ない時は、:はいらない。今はdeployのみを行っているので、
+      # - deploy:
+      - deploy
+        # requires:
+        #   - test
