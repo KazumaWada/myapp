@@ -33,7 +33,8 @@ class PostsController < ApplicationController
         
         if @post.save
           flash[:success] = "投稿しました！"
-          redirect_to user_path(@user)
+          redirect_to root_url || user_path(@user)
+          # redirect_to request.referrer || '/'
         else
           render 'posts/new'
         end
@@ -63,6 +64,7 @@ class PostsController < ApplicationController
     def hashtags
       tag = Tag.find_by(name: params[:name])
       @posts = tag.posts
+      @tag_name = Tag.find_by(name: params[:name])
     end
    
    

@@ -1,27 +1,61 @@
+    <%# <div class='text-center mt-4'>
+       <h1>の検索結果</h1>
+    </div> %>
+    <%# @posts = Post.search(params[:search]) %>
+    <% if @posts.any? %>
+    <% @posts.each do |searched_post| %>
 
- <% @posts.each do |p| %>
- <%= link_to post_path(p), class: 'text-body' do %> 
-   <div class="card mt-4">
-      <%= image_tag p.image.url, class: 'img-fluid' %>
-      <% end %><%# post_path_link %>
-      <div class="card-body">
-        <h5 class="card-title"><%= p.title %></h5>
-        <p class="card-text">
-
-        <span class="badge badge-warning">
-        <% p.tags.each do |tag| %>
-    　　<%= tag.name %>
-　　　　　<% end %>      
-        </span>
-
+    <%= link_to post_path(searched_post), class: 'text-body under' do %> 
+    <div class="card mt-4">
+    <%= image_tag searched_post.image.url, class: "img-fluid" %>
+     <% end %><%# posts#show %>
+     <div class="card-body">
+     <h5 class="card-title">
+     <%# name, avatar  %>
+     <span class="small">
+     <%= link_to user_path(searched_post.user), class: 'under' do %>
+     <% if searched_post.user.avatar? %>
+     <%= image_tag searched_post.user.avatar.url, class: "rounded-circle mb-3", width: "40px", height: "40px" %>
+     <% else %>
+     <%= image_tag "the-main.jpg", class: "rounded-circle", width: "40px", height: "40px" %>
+     <% end %>
+    <% end %>
+    <%= searched_post.user.name %>
+    </span><br>
+    <%# covid  %>
+    <span class="small bg-warning">
+    <%= searched_post.covid %>
+    </span>
+    <%# title  %>
+    <h3><%= searched_post.title %></h3> 
+    <%# tag, description  %>
+    <span><%= render_with_hashtags(searched_post.content.truncate(85)) %><%= link_to '続きを読む', post_path(searched_post) %></span> 
+   </h5>   
+    <p class="card-text">
+        <%# likes %>
         <span>
-        <i class="fas fa-eye"><%= p.impressions_count %></i>
+        <%= render 'shared/likes', post: searched_post %> 
         </span>
-
+    <%# impression %>
+       <span>
+       <i class="fas fa-eye"><%= searched_post.impressions_count %></i>
+      </span>
+     <h3>
+      <%= time_ago_in_words(searched_post.created_at) %> 前
+      </h3>
         </p>
-        
-      </div>
-    </div>
+      </div><%# card-body %>
+    </div><%# card %>
      
     <% end %><%# each %>
- 
+  
+     <%# end %> <%# ifpostsany? %>
+     <% else %>
+     <div class='text-center mt-4'>
+       <h1 class='mt-4'><i class="far fa-frown-open"></i></h1>
+       <h4 class='mt-4'>検索した内容は見つかりませんでした。</h4>
+    </div>
+  　 <div class='text-center mt-4'>
+  　　　<button><%= link_to 'トップページへ戻る', root_path %></button>
+　　　</div>
+<% end %>

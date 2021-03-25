@@ -27,7 +27,8 @@ class UsersController < ApplicationController
 
     @smooth_login_user = User.find_by(email: "smooth_login@example.com")
    
-    
+    @newer_posts = @user.posts.order(created_at: 'DESC')
+
     
 
 
@@ -44,10 +45,11 @@ class UsersController < ApplicationController
     # @post = current_user.posts.find_by(id: params[:id])
   end
 
-  def smooth
-    flash[:danger] = "簡単ログインしたユーザーは編集できません。"
-    redirect_to request.referrer || 'users/2'
-  end
+  # rails-ujsで実装したので、コメントアウト。
+  # def smooth
+  #   flash[:danger] = "ゲストユーザーは編集できません。"
+  #   redirect_to request.referrer || 'users/1'
+  # end
 
   #signup
   def new

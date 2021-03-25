@@ -43,8 +43,11 @@ newer_posts = Post.order(created_at: 'DESC')
      @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)
 
 
-
-
+# @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc)
+@tags = Tag.find_by(name: params[:name])
+# @posts = tag.posts
+# @tag_name = Tag.find_by(name: params[:name])
+# @tag = @post.tags
    end 
 
   def about
