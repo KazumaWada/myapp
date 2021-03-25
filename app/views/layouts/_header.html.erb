@@ -48,7 +48,7 @@
 
         <li class="nav-item">
         <button type="button" class="btn btn-light">
-        <%= link_to logout_path, class: "nav-link active text-black", title: "logout", method: :delete do %>
+         <%= link_to logout_path, class: "nav-link active text-black", title: "logout", method: :delete, data: { confirm: 'ログアウトしますか？'} do %>
         <i class="fas fa-sign-out-alt"></i>
         <% end %>
         </button>

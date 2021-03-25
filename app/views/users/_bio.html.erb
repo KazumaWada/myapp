@@ -1,8 +1,7 @@
   <div class="card bg-white mb-10">
-　　<div class="card-body">
-    <h5 class="card-title">ベルリン歴<%= @user.year %></h5>
-    <p class="card-text"><%= @user.bio %></p>
-    <p class="card-text">contribute:</p>
-    <p class="card-text">投稿数:</p>
+　　<div class="card-body text-center">
+    <h3 class="card-title"><i class="fas fa-globe-asia"></i> ベルリン在住歴: <strong><%= @user.year %></strong></h3>
+    <h4 class="card-text mt-4"><%= @user.bio %></h4>
   　</div>
 　</div>
+<p class="card-text mt-4 ml-4">投稿数: <%= @user.posts.count %></p>

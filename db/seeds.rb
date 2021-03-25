@@ -4,7 +4,7 @@ name = Faker::Name.name
 email = Faker::Internet.email
 
 #簡単ログインのユーザー
-User.create!(name: "簡単ログインしたユーザー",
+User.create!(name: "ゲストユーザー",
   email: "smooth_login@example.com",
   avatar: File.open(Rails.root.join('app', 'assets', 'images', 'faker-img-10.png')),
   year: "3年",

@@ -1,6 +1,6 @@
 <div id="post" class="tab-pane active">　　
-  <% if @user.posts.exists? %>　
-　    <% @user.posts.each do |post| %>
+  <% if @newer_posts.exists? %>　
+　    <% @newer_posts.each do |post| %>
       <%# <div class="card" style="width: 50rem;"> %>
      <%= link_to post_path(post), class: 'text-body under' do %> 
     <div class="card mt-4">
@@ -20,7 +20,7 @@
     <%# name %>
     <%= post.user.name %></span><br>
     <%# covid  %>
-    <span class="small bg-warning">
+     記事内容: <span class="small bg-warning">
     <%= post.covid %>
     </span>
     <%# title  %>

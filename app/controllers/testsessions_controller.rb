@@ -7,7 +7,7 @@ class TestsessionsController < ApplicationController
         session[:user_id] = user.id
         # log_in(user)
         flash[:success] = "ゲストユーザとしてログインしました！"
-        redirect_to root_url
+        redirect_to request.referrer || root_url
       end
 end
 

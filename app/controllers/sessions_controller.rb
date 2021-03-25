@@ -34,7 +34,6 @@ end
     # log_out
     log_out if logged_in?
     flash[:success] = "ログアウトしました！"
-    redirect_to root_url
-    
+    redirect_to request.referrer || root_url    
   end
 end
