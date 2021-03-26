@@ -31,7 +31,7 @@
 
 <%# サイドバー %>
 <div class="col-md-4 mt-4">
- <ul class="list-group">
+ <ul class="list-group" id='sidebar'>
   <%# render 'tags' %>
   <%= render 'api_weather' %>
   <%= render 'api_news' %>
@@ -42,7 +42,7 @@
 </div><%# container %>
 
 
-<%= javascript_pack_tag 'pages/index' %>
+<%# javascript_pack_tag 'pages/index' %>
 
 
 

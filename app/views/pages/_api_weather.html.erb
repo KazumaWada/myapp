@@ -1,4 +1,4 @@
-<li class="list-group-item"><h4><h4>現在の<%= @output['name'] %>天気</h4></h4></li>
+<li class="list-group-item"><h4 id='weathertitle'>現在の<%= @output['name'] %>天気</h4></li>
 <li class="list-group-item">
 <%= render partial: 'shared/weather_api', locals: { output: @output } %>
 </li>

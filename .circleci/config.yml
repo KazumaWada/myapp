@@ -32,26 +32,25 @@ jobs:
   #     - run:
   #         name: docker-compose down
   #         command: docker-compose down
-
-  # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
-  deploy:
-    machine:
-      image: circleci/classic:edge
-    steps:
-      - checkout
-      # CircleCIに登録した秘密鍵を呼び出す。
-      - add_ssh_keys:
-          fingerprints: #sshの暗号化されたもの。
-            - a8:f9:43:8b:69:37:34:5a:07:cb:6c:04:5b:ff:69:1f
-      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
-    #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
-workflows:
-  version: 2
-  test_and_deploy:
-    jobs:
-      # - test
-      # requiresなどが必要ない時は、:はいらない。今はdeployのみを行っているので、
-      # - deploy:
-      - deploy
-        # requires:
-        #   - test
+#   # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
+#   deploy:
+#     machine:
+#       image: circleci/classic:edge
+#     steps:
+#       - checkout
+#       # CircleCIに登録した秘密鍵を呼び出す。
+#       - add_ssh_keys:
+#           fingerprints: #sshの暗号化されたもの。
+#             - a8:f9:43:8b:69:37:34:5a:07:cb:6c:04:5b:ff:69:1f
+#       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
+#     #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
+# workflows:
+#   version: 2
+#   test_and_deploy:
+#     jobs:
+#       # - test
+#       # requiresなどが必要ない時は、:はいらない。今はdeployのみを行っているので、
+#       # - deploy:
+#       - deploy
+#         # requires:
+#         #   - test
