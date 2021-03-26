@@ -24,4 +24,48 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(document.getElementById('hello'));
   });
   
-  console.log('javascript')
+  console.log('javascri')
+
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log(document.getElementById('hey'));
+  });
+  
+  console.log('javascri2')
+
+
+window.onload=function(){
+
+//weatherサイドバーのタイトル色
+let weathertitle = document.getElementById("weathertitle");
+
+weathertitle.addEventListener("mouseover", function( event ) {
+  // hoverしたら、
+  event.target.style.color = '#ffc107';
+  // 色を時間差で戻す
+  setTimeout(function() {
+    event.target.style.color = "red";
+  }, 600);
+  setTimeout(function() {
+    event.target.style.color = "";
+  }, 1200);
+}, false);
+
+
+
+//newsサイドバーのタイトル色
+  let newstitle = document.getElementById("newstitle");
+  
+  newstitle.addEventListener("mouseover", function( event ) {
+    // hoverしたら、
+    event.target.style.color = '#ffc107';
+    // 色を時間差で戻す
+    setTimeout(function() {
+      event.target.style.color = "red";
+    }, 600);
+    setTimeout(function() {
+      event.target.style.color = "";
+    }, 1200);
+  }, false);
+
+
+}
