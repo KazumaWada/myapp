@@ -41,8 +41,8 @@ jobs:
       # CircleCIに登録した秘密鍵を呼び出す。
       - add_ssh_keys:
           fingerprints: #sshの暗号化されたもの。
-            - 9d:bf:af:38:ed:42:34:58:de:b0:e4:eb:87:61:37:16
-      - run: ssh ${USER_NAME}@${HOST_NAME} -i berlin_rsa 'cd myapp && git pull'
+            - 17:19:65:28:50:86:d2:cd:31:c8:22:5f:ab:df:df:1e
+      - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
     #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
 workflows:
   version: 2
