@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(document.getElementById('hello'));
   });
   
-  console.log('javascri')
+  console.log('ja')
 
   document.addEventListener('DOMContentLoaded', () => {
     console.log(document.getElementById('hey'));
