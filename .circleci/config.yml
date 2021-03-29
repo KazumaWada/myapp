@@ -42,6 +42,7 @@ jobs:
       - add_ssh_keys:
           fingerprints: #sshの暗号化されたもの。
             - 19:a4:94:21:15:c9:5c:c6:75:8a:94:4a:9c:1f:37:da
+            #gemを変更した場合、buildからやり直さなければいけない問題はまだある。
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
     #   - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull && docker-compose run python ./manage.py migrate'
 workflows:
