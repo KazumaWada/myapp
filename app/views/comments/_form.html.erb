@@ -5,6 +5,6 @@
     <%= f.text_area :content, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit "コメントをする", class: 'btn btn-primary mt-4' %>
+    <%= f.submit "コメントをする", class: 'btn btn-primary mt-4', data: { disable_with: "コメントしています..." } %>
   </div>
 <% end %>

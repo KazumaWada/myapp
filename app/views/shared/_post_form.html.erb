@@ -18,6 +18,6 @@
   <%= f.file_field :image, class: "form-control" %> 
 
 <div class="text-center">
-  <%= f.submit "投稿する", class: "btn btn-warning mt-4 text-white", data: { confirm: "この内容で投稿してよろしいですか？" } %>
+  <%= f.submit "投稿する", class: "btn btn-warning mt-4 text-white", data: { confirm: "この内容で投稿してよろしいですか？" , disable_with: "投稿しています..."} %>
 </div>
 <% end %>
