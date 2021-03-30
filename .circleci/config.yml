@@ -1,7 +1,7 @@
 version: 2
 jobs:
   ####容量と時間節約のため、testは省略している#####
-  
+
   # test:
   #   machine:
   #     image: circleci/classic:edge
@@ -49,11 +49,11 @@ workflows:
   test_and_deploy:
     jobs:
       # - test
-      # requiresなどが必要ない時は、:はいらない。今はdeployのみを行っているので、
-      # - deploy:
-      - deploy
-        # requires:
-        #   - test
-           filters:
-                    branches:
-                        only: main
+      # requiresなどが必要ない時は、:はいらない。
+      - deploy:
+          #- deploy
+          # requires:
+          #   - test
+          filters:
+            branches:
+              only: main
