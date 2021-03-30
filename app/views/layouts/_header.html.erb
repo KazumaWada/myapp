@@ -1,42 +1,44 @@
 <header>
 <nav class="navbar navbar-expand-lg navbar-white bg-white">
 <div class="container">
-
+ <%# ハンバーガーメニュー の内容%>
  <div class="dropdown">
    <button class="btn btn-transparent" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-bars text-warning fa-3x"></i>
    </button>
    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <%= link_to 'トップページへ', root_path, class: "dropdown-item" %>
-     <%= link_to 'ベルリンなうとは？', about_path, class: "dropdown-item" %>
+    <%= link_to 'ベルリンなうとは？', about_path, class: "dropdown-item" %>
     <%= link_to 'ユーザー一覧', users_path, class: "dropdown-item" %>
     <%= link_to '作った人の技術ブログ', 'https://kazumawada.hateblo.jp/', class: "dropdown-item", target: :_blank %>
     <%= link_to 'ソースコード', 'https://github.com/kazumawada/myapp', class: "dropdown-item", target: :_blank %>
    </div>
  </div>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-      <ul class="navbar-nav mr-auto">　
-       <h3><%= link_to 'ベルリンなう', root_path, class: "navbar-brand text-dark" %></h3>
-      </ul> 
+ <%# ハンバーガーメニュー %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <%# title %>
+  <ul class="navbar-nav mr-auto">　
+    <h3><%= link_to 'ベルリンなう', root_path, class: "navbar-brand text-dark" %></h3>
+  </ul> 
 
     <ul class="navbar-nav">
+     <%## ログイン後のページ %>
+
       <% if logged_in? %>
+      <%# 　検索機能 %>
         <li class="nav-item">
         <%= form_tag(search_path,:method => 'get') do %>
         <%= text_field_tag :search %>
         <%= submit_tag 'Search', :name => nil %>
         <% end %>
         </li>
-
+    <%# ユーザーアイコン %>
         <li class="nav-item">
          <button type="button" class="btn btn-white p-0">
          <%= link_to current_user, class: "nav-link active text-black" do %>
-         <%# <i class="fas fa-user"></i> %>
 　　　　　<% if current_user.avatar? %>
          <%= image_tag current_user.avatar.url, class: "rounded-circle", width: "40px", height: "40px" %>
         <% else %>
@@ -45,7 +47,7 @@
         <% end %>
          </button>
         </li>
-
+     <%# ログアウト %>
         <li class="nav-item">
         <button type="button" class="btn btn-light">
          <%= link_to logout_path, class: "nav-link active text-black", title: "logout", method: :delete, data: { confirm: 'ログアウトしますか？'} do %>
@@ -53,31 +55,27 @@
         <% end %>
         </button>
         </li>
-
+     <%# 投稿ボタン %>
        <li class="nav-item">
         <button type="button" class="btn btn-warning"><%= link_to 'Post', new_post_path, class: "nav-link active text-white" %></button>
        </li>
-
       <% else %>
-
-       <li class="nav-item">
-       <%# link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-primary center-block" %>
-       <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white" %>
-      </li>
+      <%## ログイン前のページ %>
 
       <li class="nav-item">
-      <%= link_to 'ログイン', login_path, class: "nav-link active text-dark" %>
+       <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white" %>
       </li>
-
-
-     <li class="nav-item">
-      <%= link_to '新規登録', signup_path, class: "nav-link active text-dark" %>
-     </li>
+      <li class="nav-item">
+       <%= link_to 'ログイン', login_path, class: "nav-link active text-dark" %>
+      </li>
+      <li class="nav-item">
+       <%= link_to '新規登録', signup_path, class: "nav-link active text-dark" %>
+      </li>
 
      <% end %>
    </ul>
 
-    </div>
+   </div>
   </div>
 </nav>
 </header>

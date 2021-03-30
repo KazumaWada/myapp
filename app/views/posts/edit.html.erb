@@ -3,20 +3,18 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :投稿内容の時期, class: "mt-4" %>
-   <%= f.select :covid, ["コロナ前", "コロナ後"], class: "form-control mt-4" %>
+  <%= f.select :covid, ["コロナ前", "コロナ後"], class: "form-control mt-4" %>
 
   <%= f.text_field :title, class: 'form-control form-control-lg mt-4', placeholder: "title" %>
-
-    
 
   <div class="field">
     <%= f.label :"タグ(#)は、前後にスペースを空けてください。", class: "mt-4" %>
     <%= f.text_area :content, placeholder: "あなたのベルリンでの経験をシェアしよう。", class: "form-control", id: "exampleFormControlTextarea1" %>
   </div>
 
- <%# サムネイル %>
+  <%# サムネイル %>
    <%= f.label :image, class: "mt-4" %> 
-  <%= f.file_field :image, class: "form-control" %> 
+   <%= f.file_field :image, class: "form-control" %> 
 
 　<div class="text-center">
   <%= f.submit "更新する", class: "btn btn-warning text-white mt-4" %>

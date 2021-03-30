@@ -28,11 +28,6 @@
     <i class="fas fa-eye"><%= post.impressions_count %></i>
     </h4>
     <%= post.covid %>
-<%# ###########いいね###################### %>
-<%# favorites#createアクションにへ遷移した時に、いいねしたpostのidを取得する post_id → post.id %>
-<%# if !条件式 は条件式が偽だった場合に処理 %>
-
-<%# ###########いいね###################### %>
     </p>
    <%# edit %>
    <p class="card-text"><%= link_to '編集する',edit_post_path(post) %></p>

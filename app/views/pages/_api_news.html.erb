@@ -1,5 +1,7 @@
-<li class="list-group-item"><h4 id='newstitle'>ニュース</h4></li>
-  <li class="list-group-item">
-   <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
-  </li>
+<li class="list-group-item">
+ <h4 id='newstitle'>ニュース</h4>
+</li>
+<div class='news'>
+  <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
+</div>
 

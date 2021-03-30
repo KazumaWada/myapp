@@ -1,13 +1,10 @@
 <%= render 'layouts/header' %>
 
-
 <div class="container mt-4">
- <div class="row">
-<div class="col-md-8 mt-4">
- 
- <main class="p-3">
-  <!-- タブ -->
-  
+<div class="row">
+<div class="col-md-8 mt-4"> 
+<main class="p-3">
+<!-- タブ -->  
  <ul class="nav nav-justified">
     <li class="nav-item bg-danger">
       <a href="#popular" class="nav-link text-white" data-toggle="tab">人気</a>
@@ -19,7 +16,6 @@
       <a href="#view" class="nav-link text-white" data-toggle="tab">アクセス数</a>
     </li>
   </ul>
-  
 <!-- 投稿部分 -->
   <div class="tab-content">
   <%= render 'posts_popular' %>
@@ -28,21 +24,17 @@
   </div><%# tab-content %>
 </main>
 </div><%# col-md-8 %>
-
 <%# サイドバー %>
 <div class="col-md-4 mt-4">
  <ul class="list-group" id='sidebar'>
-  <%# render 'tags' %>
   <%= render 'api_weather' %>
   <%= render 'api_news' %>
   </ul>
 </div> 
-
  </div><%# row %>
 </div><%# container %>
 
 
-<%# javascript_pack_tag 'pages/index' %>
 
 
 

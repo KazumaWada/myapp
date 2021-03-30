@@ -1,15 +1,8 @@
 module SessionsHelper
-#このsessionはメソッド。ユーザーのブラウザ内の一時cookiesに暗号化済みのユーザーIDが自動で作成されます。
-#=ユーザーIDを一時セッションの中に安全に置けるようになった
+
 def log_in(user)
 session[:user_id] = user.id
 end
-#上のIDを別のページで取り出す。そのためには、current_userメソッドを定義して、
-#セッションID(session[:user_id])に対応するユーザー名をデータベースから取り出せるようにする。
-#User.find(session[:user_id])これだと、ユーザーがログインしていないときに例外が出てしまう。
-#User.find_by(id: session[:user_id])これだとnillが返ってこれる。そして、 if session[:user_id]
-#と書くと、セッションにユーザーIDが存在しない場合、このコードは単に終了して自動的にnilを返します。
-#=falseの場合、例外を出さずにnillを返すためにはどうすればいいかということ。
 
 def current_user
   if session[:user_id]

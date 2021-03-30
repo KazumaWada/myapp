@@ -19,22 +19,12 @@
      <%= newer_post.title %>
       <p><%= newer_post.user.name %></p> 
       <% end %>
-      
-        <%# render_with_hashtags(p.content) %>
       </h5>
-        <p class="card-text">
-        <%# ###########いいね###################### %>
-
-<%# ###########いいね###################### %>
-
-
-       
-        <%# link_to posts_hashtag_path(p.tags) do %> 
+        <p class="card-text"> 
         <% newer_post.tags.each do |tag| %>
     　　<span><i class="fas fa-tag"><%= tag.name %></i></span>
         <% end %>
-        <%# end %>
-
+    
         <span>
         <i class="fas fa-eye"><%= newer_post.impressions_count %></i>
         </span>
