@@ -8,7 +8,6 @@
    </button>
    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <%= link_to 'トップページへ', root_path, class: "dropdown-item" %>
-    <%= link_to 'ベルリンなうとは？', about_path, class: "dropdown-item" %>
     <%= link_to 'ユーザー一覧', users_path, class: "dropdown-item" %>
     <%= link_to '作った人の技術ブログ', 'https://kazumawada.hateblo.jp/', class: "dropdown-item", target: :_blank %>
     <%= link_to 'ソースコード', 'https://github.com/kazumawada/myapp', class: "dropdown-item", target: :_blank %>
@@ -63,7 +62,7 @@
       <%## ログイン前のページ %>
 
       <li class="nav-item">
-       <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white" %>
+       <%= link_to 'かんたんログイン', testsessions_path, method: :post, class: "btn btn-warning center-block text-white", data: { disable_with: "ログイン中..." } %>
       </li>
       <li class="nav-item">
        <%= link_to 'ログイン', login_path, class: "nav-link active text-dark" %>

@@ -17,6 +17,6 @@
    <%= f.file_field :image, class: "form-control" %> 
 
 　<div class="text-center">
-  <%= f.submit "更新する", class: "btn btn-warning text-white mt-4" %>
+  <%= f.submit "更新する", class: "btn btn-warning text-white mt-4", data: { disable_with: "更新しています..." } %>
 　</div>
 <% end %>
