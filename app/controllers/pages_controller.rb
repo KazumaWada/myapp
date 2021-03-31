@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+   
+
    def home
     require 'net/http'
     require 'json'
@@ -17,10 +19,11 @@ class PagesController < ApplicationController
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc)  
     #人気順
     posts_get_likes = Post.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    @posts_get_likes = Kaminari.paginate_array(posts_get_likes).page(params[:page]).per(4)
+     @posts_get_likes = Kaminari.paginate_array(posts_get_likes).page(params[:page]).per(4)
     #新着順
     newer_posts = Post.order(created_at: 'DESC')
     @newer_posts = Kaminari.paginate_array(newer_posts).page(params[:page]).per(4)
+
     #アクセス数順
     posts_get_views = Post.order(impressions_count: 'DESC')
     @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)
