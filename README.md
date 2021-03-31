@@ -34,12 +34,16 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・ソート（人気、新着、view数順でそれぞれ表示）<br>
 ・ゲストログイン<br>
 ・ゲストログインを編集させない<br>
+・投稿数の表示<br>
+・いいねした数の表示<br>
 ・画像アップロード(gem 'carrierwave')<br>
 ・いいね<br>
 ・Paginate(hem 'kaminari')<br>
 ・返信/コメント<br>
+・続きを読む<br>
 ・impression数(gem 'impressionist')<br>
 ・タグ(記事内にハッシュタグで表示)<br>
+・タグ一覧<br>
 ・検索<br>
 ・API(gem 'json')<br>
  &nbsp; &nbsp;・ベルリンの天気API<br>
