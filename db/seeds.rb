@@ -124,6 +124,17 @@ User.first.posts.create!(
   impressions_count: (rand*80)
 )
 
+User.all.each do |user|
+  user.posts.create!(
+    title: Faker::Lorem.word,
+    content: '#散歩 udin id mrisLorem #留学 ipsum dolor sit amet, consectetur adipiscing elit. Phasellus magna enim, tempus tristique dignissim sit amet, iaculis in nibh. Vestibulum sed neque nibh. Morbi augue nunc, interdum quis nunc sit amet, auctor dignissim neque. Nunc mi eros, vehicula molestie mollis in, porta vitae nulla. Sed in lobortis arcu. Nullam ante purus, #カフェ tincidunt sit amet eros ut, dignissim pellentesque lectus. Proin semper vestibulum lacus, quis hendrerit turpis venenatis in. Vivamus vel porta augue. Integer quis ullamcorper ex. Nunc lacinia arcu et justo pretium, ut porttitor neque feugiat. Maecenas facilisis consectetur metus sit amet imperdiet. Nullam vel felis dapibus, accumsan purus sed, pretium massa. Nullam condimentum augue eget lectus blandit, sit amet elementum elit tincidunt. Aliquam ac tellus diam. Nullam #ドイツ語 dignissim tempus est, non vulputate nisi egestas ultricies.da. Duis efficitur sem sed sagittis #天候 convallis.',
+    covid: 'コロナ後',
+    image: File.open(Rails.root.join('app', 'assets', 'images', 'post-img02.jpg')),
+    created_at: (rand*10).days.ago,
+    impressions_count: (rand*80)
+  )
+end
+
 
 Comment.create([
   {
