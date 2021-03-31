@@ -36,6 +36,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・ゲストログインを編集させない<br>
 ・画像アップロード(gem 'carrierwave')<br>
 ・いいね<br>
+・Paginate(hem 'kaminari')<br>
 ・返信/コメント<br>
 ・impression数(gem 'impressionist')<br>
 ・タグ(記事内にハッシュタグで表示)<br>
