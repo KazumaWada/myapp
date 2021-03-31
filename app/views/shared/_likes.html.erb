@@ -2,7 +2,6 @@
  <% if logged_in? %>
 
  <% if current_user.liked_by?(post.id) %>
-
   <td>
   <%= link_to destroy_like_path(post), method: :DELETE, remote: true do %>
   <i class="fas fa-heart"></i>
@@ -17,7 +16,6 @@
   <i class="far fa-heart"></i>
   <% end %><%= post.likes.count %>
   </td>
-
   <% end %>
 
 

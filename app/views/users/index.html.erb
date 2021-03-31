@@ -14,7 +14,7 @@
   
   <%= link_to user.name, user %>
 
-  <% if user.name == "簡単ログインしたユーザー" %>
+  <% if user.name == "ゲストユーザー" %>
   | <%= link_to "このユーザーは削除することができません", users_path %>
   <% elsif current_user?(user) %> 
     | <%= link_to "アカウントを削除する", user, method: :delete,
