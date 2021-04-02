@@ -21,7 +21,7 @@ http://localhost/
 <br><br>
 
 ## クラウドアーキテクチャー
-Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。
+Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。ローカルでpush後、mergeされたら、EC2への自動デプロイをCircleCIで行います。
 
 
 ![cloud-architect](https://user-images.githubusercontent.com/57794648/110573294-5a9d3480-819e-11eb-8c83-e259f971a50f.png)
