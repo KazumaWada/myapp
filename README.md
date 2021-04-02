@@ -1,3 +1,4 @@
+[![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://github.com/kazumawada/myapp#readme)
 ## Usage
 
 ```
