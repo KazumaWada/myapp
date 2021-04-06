@@ -25,7 +25,7 @@ http://localhost/
 <br><br>
 
 ## クラウドアーキテクチャー
-Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。ローカルでpush後、mergeされたら、EC2への自動デプロイをCircleCIで行います。<br>httpsは、Route53(DNS)とALBを通信して、EC2にアクセスさせるようにしています。SSL証明書は、ACMで発行しました。
+Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。ローカルでpush後、mergeされたら、EC2への自動デプロイをCircleCIで行います。<br>httpsは、Route53(DNS),ALBを経由して、EC2にアクセスさせるようにしています。SSL証明書は、ACMで発行しています。
 
 
 
