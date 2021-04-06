@@ -1,3 +1,5 @@
+<% if @news_output.empty? %>
+
   <li class="list-group-item">
  <%= link_to @news_output['articles'][0]['url'], target: "_blank" do %> 
     <%# <div class="card"> %>
@@ -87,6 +89,14 @@
         <p class="card-title"><%= @news_output['articles'][5]['title'] %></p>
       <%# </div>
      </div> %>
+   <% end %>
+
+
+
+   <% else %>
+
+   <p>無料版なので、リクエストが多くてエラーになりました。</p>
+
    <% end %>
 
 
