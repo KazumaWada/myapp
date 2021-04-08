@@ -2,6 +2,11 @@
  <h4 id='newstitle'>ニュース</h4>
 </li>
 <div class='news'>
-  <%= render partial: 'shared/news_api', locals: { news_output: @news_output } %>
+<li class="list-group-item">
+<%= link_to 'https://http.cat/' do %>
+<%= image_tag 'https://http.cat/429', class: "img-fluid" %>
+<% end %>
+</li>
+  <%# render partial: 'shared/news_api', locals: { news_output: @news_output } %>
 </div>
 
