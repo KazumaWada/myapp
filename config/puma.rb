@@ -8,3 +8,5 @@ app_root = File.expand_path("../..", __FILE__)
 bind "unix://#{app_root}/tmp/sockets/puma.sock"
 
 stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
+# デフォルトの60だとbinding。pryが遅いから、すぐエラーになるのを防止する。
+worker_timeout 500

@@ -1,0 +1,14 @@
+<li class="list-group-item">
+ <h4 id='newstitle'>タグ</h4>
+</li>
+<li class="list-group-item">
+<div class='tags'>
+<% @tags.each do |tag| %>
+<%= link_to "posts/hashtag/#{tag.name}",class: 'text-dark'  do %> 
+<%# link_to "posts/hashtag/#{tag.name.delete('#')}" do %> 
+<span class="badge badge-pill badge-warning"><%= tag.name %></span>
+<% end %>
+<% end %>
+</div>
+</li>
+

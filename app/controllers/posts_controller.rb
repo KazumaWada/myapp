@@ -61,6 +61,7 @@ class PostsController < ApplicationController
       tag = Tag.find_by(name: params[:name])
       @posts = tag.posts
       @tag_name = Tag.find_by(name: params[:name])
+      # render template: "pages/home"
     end
    
     def search

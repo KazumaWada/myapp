@@ -95,7 +95,17 @@
 
    <% else %>
 
-   <p>無料版なので、リクエストが多くてエラーになりました。</p>
+<%# <li class="list-group-item">
+<div class='text-center'>
+   <p>you got too many requests :(</p>
+<h1><i class="far fa-sad-tear"></i></h1></div>
+</li> %>
+
+<li class="list-group-item">
+<%= link_to 'https://http.cat/' do %>
+<%= image_tag 'https://http.cat/429', class: "img-fluid" %>
+<% end %>
+</li>
 
    <% end %>
 

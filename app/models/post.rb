@@ -27,13 +27,13 @@ class Post < ApplicationRecord
     end
   end
 
-  #tagのcallback
+  #tagのcallback https://railsguides.jp/active_record_callbacks.html
   after_create do
     post = Post.find_by(id: self.id)
     #post.content内に#があたら、それに続く文字列を取得する。(/#\w+/)は日本語に対応できているか？
      hashtags = self.content.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
      hashtags.uniq.map do |hashtag|
-      #すでにあったらそれ。なかったら作る。         #はDBに格納しない。
+      #すでにあったらそれ。なかったら作る。         #ハッシュはDBに格納しない。
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
       # <<配列に要素を追加する。
       post.tags << tag

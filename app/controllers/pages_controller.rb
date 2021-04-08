@@ -10,10 +10,14 @@ class PagesController < ApplicationController
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
     @output = JSON.parse(@response)
-    @news_url= "http://newsapi.org/v2/top-headlines?country=de&apiKey=ca353a3264a64acf94e34b80c70202cb"
-    @news_uri = URI(@news_url)
-    @response = Net::HTTP.get(@news_uri)
-    @news_output = JSON.parse(@response)
+
+   ###### news現在rateLimited http 429だから、コメントアウト。########
+   # リクエスト超過をしたら、これを試してみる https://github.com/sensortower/sidekiq-throttled
+   #  @news_url= "http://newsapi.org/v2/top-headlines?country=de&apiKey=ca353a3264a64acf94e34b80c70202cb"
+   #  @news_uri = URI(@news_url)
+   #  @response = Net::HTTP.get(@news_uri)
+   #  @news_output = JSON.parse(@response)
+
 
     #tag_idがセットされていたらTagから関連づけられたpostsを呼び、tag_idの指定がなければ、全ての投稿を表示するよう記述されている
     @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all.order(created_at: :desc)  
@@ -27,6 +31,10 @@ class PagesController < ApplicationController
     #アクセス数順
     posts_get_views = Post.order(impressions_count: 'DESC')
     @posts_get_views = Kaminari.paginate_array(posts_get_views).page(params[:page]).per(4)
+
+    @tag_name = Tag.find_by(name: params[:name])
+    @tags = Tag.all
+
    end 
    
 end

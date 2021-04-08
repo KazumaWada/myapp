@@ -2,6 +2,7 @@ class LikesController < ApplicationController
     before_action :post_params
   
     def create
+      
       Like.create(user_id: current_user.id, post_id: params[:id])
       redirect_to request.referrer || root_url
       flash[:success] = "likeしました！"
