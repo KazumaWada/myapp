@@ -41,7 +41,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints: #sshの暗号化されたもの。
-            - fd:77:b0:c2:62:71:15:28:23:e5:17:99:0e:8c:8a:b4
+            - 00:67:e1:b9:08:52:9f:c3:eb:c4:e5:49:5d:cf:09:b3
             #gemを変更した場合、buildからやり直さなければいけない問題はまだある。
       - run: ssh ${USER_NAME}@${HOST_NAME} 'cd myapp && git pull'
 workflows:
