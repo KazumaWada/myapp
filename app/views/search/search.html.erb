@@ -33,9 +33,11 @@
    </h5>   
     <p class="card-text">
         <%# likes %>
-        <span>
-        <%= render 'shared/likes', post: searched_post %> 
-        </span>
+  <span>
+    <div class="post-like">
+    <%= render 'shared/likes', post: searched_post %> 
+    </div>
+  </span>
     <%# impression %>
        <span>
        <i class="fas fa-eye"><%= searched_post.impressions_count %></i>
