@@ -19,7 +19,9 @@
  <%# いいね&インプレッション %>
  <p>
  <i class="fas fa-eye"><%= @post.impressionist_count %></i>
- <%= render 'shared/likes', post: @post %> 
+  <div class="post-like">
+    <%= render 'shared/likes', post: @post %> 
+  </div>
  </p>
 
  </p><%# card-text %>
