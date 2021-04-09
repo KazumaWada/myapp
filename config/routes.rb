@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   #tag
   get 'posts/hashtag/:name', to:'posts#hashtags'
-  resources :tags, only: [:index, :show]
+  # resources :tags, only: [:index, :show]
 
 
 # ゲストログイン

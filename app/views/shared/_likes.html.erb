@@ -1,7 +1,9 @@
  <%# このpostは、意味をなさない。renderで定義されて初めて実装される %>
+
  <% if logged_in? %>
 
  <% if current_user.liked_by?(post.id) %>
+
   <td>
   <%= link_to destroy_like_path(post), method: :DELETE, remote: true do %>
   <%# binding.pry %>
