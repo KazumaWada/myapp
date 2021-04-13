@@ -1,3 +1,4 @@
+
 [![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://github.com/kazumawada/myapp#readme)
 ## Usage
 
@@ -11,13 +12,12 @@ docker-compose run app bin/rails db:seed
 docker-compose run app bin/rails webpacker:install
 docker-compose run app bin/webpack-dev-server
 ```
-http://localhost/ 
 
 ## ベルリンなう
 ベルリンにまつわることを共有するサービスです。
 
-## URL
- # https://berlin-now.net <br>
+# https://berlin-now.net <br>
+
  「かんたんログイン」を使って下さい。
 
 ![FireShot Capture 064 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110725759-74508180-825b-11eb-9a57-c31f9e757e80.png)
@@ -43,7 +43,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・投稿数の表示<br>
 ・いいねした数の表示<br>
 ・画像アップロード(gem 'carrierwave')<br>
-・いいね<br>
+・いいね(非同期)<br>
 ・Paginate(hem 'kaminari')<br>
 ・返信/コメント<br>
 ・続きを読む<br>
@@ -64,7 +64,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・MySQL 8.0<br>
 ・Nginx<br>
 ・Puma<br>
-・AWS(EC2)<br>
+・AWS(EC2,Route53,ACM,ALB)<br>
 ・Docker<br>
 ・CircleCi CI/CD<br>
 ・RSpec<br>
@@ -72,6 +72,10 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・News API
 
 <br>
+
+## ブログを書きました。
+[!Rails, Docker, AWS, CircleCIでポートフォリオを作成したので、振り返ってみる。](https://qiita.com/kazumawada/items/f8fcbf076e8672d51e12)
+
 
 ## アップデート中のもの
 
