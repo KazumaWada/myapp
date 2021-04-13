@@ -1,28 +1,15 @@
 
 [![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://github.com/kazumawada/myapp#readme)
-## Usage
 
-```
-docker-compose build
-docker-compose up -d
-docker-compose run app bundle install
-docker-compose run app bin/rails db:create
-docker-compose run app bin/rails db:migrate
-docker-compose run app bin/rails db:seed
-docker-compose run app bin/rails webpacker:install
-docker-compose run app bin/webpack-dev-server
-```
-
-## ベルリンなう https://berlin-now.net 
-ベルリンにまつわることを共有するサービスです。
-
+# ベルリンなう https://berlin-now.net  
+ ベルリンにまつわることを共有するサービスです。
 「かんたんログイン」を使って下さい。
 
 ![FireShot Capture 064 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110725759-74508180-825b-11eb-9a57-c31f9e757e80.png)
 
 <br><br>
 
-## クラウドアーキテクチャー
+# クラウドアーキテクチャー
 Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタンス内でdocker-compose upをしています。ローカルでpush後、mergeされたら、EC2への自動デプロイをCircleCIで行います。<br>httpsは、Route53(DNS),ALBを経由して、EC2にアクセスさせるようにしています。SSL証明書は、ACMで発行しています。
 
 
@@ -33,7 +20,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 <br>
 
 
-## 機能一覧
+# 機能一覧
 ・CRUD機能(User,Post)<br>
 ・ソート（人気、新着、view数順でそれぞれ表示）<br>
 ・ゲストログイン<br>
@@ -56,7 +43,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 
 <br>
 
-## 使用技術
+# 使用技術
 ・Ruby 2.6.6<br>
 ・Ruby on Rails 6.1.0<br>
 ・MySQL 8.0<br>
@@ -90,5 +77,18 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 [Qiita](https://qiita.com/kazumawada)
 
 [技術ブログ](https://kazumawada.hateblo.jp/)
+
+## Usage
+
+```
+docker-compose build
+docker-compose up -d
+docker-compose run app bundle install
+docker-compose run app bin/rails db:create
+docker-compose run app bin/rails db:migrate
+docker-compose run app bin/rails db:seed
+docker-compose run app bin/rails webpacker:install
+docker-compose run app bin/webpack-dev-server
+```
 
 
