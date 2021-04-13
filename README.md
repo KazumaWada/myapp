@@ -13,12 +13,10 @@ docker-compose run app bin/rails webpacker:install
 docker-compose run app bin/webpack-dev-server
 ```
 
-## ベルリンなう
+## ベルリンなう https://berlin-now.net 
 ベルリンにまつわることを共有するサービスです。
 
-# https://berlin-now.net <br>
-
- 「かんたんログイン」を使って下さい。
+「かんたんログイン」を使って下さい。
 
 ![FireShot Capture 064 - ベルリンなう - localhost](https://user-images.githubusercontent.com/57794648/110725759-74508180-825b-11eb-9a57-c31f9e757e80.png)
 
