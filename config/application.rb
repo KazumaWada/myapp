@@ -31,10 +31,11 @@ module Myapp
     config.load_defaults 6.1
 
 
-
+################rspecのテストも日本語化するので注意！！！！###########################################
    #fakerの日本語化
     config.i18n.available_locales = %i[ja en]
     config.i18n.default_locale = :ja
+################rspecのテストも日本語化するので注意！！！！###########################################
 
 
     # config.action_view.embed_authenticity_token_in_remote_forms = true
