@@ -6,7 +6,7 @@ RSpec.feature "SignUps", type: :feature do
    # ユーザーはサインアップに成功する
    scenario "user successfully signs up" do
     visit root_path
-    click_link "Signup"
+    click_link "新規登録"
 
     perform_enqueued_jobs do
       expect { 

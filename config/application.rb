@@ -40,9 +40,9 @@ module Myapp
     # config.action_view.embed_authenticity_token_in_remote_forms = true
 
     #logger https://railsguides.jp/debugging_rails_applications.html#%E3%83%AD%E3%82%AC%E3%83%BC
-    config.logger = Logger.new(STDOUT)
-    config.logger = Log4r::Logger.new("Application Log")
-    Rails.logger.level = 0 
+    # config.logger = Logger.new(STDOUT)
+    # config.logger = Log4r::Logger.new("Application Log")
+    # Rails.logger.level = 0 
 
 
     # Configuration for the application, engines, and railties goes here.
