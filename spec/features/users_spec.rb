@@ -11,7 +11,7 @@ RSpec.feature "Users", type: :feature do
     #これは簡単なテストだから、そのままにするけど、次から2つに分けて書く。
     it "display Signup contents, title properly" do
       expect(page).to have_css('h1', text: 'ユーザー登録')
-      expect(page).to have_title 'Signup ベルリンなう'
+      expect(page).to have_title 'Signupベルリンなう'
     end
   end
   
