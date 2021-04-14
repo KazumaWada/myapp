@@ -1,5 +1,5 @@
 
-[![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://github.com/kazumawada/myapp#readme)
+[![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://app.circleci.com/pipelines/github/kazumawada/myapp)
 
 # ベルリンなう https://berlin-now.net  
  ベルリンにまつわることを共有するサービスです。
