@@ -24,7 +24,6 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・CRUD機能(User,Post)<br>
 ・ソート（人気、新着、view数順でそれぞれ表示）<br>
 ・ゲストログイン<br>
-・ゲストログインを編集させない<br>
 ・投稿数の表示<br>
 ・いいねした数の表示<br>
 ・画像アップロード(gem 'carrierwave')<br>
@@ -33,8 +32,7 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・返信/コメント<br>
 ・続きを読む<br>
 ・impression数(gem 'impressionist')<br>
-・タグ(記事内にハッシュタグで表示)<br>
-・タグ一覧<br>
+・タグ(記事内にハッシュタグで表示, トップページのサイドバーに一覧表示)<br>
 ・検索<br>
 ・API(gem 'json')<br>
  &nbsp; &nbsp;・ベルリンの天気API<br>
@@ -57,10 +55,6 @@ Rails, Puma, MySQLとNginxをDockerコンテナに乗せて、EC2インスタン
 ・News API
 
 <br>
-
-## ブログを書きました。
-[!Rails, Docker, AWS, CircleCIでポートフォリオを作成したので、振り返ってみる。](https://qiita.com/kazumawada/items/f8fcbf076e8672d51e12)
-
 
 ## アップデート中のもの
 
@@ -90,5 +84,39 @@ docker-compose run app bin/rails db:seed
 docker-compose run app bin/rails webpacker:install
 docker-compose run app bin/webpack-dev-server
 ```
+
+# 全体のスクリーンショット
+
+#### root
+![FireShot Capture 163 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115528909-69165a00-a2cd-11eb-9e27-ef7fa2fb02a3.png)
+
+#### users/:id
+![FireShot Capture 164 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529032-86e3bf00-a2cd-11eb-8a2b-d30db81d9838.png)
+
+#### users/:id/following
+![FireShot Capture 165 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529261-b72b5d80-a2cd-11eb-9b8f-3d6d5fbb9f89.png)
+
+
+#### users/:id/followed
+![FireShot Capture 166 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529319-c3afb600-a2cd-11eb-9763-340c3f327504.png)
+
+#### /users
+![FireShot Capture 167 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529414-da560d00-a2cd-11eb-84f4-0fea36534ef3.png)
+
+#### /posts/:id, /posts/:id/search?search=検索ワード
+![FireShot Capture 168 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529528-f22d9100-a2cd-11eb-8a17-a4f7e84bef99.png)
+
+#### 検索結果が見つからなかった場合
+![FireShot Capture 173 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115531372-aaa80480-a2cf-11eb-9f7e-f3376cad189e.png)
+
+
+#### /posts/hashtag/:name
+![FireShot Capture 169 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529747-1db07b80-a2ce-11eb-8ffc-275dba37454e.png)
+
+#### /posts/new, /posts/edit
+![FireShot Capture 170 - ベルリンなう - berlin-now net](https://user-images.githubusercontent.com/57794648/115529877-3d47a400-a2ce-11eb-97b7-b8121f9653b6.png)
+
+
+
 
 
