@@ -1,7 +1,7 @@
 
 [![<ORG_NAME>](https://circleci.com/gh/kazumawada/myapp.svg?style=svg)](https://app.circleci.com/pipelines/github/kazumawada/myapp)
 
-# ベルリンなう https://berlin-now.net  
+# ベルリンなう https://berlin-now.net(現在サーバー停止) 
  ベルリンにまつわることを共有するサービスです。
 「かんたんログイン」を使って下さい。
 
